@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.API;
+using OnDemandTutor.Repositories.Context;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"],
+        b => b.MigrationsAssembly("OnDemandTutor.API"));
+});
 // Add services to the container.
 
 // config appsettings by env
