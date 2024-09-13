@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnDemandTutor.Core.Base;
+using OnDemandTutor.Repositories.Entity;
 
 namespace OnDemandTutor.Contract.Repositories.Entity
 {
@@ -34,18 +35,15 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         //public int Id { get; set; }
 
 
-        //public int StudentId { get; set; }
-        //public int SlotId { get; set; }
-        //public int TutorId { get; set; }
-        public int ModId { get; set; }
+        public Guid StudentId { get; set; }
+        public Guid TutorId { get; set; }
+
         public string Content { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public string Status { get; set; }
 
         // Navigation properties
-        public virtual Student Student { get; set; }
+        public virtual Accounts Accounts { get; set; }
         public virtual Slot Slot { get; set; }
-        public virtual Tutor Tutor { get; set; }
-        public virtual Moderator Moderator { get; set; }
     }
 }

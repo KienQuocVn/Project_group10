@@ -24,6 +24,5 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         // Navigation property
         public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

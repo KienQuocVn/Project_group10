@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnDemandTutor.Core.Base;
+using OnDemandTutor.Repositories.Entity;
 
 namespace OnDemandTutor.Contract.Repositories.Entity
 {
@@ -32,7 +33,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public string Status { get; set; } 
 
         // Navigation properties
-        public virtual Student Student { get; set; }
+        public virtual Accounts Student { get; set; }
         public virtual Slot Slot { get; set; }
     }
 }

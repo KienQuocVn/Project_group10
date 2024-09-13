@@ -4,7 +4,7 @@ using OnDemandTutor.Core.Utils;
 
 namespace OnDemandTutor.Repositories.Entity
 {
-    public class ApplicationUser : IdentityUser<Guid>
+    public class Accounts : IdentityUser<Guid>
     {
         public string Password {  get; set; } = string.Empty;
         public virtual UserInfo? UserInfo { get; set; }
@@ -14,7 +14,14 @@ namespace OnDemandTutor.Repositories.Entity
         public DateTimeOffset CreatedTime { get; set; }
         public DateTimeOffset LastUpdatedTime { get; set; }
         public DateTimeOffset? DeletedTime { get; set; }
-        public ApplicationUser()
+        public virtual ICollection<Payment> Payments { get; set; }
+        public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
+        public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Complaint> Complaints { get; set; }
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        public virtual ICollection<Class> Classes { get; set; }
+
+        public Accounts()
         {
             CreatedTime = CoreHelper.SystemTimeNow;
             LastUpdatedTime = CreatedTime;

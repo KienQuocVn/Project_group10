@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnDemandTutor.Core.Base;
+using OnDemandTutor.Repositories.Entity;
 
 namespace OnDemandTutor.Contract.Repositories.Entity
 {
@@ -23,11 +24,11 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         //// Navigation properties
         //public virtual Tutor Tutor { get; set; }
         //public virtual Subject Subject { get; set; }
-        public string TutorId { get; set; }
+        public Guid TutorId { get; set; }
         public string SubjectId { get; set; }
 
         // Navigation properties
-        public virtual Tutor Tutor { get; set; }
+        public virtual Accounts Tutor { get; set; }
         public virtual Subject Subject { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using OnDemandTutor.Core.Base;
+using OnDemandTutor.Repositories.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,18 +33,15 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         //public virtual Slot Slot { get; set; }
         //public int Id { get; set; }
 
-
-        //public int ModId { get; set; }
-        //public int StudentId { get; set; }
-        //public int SlotId { get; set; }
-        //public int TutorId { get; set; }
+        public Guid StudentId { get; set; }
+        public Guid TutorId { get; set; }
         public string FeedbackText { get; set; }
+
+        public int NumberOfViolations { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         // Navigation properties
-        public virtual Moderator Moderator { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual Accounts Accounts { get; set; }
         public virtual Slot Slot { get; set; }
-        public virtual Tutor Tutor { get; set; }
     }
 }

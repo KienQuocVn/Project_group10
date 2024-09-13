@@ -25,92 +25,6 @@ namespace OnDemandTutor.Repositories.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Account", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Otp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Accounts");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Admin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Admins");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.ApplicationRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -350,132 +264,6 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.BanAccount", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AmountOfReport")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("ModId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ModeratorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.HasIndex("ModeratorId");
-
-                    b.ToTable("BanAccounts");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.CV", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Grade")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ModId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ModeratorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("PersonalId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Yob")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ModeratorId");
-
-                    b.HasIndex("TutorId");
-
-                    b.ToTable("CVs");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
                 {
                     b.Property<string>("Id")
@@ -511,8 +299,8 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.Property<string>("SubjectId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("TutorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -525,8 +313,11 @@ namespace OnDemandTutor.Repositories.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Complaint", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TutorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -547,17 +338,14 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastUpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("ModId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ModeratorId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SlotId")
                         .HasColumnType("nvarchar(450)");
@@ -566,19 +354,9 @@ namespace OnDemandTutor.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ModeratorId");
+                    b.HasKey("StudentId", "TutorId");
 
                     b.HasIndex("SlotId");
-
-                    b.HasIndex("StudentId");
 
                     b.HasIndex("TutorId");
 
@@ -587,8 +365,11 @@ namespace OnDemandTutor.Repositories.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Feedback", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TutorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -609,44 +390,45 @@ namespace OnDemandTutor.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastUpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("ModeratorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("NumberOfViolations")
+                        .HasColumnType("int");
 
                     b.Property<string>("SlotId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ModeratorId");
+                    b.HasKey("StudentId", "TutorId");
 
                     b.HasIndex("SlotId");
-
-                    b.HasIndex("StudentId");
 
                     b.HasIndex("TutorId");
 
                     b.ToTable("Feedbacks");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Moderator", b =>
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Payment", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AccountsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Bank")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankAccountNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -668,93 +450,9 @@ namespace OnDemandTutor.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountsId");
 
-                    b.ToTable("Moderators");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Rating", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("RatingValue")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.HasIndex("TutorId");
-
-                    b.ToTable("Ratings");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Salary", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("AdminId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdminId");
-
-                    b.HasIndex("TutorId");
-
-                    b.ToTable("Salary");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Schedule", b =>
@@ -787,8 +485,8 @@ namespace OnDemandTutor.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -846,56 +544,6 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.ToTable("Slots");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Student", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Grade")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Yob")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Students");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Subject", b =>
                 {
                     b.Property<string>("Id")
@@ -928,47 +576,10 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Tutor", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Active")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("LastUpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Tutors");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.TutorSubject", b =>
                 {
-                    b.Property<string>("TutorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("TutorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("SubjectId")
                         .HasColumnType("nvarchar(450)");
@@ -1006,6 +617,9 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
                     b.Property<string>("Bank")
                         .HasColumnType("nvarchar(max)");
 
@@ -1031,18 +645,29 @@ namespace OnDemandTutor.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastUpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("LinkCV")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Yob")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("UserInfos");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Repositories.Entity.ApplicationUser", b =>
+            modelBuilder.Entity("OnDemandTutor.Repositories.Entity.Accounts", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1135,17 +760,6 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Admin", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Account", "Account")
-                        .WithMany("Admins")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.ApplicationRoleClaims", b =>
                 {
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.ApplicationRole", null)
@@ -1157,7 +771,7 @@ namespace OnDemandTutor.Repositories.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.ApplicationUserClaims", b =>
                 {
-                    b.HasOne("OnDemandTutor.Repositories.Entity.ApplicationUser", null)
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1166,7 +780,7 @@ namespace OnDemandTutor.Repositories.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.ApplicationUserLogins", b =>
                 {
-                    b.HasOne("OnDemandTutor.Repositories.Entity.ApplicationUser", null)
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1181,7 +795,7 @@ namespace OnDemandTutor.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnDemandTutor.Repositories.Entity.ApplicationUser", null)
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1190,43 +804,11 @@ namespace OnDemandTutor.Repositories.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.ApplicationUserTokens", b =>
                 {
-                    b.HasOne("OnDemandTutor.Repositories.Entity.ApplicationUser", null)
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.BanAccount", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Account", "Account")
-                        .WithMany("BanAccounts")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Moderator", "Moderator")
-                        .WithMany("BanAccounts")
-                        .HasForeignKey("ModeratorId");
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Moderator");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.CV", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Moderator", "Moderator")
-                        .WithMany("CVs")
-                        .HasForeignKey("ModeratorId");
-
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", "Tutor")
-                        .WithMany("CVs")
-                        .HasForeignKey("TutorId");
-
-                    b.Navigation("Moderator");
-
-                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
@@ -1235,9 +817,11 @@ namespace OnDemandTutor.Repositories.Migrations
                         .WithMany("Classes")
                         .HasForeignKey("SubjectId");
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", "Tutor")
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Tutor")
                         .WithMany("Classes")
-                        .HasForeignKey("TutorId");
+                        .HasForeignKey("TutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Subject");
 
@@ -1246,99 +830,47 @@ namespace OnDemandTutor.Repositories.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Complaint", b =>
                 {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Moderator", "Moderator")
-                        .WithMany("Complaints")
-                        .HasForeignKey("ModeratorId");
-
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany()
                         .HasForeignKey("SlotId");
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Student", "Student")
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
                         .WithMany("Complaints")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("TutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", "Tutor")
-                        .WithMany()
-                        .HasForeignKey("TutorId");
-
-                    b.Navigation("Moderator");
+                    b.Navigation("Accounts");
 
                     b.Navigation("Slot");
-
-                    b.Navigation("Student");
-
-                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Feedback", b =>
                 {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Moderator", "Moderator")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("ModeratorId");
-
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany()
                         .HasForeignKey("SlotId");
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Student", "Student")
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
                         .WithMany("Feedbacks")
-                        .HasForeignKey("StudentId");
-
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", "Tutor")
-                        .WithMany()
-                        .HasForeignKey("TutorId");
-
-                    b.Navigation("Moderator");
-
-                    b.Navigation("Slot");
-
-                    b.Navigation("Student");
-
-                    b.Navigation("Tutor");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Moderator", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Account", "Account")
-                        .WithMany("Moderators")
-                        .HasForeignKey("AccountId")
+                        .HasForeignKey("TutorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Account");
+                    b.Navigation("Accounts");
+
+                    b.Navigation("Slot");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Rating", b =>
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Payment", b =>
                 {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Student", "Student")
-                        .WithMany("Ratings")
-                        .HasForeignKey("StudentId");
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
+                        .WithMany("Payments")
+                        .HasForeignKey("AccountsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Subject", "Subject")
-                        .WithMany("Ratings")
-                        .HasForeignKey("SubjectId");
-
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", "Tutor")
-                        .WithMany("Ratings")
-                        .HasForeignKey("TutorId");
-
-                    b.Navigation("Student");
-
-                    b.Navigation("Subject");
-
-                    b.Navigation("Tutor");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Salary", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Admin", null)
-                        .WithMany("Salaries")
-                        .HasForeignKey("AdminId");
-
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", null)
-                        .WithMany("Salaries")
-                        .HasForeignKey("TutorId");
+                    b.Navigation("Accounts");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Schedule", b =>
@@ -1347,9 +879,11 @@ namespace OnDemandTutor.Repositories.Migrations
                         .WithMany()
                         .HasForeignKey("SlotId");
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Student", "Student")
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Student")
                         .WithMany("Schedules")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Slot");
 
@@ -1367,28 +901,6 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.Navigation("Class");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Student", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Account", "Account")
-                        .WithMany("Students")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Tutor", b =>
-                {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Account", "Account")
-                        .WithMany("Tutors")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.TutorSubject", b =>
                 {
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Subject", "Subject")
@@ -1397,7 +909,7 @@ namespace OnDemandTutor.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Tutor", "Tutor")
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Tutor")
                         .WithMany("TutorSubjects")
                         .HasForeignKey("TutorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1408,7 +920,7 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.Navigation("Tutor");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Repositories.Entity.ApplicationUser", b =>
+            modelBuilder.Entity("OnDemandTutor.Repositories.Entity.Accounts", b =>
                 {
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.UserInfo", "UserInfo")
                         .WithMany()
@@ -1417,69 +929,29 @@ namespace OnDemandTutor.Repositories.Migrations
                     b.Navigation("UserInfo");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Account", b =>
-                {
-                    b.Navigation("Admins");
-
-                    b.Navigation("BanAccounts");
-
-                    b.Navigation("Moderators");
-
-                    b.Navigation("Students");
-
-                    b.Navigation("Tutors");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Admin", b =>
-                {
-                    b.Navigation("Salaries");
-                });
-
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
                 {
                     b.Navigation("Slots");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Moderator", b =>
-                {
-                    b.Navigation("BanAccounts");
-
-                    b.Navigation("CVs");
-
-                    b.Navigation("Complaints");
-
-                    b.Navigation("Feedbacks");
-                });
-
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Student", b =>
-                {
-                    b.Navigation("Complaints");
-
-                    b.Navigation("Feedbacks");
-
-                    b.Navigation("Ratings");
-
-                    b.Navigation("Schedules");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Subject", b =>
                 {
                     b.Navigation("Classes");
 
-                    b.Navigation("Ratings");
-
                     b.Navigation("TutorSubjects");
                 });
 
-            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Tutor", b =>
+            modelBuilder.Entity("OnDemandTutor.Repositories.Entity.Accounts", b =>
                 {
-                    b.Navigation("CVs");
-
                     b.Navigation("Classes");
 
-                    b.Navigation("Ratings");
+                    b.Navigation("Complaints");
 
-                    b.Navigation("Salaries");
+                    b.Navigation("Feedbacks");
+
+                    b.Navigation("Payments");
+
+                    b.Navigation("Schedules");
 
                     b.Navigation("TutorSubjects");
                 });

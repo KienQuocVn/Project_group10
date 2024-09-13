@@ -1,4 +1,5 @@
 ﻿using OnDemandTutor.Core.Base;
+using OnDemandTutor.Repositories.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public string Bank { get; set; }
 
         // Navigation properties
-        public virtual Tutor Tutor { get; set; }
-        public virtual Admin Admin { get; set; }
+        public virtual Accounts Accounts { get; set; }
     }
 }

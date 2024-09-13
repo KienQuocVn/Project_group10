@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnDemandTutor.Core.Base;
+using OnDemandTutor.Repositories.Entity;
 
 namespace OnDemandTutor.Contract.Repositories.Entity
 {
@@ -35,7 +36,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public DateTime EndDay { get; set; }
 
         // Navigation properties
-        public virtual Tutor Tutor { get; set; }
+        public virtual Accounts Tutor { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual ICollection<Slot> Slots { get; set; }
     }

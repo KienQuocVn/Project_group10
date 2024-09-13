@@ -35,7 +35,7 @@ namespace OnDemandTutor.API
 
         public static void AddIdentity(this IServiceCollection services)
         {
-            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            services.AddIdentity<Accounts, ApplicationRole>(options =>
             {
             })
              .AddEntityFrameworkStores<DatabaseContext>()
