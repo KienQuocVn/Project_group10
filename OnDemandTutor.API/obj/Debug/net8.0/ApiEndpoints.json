@@ -1,0 +1,169 @@
+[
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/auth_account",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OnDemandTutor.ModelViews.AuthModelViews.LoginModelView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/auth/new_account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.ScheduleController",
+    "Method": "CreateSchedule",
+    "RelativePath": "api/schedule/createschedule",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "schedule",
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Schedule",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Schedule",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.ScheduleController",
+    "Method": "DeleteSchedule",
+    "RelativePath": "api/schedule/deleteschedule/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.ScheduleController",
+    "Method": "GetAllSchedules",
+    "RelativePath": "api/schedule/getall",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnDemandTutor.Core.Base.BasePaginatedList\u00601[[OnDemandTutor.Contract.Repositories.Entity.Schedule, OnDemandTutor.Contract.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.ScheduleController",
+    "Method": "GetScheduleById",
+    "RelativePath": "api/schedule/getschedulebyid/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Schedule",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.ScheduleController",
+    "Method": "UpdateSchedule",
+    "RelativePath": "api/schedule/updateschedule/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "schedule",
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Schedule",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "api/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "index",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

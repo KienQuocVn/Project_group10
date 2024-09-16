@@ -1,4 +1,6 @@
-﻿using OnDemandTutor.Contract.Repositories.Interface;
+﻿using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.Contract.Repositories.Interface;
+using OnDemandTutor.Contract.Repositories.IUOW;
 using OnDemandTutor.Repositories.Context;
 
 namespace OnDemandTutor.Repositories.UOW
@@ -7,6 +9,20 @@ namespace OnDemandTutor.Repositories.UOW
     {
         private bool disposed = false;
         private readonly DatabaseContext _dbContext = dbContext;
+        public IGenericRepository<Schedule> scheduleRepository;
+
+        public IGenericRepository<Schedule> ScheduleRepository
+        {
+            get
+            {
+                if (this.scheduleRepository == null)
+                {
+                    this.scheduleRepository = new GenericRepository<Schedule>(_dbContext);
+                }
+                return scheduleRepository;
+            }
+        }
+
         public void BeginTransaction()
         {
             _dbContext.Database.BeginTransaction();

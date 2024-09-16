@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Study\\.Net\\On-Demand-Tutor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.services\\interface\\ischeduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|solutionrelative:ondemandtutor.contract.services\\interface\\ischeduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.services\\service\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|solutionrelative:ondemandtutor.services\\service\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D949871C-F4E7-4765-99F0-AD29F18EC9EF}|OnDemandTutor.Core\\OnDemandTutor.Core.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.core\\base\\basepaginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D949871C-F4E7-4765-99F0-AD29F18EC9EF}|OnDemandTutor.Core\\OnDemandTutor.Core.csproj|solutionrelative:ondemandtutor.core\\base\\basepaginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BasePaginatedList.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\Base\\BasePaginatedList.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Core\\Base\\BasePaginatedList.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\Base\\BasePaginatedList.cs",
+              "RelativeToolTip": "OnDemandTutor.Core\\Base\\BasePaginatedList.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAswCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T09:47:45.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IScheduleService.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T09:41:58.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ScheduleService.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA0wB8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T09:41:57.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScheduleController.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\ScheduleController.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\ScheduleController.cs",
+              "RelativeToolTip": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T09:40:35.092Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
