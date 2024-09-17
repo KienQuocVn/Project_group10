@@ -1,5 +1,6 @@
 ﻿using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Core.Base;
+using OnDemandTutor.ModelViews.ScheduleModelViews;
 using OnDemandTutor.ModelViews.UserModelViews;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ namespace OnDemandTutor.Contract.Services.Interface
     {
         Task<BasePaginatedList<Schedule>> GetAllSchedulesAsync(int pageNumber, int pageSize);
         Task<Schedule> GetScheduleByIdAsync(string id);
-        Task<Schedule> CreateScheduleAsync(Schedule schedule);
-        Task UpdateScheduleAsync(Schedule schedule);
-        Task DeleteScheduleAsync(string id);
+        Task<Schedule> CreateScheduleAsync(CreateScheduleModelViews model);
+        Task<Schedule> UpdateScheduleAsync(String id, UpdateScheduleModelViews schedule);
+        Task<bool> DeleteScheduleAsync(string id);
     }
 }

@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
-using OnDemandTutor.Repositories.Entity;
-using System.Collections.Generic;
+using OnDemandTutor.ModelViews.ScheduleModelViews;
+using System;
 using System.Threading.Tasks;
 
 namespace OnDemandTutor.API.Controllers
@@ -20,14 +20,13 @@ namespace OnDemandTutor.API.Controllers
             _scheduleService = scheduleService;
         }
 
-        // GET: api/Schedule/getAll
-        [HttpGet("getAll")]
+        // GET: api/Schedule
+        [HttpGet()]
         public async Task<ActionResult<BasePaginatedList<Schedule>>> GetAllSchedules(int pageNumber = 1, int pageSize = 5)
         {
-            
             try
             {
-                BasePaginatedList<Schedule> result = await _scheduleService.GetAllSchedulesAsync(pageNumber, pageSize);
+                var result = await _scheduleService.GetAllSchedulesAsync(pageNumber, pageSize);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -36,10 +35,9 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-
         // GET: api/Schedule/5
-        [HttpGet("GetScheduleById/{id}")]
-        public async Task<ActionResult<Schedule>> GetScheduleById(String id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Schedule>> GetScheduleById(string id)
         {
             var schedule = await _scheduleService.GetScheduleByIdAsync(id);
             if (schedule == null)
@@ -50,26 +48,30 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // POST: api/Schedule
-        [HttpPost("CreateSchedule")]
-        public async Task<ActionResult<Schedule>> CreateSchedule([FromBody] Schedule schedule)
+        [HttpPost()]
+        public async Task<ActionResult<Schedule>> CreateSchedule([FromBody] CreateScheduleModelViews model)
         {
-            if (schedule == null)
+            if (model == null)
             {
                 return BadRequest();
             }
 
-            var createdSchedule = await _scheduleService.CreateScheduleAsync(schedule);
-            return CreatedAtAction(nameof(GetScheduleById), new { id = createdSchedule.Id }, createdSchedule);
+            try
+            {
+                var createdSchedule = await _scheduleService.CreateScheduleAsync(model);
+                return CreatedAtAction(nameof(GetScheduleById), new { id = createdSchedule.Id }, createdSchedule);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         // PUT: api/Schedule/5
-        [HttpPut("UpdateSchedule/{id}")]
-        public async Task<IActionResult> UpdateSchedule(String id, [FromBody] Schedule schedule)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSchedule(string id, [FromBody] UpdateScheduleModelViews model)
         {
-            if (id != schedule.Id)
-            {
-                return BadRequest();
-            }
+
 
             var existingSchedule = await _scheduleService.GetScheduleByIdAsync(id);
             if (existingSchedule == null)
@@ -77,13 +79,20 @@ namespace OnDemandTutor.API.Controllers
                 return NotFound();
             }
 
-            await _scheduleService.UpdateScheduleAsync(schedule);
-            return NoContent();
+            try
+            {
+                await _scheduleService.UpdateScheduleAsync(id, model);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
-        // DELETE: api/Schedule/5
-        [HttpDelete("DeleteSchedule/{id}")]
-        public async Task<IActionResult> DeleteSchedule(String id)
+        // DELETE: api/Schedule/delete/5
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteSchedule(string id)
         {
             var existingSchedule = await _scheduleService.GetScheduleByIdAsync(id);
             if (existingSchedule == null)
@@ -91,8 +100,15 @@ namespace OnDemandTutor.API.Controllers
                 return NotFound();
             }
 
-            await _scheduleService.DeleteScheduleAsync(id);
-            return NoContent();
+            try
+            {
+                await _scheduleService.DeleteScheduleAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 }
