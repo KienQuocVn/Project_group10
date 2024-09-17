@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {}
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {}
   },
   "projects": {
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
         "projectName": "OnDemandTutor.Core",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
