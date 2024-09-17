@@ -13,6 +13,9 @@ namespace OnDemandTutor.Contract.Services.Interface
     public interface IScheduleService
     {
         Task<BasePaginatedList<Schedule>> GetAllSchedulesAsync(int pageNumber, int pageSize);
+
+        Task<BasePaginatedList<Schedule>> SearchSchedulesAsync(int pageNumber, int pageSize, Guid? studentId = null, String? slotId = null);
+
         Task<Schedule> GetScheduleByIdAsync(string id);
         Task<Schedule> CreateScheduleAsync(CreateScheduleModelViews model);
         Task<Schedule> UpdateScheduleAsync(String id, UpdateScheduleModelViews schedule);

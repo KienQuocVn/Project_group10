@@ -49,6 +49,32 @@ namespace OnDemandTutor.Services.Service
             return await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
         }
 
+        public async Task<BasePaginatedList<Schedule>> SearchSchedulesAsync(int pageNumber, int pageSize, Guid? studentId = null, string? slotId = null)
+        {
+            // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
+            IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities
+                .Include(p => p.Student)
+                .Include(p => p.Slot)
+                .Where(p => !p.DeletedTime.HasValue)
+                .Where(p => (!studentId.HasValue || p.Student.Id == studentId) &&
+                            (string.IsNullOrEmpty(slotId) || p.Slot.Id == slotId))
+                .OrderByDescending(p => p.Id);
+
+            // Đếm tổng số bản ghi
+            int totalCount = await schedulesQuery.CountAsync();
+
+            // Lấy dữ liệu phân trang
+            var schedules = await schedulesQuery
+                .OrderBy(s => s.Id)  // Sắp xếp theo trường Id (hoặc trường phù hợp)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            // Trả về đối tượng phân trang
+            return new BasePaginatedList<Schedule>(schedules, totalCount, pageNumber, pageSize);
+        }
+
+
         public async Task<Schedule> CreateScheduleAsync(CreateScheduleModelViews model)
         {
             // Tạo một thực thể Schedule mới từ model
