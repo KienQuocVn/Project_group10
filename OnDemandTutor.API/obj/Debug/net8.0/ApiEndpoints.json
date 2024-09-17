@@ -1,0 +1,81 @@
+[
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.AuthController",
+    "Method": "AddRoleToUser",
+    "RelativePath": "api/auth/add-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OnDemandTutor.ModelViews.AuthModelViews.AddRoleModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/auth_account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OnDemandTutor.ModelViews.AuthModelViews.LoginModelView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/auth/new_account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OnDemandTutor.ModelViews.AuthModelViews.CreateAccountModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.Controllers.RolesController",
+    "Method": "CreateRole",
+    "RelativePath": "api/roles/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "createdBy",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.Controllers.RolesController",
+    "Method": "GetAllRoles",
+    "RelativePath": "api/roles/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
