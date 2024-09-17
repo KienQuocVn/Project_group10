@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "D:\\Study\\.Net\\On-Demand-Tutor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\iuow\\ischedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\iuow\\ischedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.services\\interface\\ischeduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|solutionrelative:ondemandtutor.contract.services\\interface\\ischeduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.services\\service\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,12 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
@@ -46,52 +46,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "IScheduleRepository.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T09:27:11.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ScheduleController.cs",
               "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\ScheduleController.cs",
               "RelativeDocumentMoniker": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
               "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\ScheduleController.cs",
               "RelativeToolTip": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAFwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T02:57:06.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Schedule.cs",
               "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
               "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
               "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
               "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T02:03:13.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T02:03:13.717Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ScheduleService.cs",
               "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
               "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
               "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
               "RelativeToolTip": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAiwD8AAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAADwv2UAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-16T09:41:57.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "IScheduleService.cs",
               "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
               "RelativeDocumentMoniker": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
               "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
               "RelativeToolTip": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T02:47:47.096Z",
               "EditorCaption": ""

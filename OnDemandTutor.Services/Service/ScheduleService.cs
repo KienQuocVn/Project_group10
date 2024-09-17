@@ -112,18 +112,22 @@ namespace OnDemandTutor.Services.Service
                 
 
                 // Cập nhật vào database
-                _unitOfWork.ScheduleRepository.Update(existingSchedule);
-                await _unitOfWork.SaveAsync();
+                
             }
             return existingSchedule;
         }
 
         public async Task<bool> DeleteScheduleAsync(String id)
         {
-            var existingProduct = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
-            if (existingProduct != null) {
+            var existingSchedule = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
+            if (existingSchedule != null) {
+
+                existingSchedule.DeletedTime = DateTimeOffset.Now;
+                // existingSchedule.DeletedBy = User.id;
+
+
                 // Xóa lịch theo ID
-                await _unitOfWork.ScheduleRepository.DeleteAsync(id);
+                _unitOfWork.ScheduleRepository.Update(existingSchedule);
                 await _unitOfWork.SaveAsync();
                 return true;
             }
