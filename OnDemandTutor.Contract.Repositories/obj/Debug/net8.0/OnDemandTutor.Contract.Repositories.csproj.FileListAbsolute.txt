@@ -1,0 +1,16 @@
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.deps.json
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.csproj.AssemblyReference.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.AssemblyInfoInputs.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.AssemblyInfo.cs
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.csproj.CoreCompileInputs.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.sourcelink.json
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemand.3116B832.Up2Date
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Repositories.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Repositories.dll

@@ -1,0 +1,12 @@
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\bin\Debug\net8.0\OnDemandTutor.ModelViews.deps.json
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\bin\Debug\net8.0\OnDemandTutor.ModelViews.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\bin\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.GeneratedMSBuildEditorConfig.editorconfig
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.AssemblyInfoInputs.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.AssemblyInfo.cs
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.csproj.CoreCompileInputs.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.sourcelink.json
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\refint\OnDemandTutor.ModelViews.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\ref\OnDemandTutor.ModelViews.dll

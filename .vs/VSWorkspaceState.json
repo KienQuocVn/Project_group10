@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OnDemandTutor.API",
+    "\\OnDemandTutor.API\\Controllers",
+    "\\OnDemandTutor.Contract.Repositories\\IUOW",
+    "\\OnDemandTutor.Contract.Services\\bin",
+    "\\OnDemandTutor.ModelViews\\UserModelViews",
+    "\\OnDemandTutor.Repositories\\Context"
+  ],
+  "SelectedNode": "\\OnDemandTutor.sln",
+  "PreviewInSolutionExplorer": false
+}

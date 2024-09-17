@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.API;
+using OnDemandTutor.Contract.Repositories.IUOW;
+using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Repositories.Context;
+using OnDemandTutor.Repositories.UOW;
+using OnDemandTutor.Services.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DatabaseContext>(options =>
@@ -9,7 +13,8 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
         b => b.MigrationsAssembly("OnDemandTutor.API"));
 });
 // Add services to the container.
-
+builder.Services.AddScoped<ITutorRepository, TutorRepository>();
+builder.Services.AddScoped<ITutorService, TutorService>();
 // config appsettings by env
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
