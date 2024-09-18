@@ -12,11 +12,11 @@ namespace OnDemandTutor.Repositories.UOW
     public class TutorRepository : GenericRepository<TutorSubject>, ITutorRepository
     {
         protected readonly DatabaseContext _context;
-        protected readonly DbSet<Schedule> _dbSet;
+        protected readonly DbSet<TutorSubject> _dbSet;
         public TutorRepository(DatabaseContext dbContext) : base(dbContext)
         {
             _context = dbContext;
-            _dbSet = _context.Set<Schedule>();
+            _dbSet = _context.Set<TutorSubject>();
         }
     }
 }
