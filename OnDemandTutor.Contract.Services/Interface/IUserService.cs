@@ -1,4 +1,5 @@
-﻿using OnDemandTutor.ModelViews.AuthModelViews;
+﻿using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.ModelViews.AuthModelViews;
 using OnDemandTutor.ModelViews.UserModelViews;
 using OnDemandTutor.Repositories.Entity;
 using System;
@@ -30,5 +31,16 @@ namespace OnDemandTutor.Contract.Services.Interface
         Task<Accounts> AuthenticateAsync(LoginModelView model);
 
         Task<bool> AddRoleToAccountAsync(Guid userId, string roleName);
+
+        Task<bool> AddRoleAsync(string roleName, string createdBy);
+
+
+        Task<bool> AddClaimToRoleAsync(Guid roleId, string claimType, string claimValue, string createdBy);
+
+        Task<bool> AddClaimToUserAsync(Guid userId, string claimType, string claimValue, string createdBy);
+        Task<IEnumerable<ApplicationUserClaims>> GetUserClaimsAsync(Guid userId);
+        Task<bool> UpdateClaimAsync(Guid claimId, string claimType, string claimValue, string updatedBy);
+        Task<bool> SoftDeleteClaimAsync(Guid claimId, string deletedBy);
+
     }
 }

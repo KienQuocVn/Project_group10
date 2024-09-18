@@ -9,6 +9,7 @@ using OnDemandTutor.ModelViews.UserModelViews;
 using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.Entity;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace OnDemandTutor.Services.Service
@@ -17,13 +18,14 @@ namespace OnDemandTutor.Services.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<Accounts> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-
-        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager)
+        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
-            
+            _roleManager = roleManager;
+
         }
 
         // Lấy danh sách tất cả người dùng
@@ -231,8 +233,160 @@ namespace OnDemandTutor.Services.Service
 
             return true;
         }
+        public async Task<bool> AddRoleAsync(string roleName, string createdBy)
+        {
+            // Kiểm tra nếu role đã tồn tại
+            if (await _roleManager.RoleExistsAsync(roleName))
+            {
+                return false; // Role đã tồn tại
+            }
+
+            // Tạo đối tượng ApplicationRole mới
+            var role = new ApplicationRole
+            {
+                Name = roleName,
+                CreatedBy = createdBy,
+                CreatedTime = DateTimeOffset.Now,
+                LastUpdatedBy = createdBy,
+                LastUpdatedTime = DateTimeOffset.Now
+            };
+
+            // Lấy repository cho ApplicationRole
+            var roleRepository = _unitOfWork.GetRepository<ApplicationRole>();
+
+            // Thêm role vào database qua repository
+            await roleRepository.InsertAsync(role);
+
+            // Lưu thay đổi vào database
+            await _unitOfWork.SaveAsync();
+
+            return true; 
+        }
 
 
+        public async Task<bool> AddClaimToRoleAsync(Guid roleId, string claimType, string claimValue, string createdBy)
+        {
+            // Tìm role theo roleId
+            var role = await _roleManager.FindByIdAsync(roleId.ToString());
+            if (role == null)
+            {
+                return false; // Role không tồn tại
+            }
 
+            // Tạo một claim mới
+            var claim = new Claim(claimType, claimValue);
+
+            // Thêm claim cho role
+            var result = await _roleManager.AddClaimAsync(role, claim);
+            if (result.Succeeded)
+            {
+                // Tạo bản ghi mới trong ApplicationRoleClaims
+                var roleClaim = new ApplicationRoleClaims
+                {
+                    RoleId = roleId,
+                    ClaimType = claimType,
+                    ClaimValue = claimValue,
+                    CreatedBy = createdBy,
+                    CreatedTime = DateTimeOffset.Now,
+                    LastUpdatedBy = createdBy,
+                    LastUpdatedTime = DateTimeOffset.Now
+                };
+
+                var roleClaimRepository = _unitOfWork.GetRepository<ApplicationRoleClaims>();
+                await roleClaimRepository.InsertAsync(roleClaim);
+
+                // Lưu thay đổi
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+
+            return false; // Thêm claim thất bại
+        }
+        // Thêm claim mới cho người dùng
+        public async Task<bool> AddClaimToUserAsync(Guid userId, string claimType, string claimValue, string createdBy)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+            {
+                throw new Exception("User does not exist");
+            }
+
+            var claim = new ApplicationUserClaims
+            {
+                UserId = userId,
+                ClaimType = claimType,
+                ClaimValue = claimValue,
+                CreatedBy = createdBy,
+                CreatedTime = CoreHelper.SystemTimeNow,
+                LastUpdatedBy = createdBy,
+                LastUpdatedTime = CoreHelper.SystemTimeNow
+            };
+
+            var claimRepository = _unitOfWork.GetRepository<ApplicationUserClaims>();
+            await claimRepository.InsertAsync(claim);
+            await _unitOfWork.SaveAsync();
+
+            return true;
+        }
+
+        // Lấy danh sách các claim của người dùng
+        public async Task<IEnumerable<ApplicationUserClaims>> GetUserClaimsAsync(Guid userId)
+        {
+            var claimRepository = _unitOfWork.GetRepository<ApplicationUserClaims>();
+            var claims = await claimRepository.Entities
+                .Where(c => c.UserId == userId && c.DeletedTime == null) // Không lấy claim đã bị xóa
+                .ToListAsync();
+
+            return claims;
+        }
+
+        // Cập nhật thông tin của claim
+        public async Task<bool> UpdateClaimAsync(Guid claimId, string claimType, string claimValue, string updatedBy)
+        {
+            var claimRepository = _unitOfWork.GetRepository<ApplicationUserClaims>();
+            var claim = await claimRepository.GetByIdAsync(claimId);
+
+            if (claim == null)
+            {
+                return false; // Claim không tồn tại
+            }
+
+            // Cập nhật thông tin claim
+            claim.ClaimType = claimType;
+            claim.ClaimValue = claimValue;
+            claim.LastUpdatedBy = updatedBy;
+            claim.LastUpdatedTime = CoreHelper.SystemTimeNow;
+
+            await claimRepository.UpdateAsync(claim);
+            await _unitOfWork.SaveAsync();
+
+            return true;
+        }
+
+        // Xóa mềm claim
+        public async Task<bool> SoftDeleteClaimAsync(Guid claimId, string deletedBy)
+        {
+            var claimRepository = _unitOfWork.GetRepository<ApplicationUserClaims>();
+            var claim = await claimRepository.GetByIdAsync(claimId);
+
+            if (claim == null)
+            {
+                return false; // Claim không tồn tại
+            }
+
+            // Đánh dấu claim là đã xóa
+            claim.DeletedBy = deletedBy;
+            claim.DeletedTime = CoreHelper.SystemTimeNow;
+
+            await claimRepository.UpdateAsync(claim);
+            await _unitOfWork.SaveAsync();
+
+            return true;
+        }
     }
+
+
+
 }
+
