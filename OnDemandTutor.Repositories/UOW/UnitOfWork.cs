@@ -1,4 +1,6 @@
-﻿using OnDemandTutor.Contract.Repositories.Interface;
+﻿using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.Contract.Repositories.Interface;
+using OnDemandTutor.Contract.Repositories.IUOW;
 using OnDemandTutor.Repositories.Context;
 
 namespace OnDemandTutor.Repositories.UOW
@@ -7,6 +9,22 @@ namespace OnDemandTutor.Repositories.UOW
     {
         private bool disposed = false;
         private readonly DatabaseContext _dbContext = dbContext;
+
+        public IGenericRepository<Feedback> feedbackRepository;
+
+        public IGenericRepository<Feedback> FeedbackRepository
+        {
+            get
+            {
+                if (this.feedbackRepository == null)
+                {
+                    this.feedbackRepository = new GenericRepository<Feedback>(_dbContext);
+                }
+                return feedbackRepository;
+            }
+        }
+
+
         public void BeginTransaction()
         {
             _dbContext.Database.BeginTransaction();

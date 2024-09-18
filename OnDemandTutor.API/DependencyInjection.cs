@@ -45,7 +45,8 @@ namespace OnDemandTutor.API
         {
             services
                 //.AddScoped<IUserService, UserService>()
-                .AddScoped<IUserService, UserService>();
+                .AddScoped<IUserService, UserService>()
+                .AddScoped<IFeedbackService, FeedbackService>();
         }
     }
 }

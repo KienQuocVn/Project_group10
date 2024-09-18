@@ -1,0 +1,12 @@
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.deps.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.GeneratedMSBuildEditorConfig.editorconfig
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfoInputs.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfo.cs
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.csproj.CoreCompileInputs.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.sourcelink.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll

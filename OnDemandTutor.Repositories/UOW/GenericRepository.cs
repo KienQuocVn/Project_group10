@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.Repositories.Context;
