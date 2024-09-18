@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Study\\.Net\\On-Demand-Tutor\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\TutorSubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnDemandTutor.Contract.Repositories\\Entity\\TutorSubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\TutorService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnDemandTutor.Services\\Service\\TutorService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnDemandTutor.Services\\Service\\ScheduleService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\SubjectService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnDemandTutor.Services\\Service\\SubjectService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +39,58 @@
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TutorSubject.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\TutorSubject.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\TutorSubject.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\TutorSubject.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\TutorSubject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T02:50:44.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TutorService.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\TutorService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\TutorService.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\TutorService.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\Service\\TutorService.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAEUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T02:39:49.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SubjectService.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\SubjectService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\SubjectService.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\SubjectService.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\Service\\SubjectService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T02:38:35.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScheduleService.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T02:38:30.393Z",
+              "EditorCaption": ""
             }
           ]
         }

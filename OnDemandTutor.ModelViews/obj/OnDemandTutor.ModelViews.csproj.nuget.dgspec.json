@@ -1,22 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {}
-  },
-  "projects": {
-    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
-        "projectName": "OnDemandTutor.ModelViews",
-        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
     "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {}
   },
   "projects": {
@@ -35,7 +19,6 @@
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> Sang
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,11 +65,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
->>>>>>> Sang
         }
       }
     }

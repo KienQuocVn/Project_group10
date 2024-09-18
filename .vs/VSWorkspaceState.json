@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\OnDemandTutor.API",
+    "\\OnDemandTutor.Contract.Repositories",
+    "\\OnDemandTutor.Contract.Repositories\\Entity",
+    "\\OnDemandTutor.Contract.Repositories\\IUOW",
+    "\\OnDemandTutor.Core",
+    "\\OnDemandTutor.ModelViews",
+    "\\OnDemandTutor.Repositories",
+    "\\OnDemandTutor.Services",
+    "\\OnDemandTutor.Services\\Service"
   ],
+  "SelectedNode": "\\OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "uzqXyZmnl5o=",
-  "success": true,
-  "projectFilePath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
-=======
   "dgSpecHash": "jnuQvAnJL2Y=",
   "success": true,
   "projectFilePath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
->>>>>>> Sang
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
