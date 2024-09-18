@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "O7Jg5FxEgi0=",
   "success": true,
   "projectFilePath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+=======
+  "dgSpecHash": "/hA6SQ0wDFc=",
+  "success": true,
+  "projectFilePath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+>>>>>>> Sang
   "expectedPackageFiles": [],
   "logs": []
 }

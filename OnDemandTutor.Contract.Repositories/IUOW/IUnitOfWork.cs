@@ -6,7 +6,10 @@ namespace OnDemandTutor.Contract.Repositories.Interface
     public interface IUnitOfWork : IDisposable
     {
         IGenericRepository<T> GetRepository<T>() where T : class;
+        IGenericRepository<Schedule> ScheduleRepository { get; }
         IGenericRepository<TutorSubject> TutorRepository { get; }
+
+
         void Save();
         Task SaveAsync();
         void BeginTransaction();

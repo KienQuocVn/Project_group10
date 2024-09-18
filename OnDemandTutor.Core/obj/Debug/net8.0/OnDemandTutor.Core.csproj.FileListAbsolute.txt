@@ -1,0 +1,12 @@
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.deps.json
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfoInputs.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfo.cs
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.csproj.CoreCompileInputs.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.sourcelink.json
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll

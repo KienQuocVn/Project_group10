@@ -1,0 +1,12 @@
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\bin\Debug\net8.0\OnDemandTutor.ModelViews.deps.json
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\bin\Debug\net8.0\OnDemandTutor.ModelViews.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\bin\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.AssemblyInfoInputs.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.AssemblyInfo.cs
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.csproj.CoreCompileInputs.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.sourcelink.json
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\refint\OnDemandTutor.ModelViews.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.ModelViews\obj\Debug\net8.0\ref\OnDemandTutor.ModelViews.dll

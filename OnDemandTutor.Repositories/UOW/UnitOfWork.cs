@@ -9,6 +9,21 @@ namespace OnDemandTutor.Repositories.UOW
     {
         private bool disposed = false;
         private readonly DatabaseContext _dbContext = dbContext;
+
+        public IGenericRepository<Schedule> scheduleRepository;
+
+        public IGenericRepository<Schedule> ScheduleRepository
+        {
+            get
+            {
+                if (this.scheduleRepository == null)
+                {
+                    this.scheduleRepository = new GenericRepository<Schedule>(_dbContext);
+                }
+                return scheduleRepository;
+            }
+        }
+
         public IGenericRepository<TutorSubject> tutorRepository;
 
         public IGenericRepository<TutorSubject> TutorRepository
@@ -22,7 +37,6 @@ namespace OnDemandTutor.Repositories.UOW
                 return tutorRepository;
             }
         }
-
         public void BeginTransaction()
         {
             _dbContext.Database.BeginTransaction();

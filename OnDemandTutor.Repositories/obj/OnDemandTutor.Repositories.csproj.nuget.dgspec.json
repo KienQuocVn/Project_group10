@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {}
   },
   "projects": {
@@ -15,6 +16,26 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {}
+  },
+  "projects": {
+    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
+        "projectName": "OnDemandTutor.Contract.Repositories",
+        "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> Sang
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,8 +50,13 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+<<<<<<< HEAD
               "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
                 "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj"
+=======
+              "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+                "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj"
+>>>>>>> Sang
               }
             }
           }
@@ -71,6 +97,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
@@ -86,6 +113,27 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "projectName": "OnDemandTutor.Core",
+        "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> Sang
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -132,6 +180,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
@@ -147,6 +196,27 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+        "projectName": "OnDemandTutor.ModelViews",
+        "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> Sang
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -193,6 +263,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
@@ -208,6 +279,27 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj",
+        "projectName": "OnDemandTutor.Repositories",
+        "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> Sang
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -222,11 +314,19 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+<<<<<<< HEAD
               "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
                 "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj"
               },
               "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
                 "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj"
+=======
+              "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
+                "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj"
+              },
+              "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
+                "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj"
+>>>>>>> Sang
               }
             }
           }
@@ -291,7 +391,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+>>>>>>> Sang
         }
       }
     }

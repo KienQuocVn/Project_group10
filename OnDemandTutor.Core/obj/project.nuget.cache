@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "uzqXyZmnl5o=",
   "success": true,
   "projectFilePath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+=======
+  "dgSpecHash": "jnuQvAnJL2Y=",
+  "success": true,
+  "projectFilePath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+>>>>>>> Sang
   "expectedPackageFiles": [],
   "logs": []
 }
