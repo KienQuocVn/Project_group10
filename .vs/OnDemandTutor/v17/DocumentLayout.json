@@ -1,0 +1,368 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.services\\service\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|solutionrelative:ondemandtutor.services\\service\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.modelviews\\usermodelviews\\paymentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|solutionrelative:ondemandtutor.modelviews\\usermodelviews\\paymentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.modelviews\\usermodelviews\\userresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|solutionrelative:ondemandtutor.modelviews\\usermodelviews\\userresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.contract.services\\interface\\ivnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|solutionrelative:ondemandtutor.contract.services\\interface\\ivnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.services\\service\\vnpaylibrary\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|solutionrelative:ondemandtutor.services\\service\\vnpaylibrary\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.api\\vnpaylibrary\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\vnpaylibrary\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.modelviews\\usermodelviews\\paymentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|solutionrelative:ondemandtutor.modelviews\\usermodelviews\\paymentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.api\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.modelviews\\ondemandtutor.modelviews.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{404077AC-9798-43E1-BD2D-691E603CDEBE}|OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj|solutionrelative:ondemandtutor.modelviews\\ondemandtutor.modelviews.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\accounts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\accounts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D949871C-F4E7-4765-99F0-AD29F18EC9EF}|OnDemandTutor.Core\\OnDemandTutor.Core.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.core\\utils\\customname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D949871C-F4E7-4765-99F0-AD29F18EC9EF}|OnDemandTutor.Core\\OnDemandTutor.Core.csproj|solutionrelative:ondemandtutor.core\\utils\\customname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D949871C-F4E7-4765-99F0-AD29F18EC9EF}|OnDemandTutor.Core\\OnDemandTutor.Core.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.core\\ondemandtutor.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D949871C-F4E7-4765-99F0-AD29F18EC9EF}|OnDemandTutor.Core\\OnDemandTutor.Core.csproj|solutionrelative:ondemandtutor.core\\ondemandtutor.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.repositories\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|solutionrelative:ondemandtutor.repositories\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|solutionrelative:ondemandtutor.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|c:\\users\\admin\\desktop\\ojt\\on-demand-tutor\\ondemandtutor.contract.services\\ondemandtutor.contract.services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|solutionrelative:ondemandtutor.contract.services\\ondemandtutor.contract.services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "OnDemandTutor.API\\Controllers\\PaymentController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAmwBsAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:59:11.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IVNPayService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IVNPayService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Services\\Interface\\IVNPayService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IVNPayService.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Services\\Interface\\IVNPayService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAIwBAAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T05:26:39.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VNPayLibrary.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\VNPayLibrary\\VNPayLibrary.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\VNPayLibrary\\VNPayLibrary.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\VNPayLibrary\\VNPayLibrary.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\Service\\VNPayLibrary\\VNPayLibrary.cs",
+              "ViewState": "AQIAAIwAAAAAAAAAAAAUwLMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:35:08.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VNPayService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\VNPayService.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\VNPayService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\VNPayService.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\Service\\VNPayService.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAIwFMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T05:32:38.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaymentResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\UserModelViews\\PaymentResponse.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.ModelViews\\UserModelViews\\PaymentResponse.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\UserModelViews\\PaymentResponse.cs",
+              "RelativeToolTip": "OnDemandTutor.ModelViews\\UserModelViews\\PaymentResponse.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAzwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:51:34.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserResponseModel.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\UserModelViews\\UserResponseModel.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.ModelViews\\UserModelViews\\UserResponseModel.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\UserModelViews\\UserResponseModel.cs",
+              "RelativeToolTip": "OnDemandTutor.ModelViews\\UserModelViews\\UserResponseModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T05:44:35.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\Program.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\Program.cs",
+              "RelativeToolTip": "OnDemandTutor.API\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T07:42:28.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VNPayLibrary.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\VNPayLibrary\\VNPayLibrary.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\VNPayLibrary\\VNPayLibrary.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\VNPayLibrary\\VNPayLibrary.cs",
+              "RelativeToolTip": "OnDemandTutor.API\\VNPayLibrary\\VNPayLibrary.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAswA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:16:03.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\appsettings.json",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\appsettings.json",
+              "RelativeToolTip": "OnDemandTutor.API\\appsettings.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-18T05:20:40.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.API\\DependencyInjection.cs",
+              "RelativeToolTip": "OnDemandTutor.API\\DependencyInjection.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwAgAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T05:46:38.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PaymentInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\UserModelViews\\PaymentInfo.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.ModelViews\\UserModelViews\\PaymentInfo.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\UserModelViews\\PaymentInfo.cs",
+              "RelativeToolTip": "OnDemandTutor.ModelViews\\UserModelViews\\PaymentInfo.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAgwA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T05:44:06.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OnDemandTutor.ModelViews",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+              "RelativeDocumentMoniker": "OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+              "RelativeToolTip": "OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-18T07:52:12.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\UserInfo.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\UserInfo.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\UserInfo.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\UserInfo.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAuwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:24:50.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Accounts.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Accounts.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Accounts.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Accounts.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Accounts.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T07:43:40.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAgwBMAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T07:43:28.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CustomName.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Core\\Utils\\CustomName.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Core\\Utils\\CustomName.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Core\\Utils\\CustomName.cs",
+              "RelativeToolTip": "OnDemandTutor.Core\\Utils\\CustomName.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T07:44:47.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OnDemandTutor.Core",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+              "RelativeDocumentMoniker": "OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+              "RelativeToolTip": "OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-17T07:44:38.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "RelativeToolTip": "OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAiwBwAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T07:44:14.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Services\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Services\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Services\\DependencyInjection.cs",
+              "RelativeToolTip": "OnDemandTutor.Services\\DependencyInjection.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T07:43:00.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "OnDemandTutor.Contract.Services.csproj",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\OJT\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
+              "RelativeToolTip": "OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-15T07:53:13.776Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.API;
+using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Repositories.Context;
+using OnDemandTutor.Services.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DatabaseContext>(options =>
@@ -9,6 +11,8 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
         b => b.MigrationsAssembly("OnDemandTutor.API"));
 });
 // Add services to the container.
+builder.Services.AddScoped<IVNPayService, VnPayService>(); 
+
 
 // config appsettings by env
 builder.Configuration
