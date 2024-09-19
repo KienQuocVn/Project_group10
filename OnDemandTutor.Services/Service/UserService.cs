@@ -113,6 +113,7 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Cập nhật thông tin người dùng
+
         public async Task<bool> UpdateUserAsync(string userId, UpdateUserModel model)
         {
             var userRepository = _unitOfWork.GetRepository<Accounts>();
@@ -154,37 +155,57 @@ namespace OnDemandTutor.Services.Service
         {
             var accountRepository = _unitOfWork.GetRepository<Accounts>();
 
+            // Tìm người dùng theo Username
             var user = await accountRepository.Entities
                 .FirstOrDefaultAsync(x => x.UserName == model.Username);
 
             if (user == null)
             {
-                return null; 
+                return null; // Người dùng không tồn tại
             }
 
-
+            // So sánh mật khẩu (bạn có thể sử dụng cơ chế mã hóa mật khẩu)
             if (model.Password != user.PasswordHash)
             {
-                return null; 
+                return null; // Mật khẩu không khớp
             }
-            var loginInfo = new ApplicationUserLogins
-            {
-                UserId = user.Id, // UserId từ người dùng đã đăng nhập
-                ProviderKey = user.Id.ToString(),
-                LoginProvider = "CustomLoginProvider", // Hoặc có thể là tên provider khác
-                ProviderDisplayName = "Standard Login",
-                CreatedBy = user.UserName, // Ghi lại ai đã thực hiện đăng nhập
-                CreatedTime = CoreHelper.SystemTimeNow,
-                LastUpdatedBy = user.UserName,
-                LastUpdatedTime = CoreHelper.SystemTimeNow
-            };
+
+            // Kiểm tra xem đã tồn tại bản ghi đăng nhập chưa
             var loginRepository = _unitOfWork.GetRepository<ApplicationUserLogins>();
-            await loginRepository.InsertAsync(loginInfo);
-            await _unitOfWork.SaveAsync();
+            var existingLogin = await loginRepository.Entities
+                .FirstOrDefaultAsync(x => x.UserId == user.Id && x.LoginProvider == "CustomLoginProvider");
 
+            if (existingLogin == null)
+            {
+                // Nếu chưa có bản ghi đăng nhập, thêm mới
+                var loginInfo = new ApplicationUserLogins
+                {
+                    UserId = user.Id, // UserId từ người dùng đã đăng nhập
+                    ProviderKey = user.Id.ToString(),
+                    LoginProvider = "CustomLoginProvider", // Hoặc có thể là tên provider khác
+                    ProviderDisplayName = "Standard Login",
+                    CreatedBy = user.UserName, // Ghi lại ai đã thực hiện đăng nhập
+                    CreatedTime = CoreHelper.SystemTimeNow,
+                    LastUpdatedBy = user.UserName,
+                    LastUpdatedTime = CoreHelper.SystemTimeNow
+                };
 
-            return user;
+                await loginRepository.InsertAsync(loginInfo);
+                await _unitOfWork.SaveAsync(); // Lưu thay đổi vào cơ sở dữ liệu
+            }
+            else
+            {
+                // Nếu bản ghi đăng nhập đã tồn tại, có thể cập nhật thông tin nếu cần
+                existingLogin.LastUpdatedBy = user.UserName;
+                existingLogin.LastUpdatedTime = CoreHelper.SystemTimeNow;
+
+                await loginRepository.UpdateAsync(existingLogin);
+                await _unitOfWork.SaveAsync(); // Lưu thay đổi vào cơ sở dữ liệu
+            }
+
+            return user; // Trả về người dùng đã xác thực
         }
+
         public async Task<bool> AddRoleToAccountAsync(Guid userId, string roleName)
         {
             // Tìm tài khoản người dùng đã tồn tại

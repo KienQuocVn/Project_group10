@@ -4,6 +4,8 @@ using OnDemandTutor.ModelViews.AuthModelViews;
 using OnDemandTutor.Contract.Services.Interface;
 using System;
 using System.Threading.Tasks;
+using OnDemandTutor.Services.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OnDemandTutor.API.Controllers
 {
@@ -12,11 +14,13 @@ namespace OnDemandTutor.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly TokenService _tokenService;
 
         // Inject the user service via constructor
-        public AuthController(IUserService userService)
+        public AuthController(IUserService userService , TokenService tokenService)
         {
             _userService = userService;
+            _tokenService = tokenService;
         }
 
         // Login API
@@ -31,8 +35,13 @@ namespace OnDemandTutor.API.Controllers
             if (account == null)
                 return Unauthorized("Invalid credentials");
 
+
+            var token = await _tokenService.GenerateJwtTokenAsync(account.Id.ToString(), account.UserName);
             // Add login logic here (optional token generation, etc.)
-            return Ok(account); // Return user information or JWT token
+            return Ok(new
+            {
+                Token = token,
+            }); 
         }
 
         // Register API
@@ -50,8 +59,9 @@ namespace OnDemandTutor.API.Controllers
             // You may want to return some details about the new account
             return Ok(account);
         }
+
         [HttpPost("add-role")]
-        public async Task<IActionResult> AddRole([FromBody] string roleName, string createdBy)
+        public async Task<IActionResult> AddRole([FromBody] string roleName, [FromQuery] string createdBy)
         {
             var result = await _userService.AddRoleAsync(roleName, createdBy);
             if (!result)
@@ -62,7 +72,8 @@ namespace OnDemandTutor.API.Controllers
             return Ok("Role created successfully.");
         }
 
-        [HttpPost("add-role-to-user")]
+
+        [HttpPost("add-role-to-user")] 
         public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleModel model )
         {
             var result = await _userService.AddRoleToAccountAsync(model.UserId, model.RoleName);
@@ -75,6 +86,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         [HttpPost("add-claim-to-role")]
+
         public async Task<IActionResult> AddClaimToRole([FromBody] AddClaimToRoleModel model)
         {
             var result = await _userService.AddClaimToRoleAsync(model.RoleId, model.ClaimType, model.ClaimValue, model.CreatedBy);
@@ -86,6 +98,7 @@ namespace OnDemandTutor.API.Controllers
             return Ok("Claim added to role successfully.");
         }
         [HttpPost("add-claim")]
+
         public async Task<IActionResult> AddClaimToUser([FromBody] AddClaimModel model)
         {
             var result = await _userService.AddClaimToUserAsync(model.UserId, model.ClaimType, model.ClaimValue, model.CreatedBy);
@@ -98,6 +111,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // API để lấy danh sách các claim của người dùng
+
         [HttpGet("user-claims/{userId}")]
         public async Task<IActionResult> GetUserClaims(Guid userId)
         {
