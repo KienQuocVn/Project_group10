@@ -81,8 +81,9 @@ namespace OnDemandTutor.Services.Service
             var schedule = new Schedule
             {
                 Id = Guid.NewGuid().ToString("N"),
-                // Student = await _unitOfWork.AccountRepository.GetByIdAsync(model.StudentId), // Lấy Student từ AccountRepository
-                // Slot = await _unitOfWork.SlotRepository.GetByIdAsync(model.SlotId), // Lấy Slot từ SlotRepository
+                Student = await _unitOfWork.GetRepository<Accounts>().GetByIdAsync(model.StudentId),
+                Slot = await _unitOfWork.GetRepository<Slot>().GetByIdAsync(model.SlotId),
+                
                 // CreatedBy = Accounts.id;
                 Status = "Created",
                 CreatedTime = DateTimeOffset.Now,
@@ -103,10 +104,9 @@ namespace OnDemandTutor.Services.Service
 
             if (existingSchedule != null)
             {
-                // Cập nhật thông tin từ model vào entity
                 existingSchedule.Status = model.Status;
-                // existingSchedule.Student = await _unitOfWork.StudentRepository.GetByIdAsync(model.StudentId);
-                // existingSchedule.Slot = await _unitOfWork.SlotRepository.GetByIdAsync(model.SlotId);
+                existingSchedule.Student = await _unitOfWork.GetRepository<Accounts>().GetByIdAsync(model.StudentId);
+                existingSchedule.Slot = await _unitOfWork.GetRepository<Slot>().GetByIdAsync(model.SlotId);
                 // existingSchedule.LastUpdatedBy = Accounts.id;
                 existingSchedule.LastUpdatedTime = DateTimeOffset.Now;
                 
