@@ -22,3 +22,15 @@ H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTuto
 H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
 H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
 H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.deps.json
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.GeneratedMSBuildEditorConfig.editorconfig
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfoInputs.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfo.cs
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.csproj.CoreCompileInputs.cache
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.sourcelink.json
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll

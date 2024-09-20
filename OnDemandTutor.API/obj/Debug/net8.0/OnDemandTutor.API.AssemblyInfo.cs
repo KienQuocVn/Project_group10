@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnDemandTutor.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cafa64f71fc0e0fca632c96d33657ae9f7b395c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a1353d2bb2fa93a08c15e0ed45cd1e3dec7433f")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnDemandTutor.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnDemandTutor.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -32,16 +32,14 @@ namespace OnDemandTutor.API.Controllers
                 return StatusCode(500, new { Message = "Internal server error", Details = ex.Message });
             }
         }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TutorSubject>> GetTutorSubjectById(Guid id)
+        [HttpGet("{tutorId}/subject/{subjectId}")]
+        public async Task<ActionResult<TutorSubject>> GetByTutorIdSubjectId(Guid tutorId, string subjectId)
         {
-            var tutorSubject = await _tutorService.GetTutorSubjectByIdAsync(id);
+            var tutorSubject = await _tutorService.GetByTutorIdSubjectIdAsync(tutorId, subjectId);
             if (tutorSubject == null)
             {
                 return NotFound(new { Message = "Tutor subject not found" });
             }
-
             return Ok(tutorSubject);
         }
 
@@ -55,8 +53,11 @@ namespace OnDemandTutor.API.Controllers
 
             try
             {
+                model.CreatedBy = "admin";
+                model.CreatedTime = DateTime.UtcNow;
+
                 var createdTutorSubject = await _tutorService.CreateTutorSubjectAsync(model);
-                return CreatedAtAction(nameof(GetTutorSubjectById), new { id = createdTutorSubject.Id }, createdTutorSubject);
+                return CreatedAtAction(nameof(CreateTutorSubject), new { id = createdTutorSubject.Id }, createdTutorSubject);
             }
             catch (Exception ex)
             {
@@ -64,45 +65,34 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTutorSubject(Guid id, [FromBody] UpdateTutorSubjectModelViews model)
+        [HttpPut("{tutorId}/{subjectId}")]
+        public async Task<IActionResult> UpdateTutorSubject(Guid tutorId, string subjectId, [FromBody] UpdateTutorSubjectModelViews model)
         {
             if (model == null)
             {
-                return BadRequest(new { Message = "Model cannot be null" });
+                return BadRequest("Invalid data.");
             }
 
-            var existingTutorSubject = await _tutorService.GetTutorSubjectByIdAsync(id);
-            if (existingTutorSubject == null)
+            var updatedTutorSubject = await _tutorService.UpdateTutorSubjectAsync(tutorId, subjectId, model);
+            if (updatedTutorSubject == null)
             {
-                return NotFound(new { Message = "Tutor subject not found" });
+                return NotFound("TutorSubject not found.");
             }
 
-            try
-            {
-                await _tutorService.UpdateTutorSubjectAsync(id, model);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = "Internal server error", Details = ex.Message });
-            }
+            return Ok(updatedTutorSubject);
         }
 
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteTutorSubject(Guid id)
+        [HttpDelete("deleteByTutorIdAndSubjectId")]
+        public async Task<IActionResult> DeleteByTutorIdAndSubjectId(Guid tutorId, string subjectId)
         {
-            var existingTutorSubject = await _tutorService.GetTutorSubjectByIdAsync(id);
-            if (existingTutorSubject == null)
-            {
-                return NotFound(new { Message = "Tutor subject not found" });
-            }
-
             try
             {
-                bool isDeleted = await _tutorService.DeleteTutorSubjectAsync(id);
-                if (!isDeleted) return BadRequest(new { Message = "Delete action failed" });
-                return NoContent();
+                bool isDeleted = await _tutorService.DeleteTutorSubjectByTutorIdAndSubjectIdAsync(tutorId, subjectId);
+                if (!isDeleted)
+                {
+                    return NotFound(new { Message = "Tutor subject not found" });
+                }
+                return NoContent(); // Xóa thành công  
             }
             catch (Exception ex)
             {

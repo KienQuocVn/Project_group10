@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj": {}
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj": {}
   },
   "projects": {
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
         "projectName": "OnDemandTutor.API",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj": {
-                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj"
+              "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj": {
+                "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj"
               }
             }
           }
@@ -98,21 +98,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
         "projectName": "OnDemandTutor.Contract.Repositories",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -127,8 +127,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
-                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj"
+              "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+                "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj"
               }
             }
           }
@@ -169,21 +169,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
         "projectName": "OnDemandTutor.Contract.Services",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -198,8 +198,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {
-                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj"
+              "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {
+                "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj"
               }
             }
           }
@@ -234,21 +234,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
         "projectName": "OnDemandTutor.Core",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -295,21 +295,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
         "projectName": "OnDemandTutor.ModelViews",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -356,21 +356,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj",
         "projectName": "OnDemandTutor.Repositories",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Repositories\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -385,11 +385,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
-                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj"
+              "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
+                "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj"
               },
-              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
-                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj"
+              "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj": {
+                "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.ModelViews\\OnDemandTutor.ModelViews.csproj"
               }
             }
           }
@@ -454,21 +454,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj": {
+    "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj",
+        "projectUniqueName": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj",
         "projectName": "OnDemandTutor.Services",
-        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj",
-        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
-        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\obj\\",
+        "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -483,8 +483,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj": {
-                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj"
+              "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj": {
+                "projectPath": "H:\\Product_C_Sharp\\OnDemandTutor\\OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj"
               }
             }
           }
@@ -519,7 +519,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
