@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {}
+    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {}
   },
   "projects": {
-    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
+    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
+        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
         "projectName": "OnDemandTutor.Contract.Repositories",
-        "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\obj\\",
+        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj",
+        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
+        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -33,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
-                "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj"
+              "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+                "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj"
               }
             }
           }
@@ -79,21 +75,17 @@
         }
       }
     },
-    "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
+    "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
         "projectName": "OnDemandTutor.Core",
-        "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Core\\obj\\",
+        "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\OnDemandTutor.Core.csproj",
+        "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
+        "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

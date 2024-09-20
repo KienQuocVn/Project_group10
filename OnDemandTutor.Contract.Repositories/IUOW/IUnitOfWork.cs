@@ -8,7 +8,7 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         IGenericRepository<T> GetRepository<T>() where T : class;
         IGenericRepository<Schedule> ScheduleRepository { get; }
         IGenericRepository<TutorSubject> TutorRepository { get; }
-
+        IGenericRepository<Feedback> FeedbackRepository { get; }
 
         void Save();
         Task SaveAsync();

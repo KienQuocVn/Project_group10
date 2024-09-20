@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnDemandTutor.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c83a1288599b461e1487e803a88d7e0adb5d6b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cafa64f71fc0e0fca632c96d33657ae9f7b395c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnDemandTutor.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnDemandTutor.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
