@@ -8521,24 +8521,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\TIenDat\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
+      "projectUniqueName": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
       "projectName": "OnDemandTutor.API",
-      "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\obj\\",
+      "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\OnDemandTutor.API.csproj",
+      "packagesPath": "C:\\Users\\TIenDat\\.nuget\\packages\\",
+      "outputPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\TIenDat\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8553,8 +8548,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj": {
-              "projectPath": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj"
+            "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj": {
+              "projectPath": "H:\\Thực tập\\On-Demand-Tutor\\OnDemandTutor.Services\\OnDemandTutor.Services.csproj"
             }
           }
         }
@@ -8625,13 +8620,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

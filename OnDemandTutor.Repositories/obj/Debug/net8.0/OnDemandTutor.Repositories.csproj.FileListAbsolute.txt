@@ -20,3 +20,25 @@ D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\refint
 D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.pdb
 D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.genruntimeconfig.cache
 D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\ref\OnDemandTutor.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Repositories.deps.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Repositories.runtimeconfig.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Repositories.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.ModelViews.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.csproj.AssemblyReference.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.AssemblyInfoInputs.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.AssemblyInfo.cs
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.csproj.CoreCompileInputs.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.sourcelink.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemand.FA95E20E.Up2Date
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\refint\OnDemandTutor.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\OnDemandTutor.Repositories.genruntimeconfig.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Repositories\obj\Debug\net8.0\ref\OnDemandTutor.Repositories.dll

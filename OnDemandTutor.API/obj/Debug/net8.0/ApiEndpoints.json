@@ -46,6 +46,136 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "OnDemandTutor.API.Controllers.FeedbackController",
+    "Method": "CreateFeedback",
+    "RelativePath": "api/feedback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OnDemandTutor.ModelViews.FeedbackModelViews.CreateFeedbackModelViews",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Feedback",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.FeedbackController",
+    "Method": "GetAllFeedback",
+    "RelativePath": "api/feedback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Feedback",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.FeedbackController",
+    "Method": "GetFeedbackById",
+    "RelativePath": "api/feedback/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnDemandTutor.Contract.Repositories.Entity.Feedback",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.FeedbackController",
+    "Method": "DeleteFeedback",
+    "RelativePath": "api/feedback/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "studentId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnDemandTutor.API.Controllers.FeedbackController",
+    "Method": "UpdateFeedback",
+    "RelativePath": "api/feedback/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "studentId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "model",
+        "Type": "OnDemandTutor.ModelViews.FeedbackModelViews.UpdateFeedbackModelViews",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OnDemandTutor.API.Controllers.ScheduleController",
     "Method": "GetAllSchedules",
     "RelativePath": "api/schedule",

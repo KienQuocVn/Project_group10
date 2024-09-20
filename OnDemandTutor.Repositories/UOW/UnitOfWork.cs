@@ -37,6 +37,22 @@ namespace OnDemandTutor.Repositories.UOW
                 return tutorRepository;
             }
         }
+
+
+        public IGenericRepository<Feedback> feedbackRepository;
+
+        public IGenericRepository<Feedback> FeedbackRepository
+        {
+            get
+            {
+                if (this.feedbackRepository == null)
+                {
+                    this.feedbackRepository = new GenericRepository<Feedback>(_dbContext);
+                }
+                return feedbackRepository;
+            }
+        }
+
         public void BeginTransaction()
         {
             _dbContext.Database.BeginTransaction();
