@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.deps.json
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.dll
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.pdb
@@ -20,3 +21,49 @@ C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\D
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Services.dll
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.pdb
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Services.dll
+=======
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.deps.json
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Core.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.ModelViews.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Repositories.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Repositories.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.csproj.AssemblyReference.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.AssemblyInfoInputs.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.AssemblyInfo.cs
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.csproj.CoreCompileInputs.cache
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.sourcelink.json
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemand.C494DD26.Up2Date
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Services.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.pdb
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Services.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.deps.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Services.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Core.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.ModelViews.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Repositories.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Repositories.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.Core.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\bin\Debug\net8.0\OnDemandTutor.ModelViews.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.csproj.AssemblyReference.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.GeneratedMSBuildEditorConfig.editorconfig
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.AssemblyInfoInputs.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.AssemblyInfo.cs
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.csproj.CoreCompileInputs.cache
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.sourcelink.json
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemand.C494DD26.Up2Date
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Services.dll
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\OnDemandTutor.Contract.Services.pdb
+H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Services\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Services.dll
+>>>>>>> 5a1353d2bb2fa93a08c15e0ed45cd1e3dec7433f

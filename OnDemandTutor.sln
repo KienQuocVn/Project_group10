@@ -15,15 +15,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.CORE", "4.CORE", "{9CC912
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnDemandTutor.Core", "OnDemandTutor.Core\OnDemandTutor.Core.csproj", "{D949871C-F4E7-4765-99F0-AD29F18EC9EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnDemandTutor.Contract.Repositories", "OnDemandTutor.Contract.Repositories\OnDemandTutor.Contract.Repositories.csproj", "{D304575D-7B71-4B01-AA67-1DDFED753573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnDemandTutor.Contract.Repositories", "OnDemandTutor.Contract.Repositories\OnDemandTutor.Contract.Repositories.csproj", "{D304575D-7B71-4B01-AA67-1DDFED753573}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnDemandTutor.ModelViews", "OnDemandTutor.ModelViews\OnDemandTutor.ModelViews.csproj", "{404077AC-9798-43E1-BD2D-691E603CDEBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnDemandTutor.ModelViews", "OnDemandTutor.ModelViews\OnDemandTutor.ModelViews.csproj", "{404077AC-9798-43E1-BD2D-691E603CDEBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnDemandTutor.Repositories", "OnDemandTutor.Repositories\OnDemandTutor.Repositories.csproj", "{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnDemandTutor.Repositories", "OnDemandTutor.Repositories\OnDemandTutor.Repositories.csproj", "{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnDemandTutor.Contract.Services", "OnDemandTutor.Contract.Services\OnDemandTutor.Contract.Services.csproj", "{A8700353-F03F-46CA-82C8-D4C6ECF649E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnDemandTutor.Contract.Services", "OnDemandTutor.Contract.Services\OnDemandTutor.Contract.Services.csproj", "{A8700353-F03F-46CA-82C8-D4C6ECF649E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnDemandTutor.Services", "OnDemandTutor.Services\OnDemandTutor.Services.csproj", "{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnDemandTutor.Services", "OnDemandTutor.Services\OnDemandTutor.Services.csproj", "{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{621D0181-F861-4727-8A87-0AC5984B3847}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
