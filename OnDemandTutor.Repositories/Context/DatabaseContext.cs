@@ -27,6 +27,8 @@ namespace OnDemandTutor.Repositories.Context
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<TutorSubject> TutorSubjects { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<Oder> Oders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

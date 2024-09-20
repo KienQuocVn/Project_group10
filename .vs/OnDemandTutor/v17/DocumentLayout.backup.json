@@ -3,52 +3,28 @@
   "WorkspaceRootPath": "D:\\Study\\.Net\\On-Demand-Tutor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.services\\service\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E1C1E6C-9965-4DED-A400-2981BB2DBD8F}|OnDemandTutor.Services\\OnDemandTutor.Services.csproj|solutionrelative:ondemandtutor.services\\service\\scheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Migrations\\20240920061529_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnDemandTutor.API\\Migrations\\20240920061529_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\iuow\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\iuow\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.repositories\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|solutionrelative:ondemandtutor.repositories\\context\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.repositories\\uow\\schedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|solutionrelative:ondemandtutor.repositories\\uow\\schedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\oder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\oder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.repositories\\uow\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|solutionrelative:ondemandtutor.repositories\\uow\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.repositories\\uow\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B76FFC8-CC62-4230-9FB0-033E22C0EB63}|OnDemandTutor.Repositories\\OnDemandTutor.Repositories.csproj|solutionrelative:ondemandtutor.repositories\\uow\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\iuow\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\iuow\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\iuow\\ischedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\iuow\\ischedulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.services\\interface\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|solutionrelative:ondemandtutor.contract.services\\interface\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.api\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.services\\interface\\ischeduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8700353-F03F-46CA-82C8-D4C6ECF649E3}|OnDemandTutor.Contract.Services\\OnDemandTutor.Contract.Services.csproj|solutionrelative:ondemandtutor.contract.services\\interface\\ischeduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D87DF774-ABCC-4C45-9A53-D2376814C4B2}|OnDemandTutor.API\\OnDemandTutor.API.csproj|solutionrelative:ondemandtutor.api\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|d:\\study\\.net\\on-demand-tutor\\ondemandtutor.contract.repositories\\entity\\class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D304575D-7B71-4B01-AA67-1DDFED753573}|OnDemandTutor.Contract.Repositories\\OnDemandTutor.Contract.Repositories.csproj|solutionrelative:ondemandtutor.contract.repositories\\entity\\class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,73 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\UOW\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Repositories\\UOW\\UnitOfWork.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\UOW\\UnitOfWork.cs",
-              "RelativeToolTip": "OnDemandTutor.Repositories\\UOW\\UnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:48:07.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\UOW\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Repositories\\UOW\\GenericRepository.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\UOW\\GenericRepository.cs",
-              "RelativeToolTip": "OnDemandTutor.Repositories\\UOW\\GenericRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:47:56.551Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ScheduleRepository.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\UOW\\ScheduleRepository.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Repositories\\UOW\\ScheduleRepository.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\UOW\\ScheduleRepository.cs",
-              "RelativeToolTip": "OnDemandTutor.Repositories\\UOW\\ScheduleRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:47:53.305Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\IUOW\\IGenericRepository.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IGenericRepository.cs",
-              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\IUOW\\IGenericRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:47:41.569Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\IUOW\\IUnitOfWork.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IUnitOfWork.cs",
-              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\IUOW\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:46:51.949Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
@@ -147,91 +58,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IUserService.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Services\\Interface\\IUserService.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IUserService.cs",
-              "RelativeToolTip": "OnDemandTutor.Contract.Services\\Interface\\IUserService.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:45:32.538Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ScheduleService.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
-              "RelativeToolTip": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAwwHkAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T09:41:57.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.API\\DependencyInjection.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\DependencyInjection.cs",
-              "RelativeToolTip": "OnDemandTutor.API\\DependencyInjection.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T02:45:23.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IScheduleRepository.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
-              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\IUOW\\IScheduleRepository.cs",
+              "Title": "20240920061529_initialcreate.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Migrations\\20240920061529_initialcreate.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.API\\Migrations\\20240920061529_initialcreate.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Migrations\\20240920061529_initialcreate.cs",
+              "RelativeToolTip": "OnDemandTutor.API\\Migrations\\20240920061529_initialcreate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T09:27:11.905Z",
+              "WhenOpened": "2024-09-20T06:15:29.876Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ScheduleController.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\ScheduleController.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.API\\Controllers\\ScheduleController.cs",
-              "RelativeToolTip": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAFwAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "RelativeToolTip": "OnDemandTutor.Repositories\\Context\\DatabaseContext.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAADwvx0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T02:57:06.496Z"
+              "WhenOpened": "2024-09-20T06:05:58.57Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Schedule.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
-              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Schedule.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T02:03:13.717Z"
+              "WhenOpened": "2024-09-20T05:44:39.31Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IScheduleService.cs",
-              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
-              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
-              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
-              "RelativeToolTip": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Class.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Class.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Class.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Class.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Class.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T02:47:47.096Z"
+              "WhenOpened": "2024-09-20T05:43:46.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Feedback.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Feedback.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Feedback.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Feedback.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:40:30.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Oder.cs",
+              "DocumentMoniker": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Oder.cs",
+              "RelativeDocumentMoniker": "OnDemandTutor.Contract.Repositories\\Entity\\Oder.cs",
+              "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Contract.Repositories\\Entity\\Oder.cs",
+              "RelativeToolTip": "OnDemandTutor.Contract.Repositories\\Entity\\Oder.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:21:23.084Z",
+              "EditorCaption": ""
             }
           ]
         }
