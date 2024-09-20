@@ -1,6 +1,5 @@
 ﻿using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
-using OnDemandTutor.Contract.Repositories.IUOW;
 using OnDemandTutor.Repositories.Context;
 
 namespace OnDemandTutor.Repositories.UOW
@@ -22,7 +21,6 @@ namespace OnDemandTutor.Repositories.UOW
                 return scheduleRepository;
             }
         }
-
         public void BeginTransaction()
         {
             _dbContext.Database.BeginTransaction();
@@ -69,5 +67,7 @@ namespace OnDemandTutor.Repositories.UOW
         {
             return new GenericRepository<T>(_dbContext);
         }
+
+       
     }
 }
