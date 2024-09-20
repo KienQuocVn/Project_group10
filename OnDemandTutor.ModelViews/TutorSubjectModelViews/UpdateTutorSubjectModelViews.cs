@@ -10,5 +10,7 @@ namespace OnDemandTutor.ModelViews.TutorSubjectModelViews
     public class UpdateTutorSubjectModelViews
     {
         public string Status { get; set; }
+        public string UpdateBy { get; set; }
+        public DateTime UpdateTime { get; set; }
     }
 }

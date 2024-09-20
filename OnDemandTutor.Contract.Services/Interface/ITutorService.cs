@@ -9,10 +9,9 @@ namespace OnDemandTutor.Contract.Services.Interface
     public interface ITutorService
     {
         Task<BasePaginatedList<TutorSubject>> GetAllTutorSubjectsAsync(int pageNumber, int pageSize);
-        Task<BasePaginatedList<TutorSubject>> SearchTutorSubjectsAsync(int pageNumber, int pageSize, Guid? studentId = null, string? slotId = null);
-        Task<TutorSubject> GetTutorSubjectByIdAsync(Guid id);
+        Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId);
         Task<TutorSubject> CreateTutorSubjectAsync(CreateTutorSubjectModelViews model);
-        Task<TutorSubject> UpdateTutorSubjectAsync(Guid id, UpdateTutorSubjectModelViews model);
-        Task<bool> DeleteTutorSubjectAsync(Guid id);
+        Task<TutorSubject> UpdateTutorSubjectAsync(Guid tutorId, string subjectId, UpdateTutorSubjectModelViews model);
+        Task<bool> DeleteTutorSubjectByTutorIdAndSubjectIdAsync(Guid tutorId, string subjectId);
     }
 }
