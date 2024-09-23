@@ -106,10 +106,12 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Tìm kiếm lịch theo id
-        public async Task<Schedule> GetScheduleByIdAsync(string id)
+        public async Task<ResponseScheduleModelViews> GetScheduleByIdAsync(string id)
         {
             Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities.FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue) ?? throw new Exception("The Schedule can not found!");
-            return _mapper.Map<ResponseScheduleModelViews>(schedule);
+
+            // Sử dụng repository để lấy lịch theo ID và kiểm tra xem lịch chưa bị xóa
+            return _mapper.Map<ResponseScheduleModelViews>(existingSchedule);
 
         }
 
