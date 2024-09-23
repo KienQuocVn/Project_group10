@@ -3,6 +3,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.API;
+
+using OnDemandTutor.Contract.Services.Interface;
+using OnDemandTutor.Repositories.Context;
+
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Contract.Repositories.IUOW;
 using OnDemandTutor.Contract.Services.Interface;
@@ -26,11 +30,19 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
         b => b.MigrationsAssembly("OnDemandTutor.API"));
 });
 
+// Add services to the container.
+builder.Services.AddScoped<IVNPayService, VnPayService>(); 
+builder.Services.AddScoped<ITutorRepository, TutorRepository>();
+builder.Services.AddScoped<ITutorService, TutorService>();
+builder.Services.AddScoped<IVNPayService, VnPayService>(); 
+
+
 
 // Cấu hình appsettings theo môi trường
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<ITutorService, TutorService>();
 
