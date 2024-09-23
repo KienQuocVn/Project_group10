@@ -14,6 +14,8 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public String Type { set; get; }
         public String Name { set; get; }
         public double Total { get; set; }
+        public Guid AccountId { set; get; }
+        public String SubjectId { set; get; }
         public String Status { set; get; }
 
         public virtual Accounts Accounts { get; set; }
