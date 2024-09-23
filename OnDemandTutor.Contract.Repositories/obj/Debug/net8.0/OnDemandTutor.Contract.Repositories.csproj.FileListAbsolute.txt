@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.deps.json
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
@@ -15,37 +14,3 @@ C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\o
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Repositories.dll
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Repositories.dll
-=======
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.deps.json
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.pdb
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.csproj.AssemblyReference.cache
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.GeneratedMSBuildEditorConfig.editorconfig
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.AssemblyInfoInputs.cache
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.AssemblyInfo.cs
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.csproj.CoreCompileInputs.cache
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.sourcelink.json
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemand.3116B832.Up2Date
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Repositories.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Repositories.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.deps.json
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\bin\Debug\net8.0\OnDemandTutor.Core.pdb
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.csproj.AssemblyReference.cache
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.GeneratedMSBuildEditorConfig.editorconfig
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.AssemblyInfoInputs.cache
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.AssemblyInfo.cs
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.csproj.CoreCompileInputs.cache
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.sourcelink.json
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemand.3116B832.Up2Date
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\refint\OnDemandTutor.Contract.Repositories.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\OnDemandTutor.Contract.Repositories.pdb
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Contract.Repositories\obj\Debug\net8.0\ref\OnDemandTutor.Contract.Repositories.dll
->>>>>>> 5a1353d2bb2fa93a08c15e0ed45cd1e3dec7433f

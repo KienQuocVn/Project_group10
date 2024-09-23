@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnDemandTutor.Contract.Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b305a3fcf8f0e5b889cb455db14e904f93f1fc42")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c9d2b27c3ec8ca0b9b34c468c1c6120bb3ba01d")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnDemandTutor.Contract.Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnDemandTutor.Contract.Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

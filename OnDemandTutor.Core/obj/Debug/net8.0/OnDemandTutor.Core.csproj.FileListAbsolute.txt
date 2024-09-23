@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.deps.json
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.dll
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.pdb
@@ -11,29 +10,3 @@ C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\O
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
 C:\Users\Admin\Desktop\OJT\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll
-=======
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.deps.json
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.pdb
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.GeneratedMSBuildEditorConfig.editorconfig
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfoInputs.cache
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfo.cs
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.csproj.CoreCompileInputs.cache
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.sourcelink.json
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
-D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.deps.json
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\bin\Debug\net8.0\OnDemandTutor.Core.pdb
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.GeneratedMSBuildEditorConfig.editorconfig
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfoInputs.cache
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.AssemblyInfo.cs
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.csproj.CoreCompileInputs.cache
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.sourcelink.json
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
-H:\Thực tập\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll
->>>>>>> 5a1353d2bb2fa93a08c15e0ed45cd1e3dec7433f
