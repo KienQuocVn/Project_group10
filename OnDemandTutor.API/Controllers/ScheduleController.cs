@@ -54,12 +54,15 @@ namespace OnDemandTutor.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Schedule>> GetScheduleById(string id)
         {
-            var schedule = await _scheduleService.GetScheduleByIdAsync(id);
-            if (schedule == null)
+            try
             {
-                return NotFound();
+                ResponseScheduleModelViews result = await _scheduleService.GetScheduleByIdAsync(id);
+                return Ok(result);
             }
-            return Ok(schedule);
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         // POST: api/Schedule
