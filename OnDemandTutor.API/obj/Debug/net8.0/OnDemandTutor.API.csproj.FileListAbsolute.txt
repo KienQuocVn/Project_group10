@@ -820,3 +820,5 @@ H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.API\obj\Debug\net8.0\refint\OnDem
 H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.API\obj\Debug\net8.0\OnDemandTutor.API.pdb
 H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.API\obj\Debug\net8.0\OnDemandTutor.API.genruntimeconfig.cache
 H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.API\obj\Debug\net8.0\ref\OnDemandTutor.API.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.API\bin\Debug\net8.0\AutoMapper.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

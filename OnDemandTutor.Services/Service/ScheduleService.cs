@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Contract.Services.Interface;
@@ -15,126 +16,223 @@ namespace OnDemandTutor.Services.Service
     public class ScheduleService : IScheduleService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
 
 
-        public ScheduleService(IUnitOfWork unitOfWork)
+        public ScheduleService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
-        }
+            _mapper = mapper;
 
-        public async Task<BasePaginatedList<Schedule>> GetAllSchedulesAsync(int pageNumber, int pageSize)
-        {
-            // Lấy tất cả các bản ghi trong bảng Schedule
-            IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities.Include(p => p.Student).Where(p => !p.DeletedTime.HasValue).OrderByDescending(p => p.CreatedTime);
-
-            // Đếm tổng số bản ghi
-            int totalCount = await schedulesQuery.CountAsync();
-
-            // Lấy dữ liệu phân trang
-            var schedules = await schedulesQuery
-                .OrderBy(s => s.Id)  // Sắp xếp theo trường ScheduleId (hoặc trường phù hợp)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
-
-            // Trả về đối tượng phân trang
-            return new BasePaginatedList<Schedule>(schedules, totalCount, pageNumber, pageSize);
         }
 
 
-        public async Task<Schedule> GetScheduleByIdAsync(String id)
-        {
-            // Sử dụng repository để lấy lịch theo ID
-            return await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
-        }
-
-        public async Task<BasePaginatedList<Schedule>> SearchSchedulesAsync(int pageNumber, int pageSize, Guid? studentId = null, string? slotId = null)
+        // Lấy danh sách Tất cả Schedule (xóa và chưa bị xóa) dựa theo các tham số truyền vào (nếu tham số nào null thì k tìm theo tham số đó)
+        public async Task<BasePaginatedList<Schedule>> GetAllSchedulesAsync(int pageNumber, int pageSize, Guid? studentId, string? slotId, string? status)
         {
             // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
             IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities
-                .Include(p => p.Student)
-                .Include(p => p.Slot)
-                .Where(p => !p.DeletedTime.HasValue)
-                .Where(p => (!studentId.HasValue || p.Student.Id == studentId) &&
-                            (string.IsNullOrEmpty(slotId) || p.Slot.Id == slotId))
-                .OrderByDescending(p => p.Id);
+                .OrderByDescending(p => p.CreatedTime);
+
+            // Điều kiện tìm kiếm theo studentId nếu có
+            if (studentId.HasValue)
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Student.Id == studentId);
+            }
+
+            // Điều kiện tìm kiếm theo slotId nếu có
+            if (!string.IsNullOrWhiteSpace(slotId))
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Slot.Id == slotId);
+            }
+
+            // Điều kiện tìm kiếm theo status nếu có
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Status == status);
+            }
 
             // Đếm tổng số bản ghi
             int totalCount = await schedulesQuery.CountAsync();
 
-            // Lấy dữ liệu phân trang
-            var schedules = await schedulesQuery
-                .OrderBy(s => s.Id)  // Sắp xếp theo trường Id (hoặc trường phù hợp)
+            // Áp dụng phân trang và sắp xếp theo Id
+            List<Schedule> paginatedSchedules = await schedulesQuery
+                .OrderBy(s => s.Id)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
-            // Trả về đối tượng phân trang
-            return new BasePaginatedList<Schedule>(schedules, totalCount, pageNumber, pageSize);
+            return new BasePaginatedList<Schedule>(paginatedSchedules, totalCount, pageNumber, pageSize);
+        }
+
+        // Lấy danh sách Schedule chưa bị xóa dựa theo các tham số truyền vào (nếu tham số nào null thì k tìm theo tham số đó)
+        public async Task<BasePaginatedList<Schedule>> GetSchedulesByFilterAsync(int pageNumber, int pageSize, Guid? studentId, string? slotId, string? status)
+        {
+            // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
+            IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities
+                .Where(p => !p.DeletedTime.HasValue)
+                .OrderByDescending(p => p.CreatedTime);
+
+            // Điều kiện tìm kiếm theo studentId nếu có
+            if (studentId.HasValue)
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Student.Id == studentId);
+            }
+
+            // Điều kiện tìm kiếm theo slotId nếu có
+            if (!string.IsNullOrWhiteSpace(slotId))
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Slot.Id == slotId);
+            }
+
+            // Điều kiện tìm kiếm theo status nếu có
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Status == status);
+            }
+
+            // Đếm tổng số bản ghi
+            int totalCount = await schedulesQuery.CountAsync();
+
+            // Áp dụng phân trang và sắp xếp theo Id
+            List<Schedule> paginatedSchedules = await schedulesQuery
+                .OrderBy(s => s.Id) 
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new BasePaginatedList<Schedule>(paginatedSchedules, totalCount, pageNumber, pageSize);
+        }
+
+        // Tìm kiếm lịch theo id
+        public async Task<Schedule> GetScheduleByIdAsync(string id)
+        {
+
+            // Sử dụng repository để lấy lịch theo ID và kiểm tra xem lịch chưa bị xóa
+            return await _unitOfWork.ScheduleRepository.Entities
+                .Where(s => s.Id == id && !s.DeletedTime.HasValue)
+                .FirstOrDefaultAsync();
         }
 
 
-        public async Task<Schedule> CreateScheduleAsync(CreateScheduleModelViews model)
+        public async Task<ResponseScheduleModelViews> CreateScheduleAsync(CreateScheduleModelViews model)
         {
-            // Tạo một thực thể Schedule mới từ model
-            var schedule = new Schedule
+            // Kiểm tra các thuộc tính không được để trống
+
+
+            if (model.StudentId == Guid.Empty)
             {
-                Id = Guid.NewGuid().ToString("N"),
-                Student = await _unitOfWork.GetRepository<Accounts>().GetByIdAsync(model.StudentId),
-                Slot = await _unitOfWork.GetRepository<Slot>().GetByIdAsync(model.SlotId),
-                
-                // CreatedBy = Accounts.id;
-                Status = "Created",
-                CreatedTime = DateTimeOffset.Now,
-                LastUpdatedTime = DateTimeOffset.Now
-            };
+                throw new Exception("Please enter StudentId.");
+            }
+
+            if (string.IsNullOrWhiteSpace(model.SlotId))
+            {
+                throw new Exception("Please enter SlotId.");
+            }
+
+            // Kiểm tra sự tồn tại của Student
+            bool isExistStudent = await _unitOfWork.GetRepository<Accounts>().Entities
+                .AnyAsync(s => s.Id == model.StudentId && !s.DeletedTime.HasValue);
+
+            if (!isExistStudent)
+            {
+                throw new Exception("The Student can not found!");
+            }
+
+            // Kiểm tra sự tồn tại của Slot
+            bool isExistSlot = await _unitOfWork.GetRepository<Slot>().Entities
+                .AnyAsync(s => s.Id == model.SlotId && !s.DeletedTime.HasValue);
+
+            if (!isExistSlot)
+            {
+                throw new Exception("The Slot can not found!");
+            }
+
+            // Sử dụng AutoMapper để ánh xạ từ model sang thực thể Schedule
+            var schedule = _mapper.Map<Schedule>(model);
+
+            // Thiết lập thêm các thuộc tính không có trong CreateScheduleModelViews
+            schedule.Id = Guid.NewGuid().ToString("N");
+            schedule.CreatedBy = "claim account";  // Ví dụ: lấy từ thông tin xác thực
+            schedule.CreatedTime = DateTimeOffset.UtcNow;
+            schedule.LastUpdatedTime = DateTimeOffset.UtcNow;
 
             // Thêm thực thể Schedule vào cơ sở dữ liệu
             await _unitOfWork.ScheduleRepository.InsertAsync(schedule);
             await _unitOfWork.SaveAsync();
 
-            return schedule;
+            return _mapper.Map<ResponseScheduleModelViews>(schedule);
         }
 
-        public async Task<Schedule> UpdateScheduleAsync(String id,UpdateScheduleModelViews model)
+
+
+        public async Task<ResponseScheduleModelViews> UpdateScheduleAsync(string id, UpdateScheduleModelViews model)
         {
+
+            if (model.StudentId == Guid.Empty)
+            {
+                throw new Exception("Please enter StudentId.");
+            }
+
+            if (string.IsNullOrWhiteSpace(model.SlotId))
+            {
+                throw new Exception("Please enter SlotId.");
+            }
+
             // Lấy schedule từ database dựa trên Id
             var existingSchedule = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
+            if (existingSchedule == null)
+            {
+                throw new Exception("The Schedule can not found!");
+            }
+
+            // Kiểm tra sự tồn tại của Student
+            bool isExistStudent = await _unitOfWork.GetRepository<Accounts>().Entities
+                .AnyAsync(s => s.Id == model.StudentId && !s.DeletedTime.HasValue);
+
+            if (!isExistStudent)
+            {
+                throw new Exception("The Student can not found!");
+            }
+
+            // Kiểm tra sự tồn tại của Slot
+            bool isExistSlot = await _unitOfWork.GetRepository<Slot>().Entities
+                .AnyAsync(s => s.Id == model.SlotId && !s.DeletedTime.HasValue);
+
+            if (!isExistSlot)
+            {
+                throw new Exception("The Slot can not found!");
+            }
+
+            _mapper.Map(model, existingSchedule);
+
+            // Thiết lập các thuộc tính bổ sung
+            existingSchedule.LastUpdatedBy = "claim account";  // Lấy từ thông tin xác thực
+            existingSchedule.LastUpdatedTime = DateTimeOffset.UtcNow;
+
+            // Cập nhật thực thể Schedule vào database
+            _unitOfWork.ScheduleRepository.Update(existingSchedule);
+            await _unitOfWork.SaveAsync();
+
+            return _mapper.Map<ResponseScheduleModelViews>(existingSchedule);
+        }
+
+        public async Task<ResponseScheduleModelViews> DeleteScheduleAsync(String id)
+        {
+            Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities.FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue) ?? throw new Exception("The Prodcut can not found!");
 
             if (existingSchedule != null)
             {
-                existingSchedule.Status = model.Status;
-                existingSchedule.Student = await _unitOfWork.GetRepository<Accounts>().GetByIdAsync(model.StudentId);
-                existingSchedule.Slot = await _unitOfWork.GetRepository<Slot>().GetByIdAsync(model.SlotId);
-                // existingSchedule.LastUpdatedBy = Accounts.id;
-                existingSchedule.LastUpdatedTime = DateTimeOffset.Now;
-                
-
-                // Cập nhật vào database
-                
-            }
-            return existingSchedule;
-        }
-
-        public async Task<bool> DeleteScheduleAsync(String id)
-        {
-            var existingSchedule = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
-            if (existingSchedule != null) {
-
-                existingSchedule.DeletedTime = DateTimeOffset.Now;
-                // existingSchedule.DeletedBy = User.id;
-
+                existingSchedule.DeletedTime = DateTimeOffset.UtcNow;
+                existingSchedule.DeletedBy = "claim account";
 
                 // Xóa lịch theo ID
                 _unitOfWork.ScheduleRepository.Update(existingSchedule);
                 await _unitOfWork.SaveAsync();
-                return true;
             }
-            return false;
-            
+            return _mapper.Map<ResponseScheduleModelViews>(existingSchedule);
+
         }
-
-
     }
 }

@@ -28,8 +28,8 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         //public virtual Slot Slot { get; set; }
 
 
-        //public int StudentId { get; set; }
-        //public int SlotId { get; set; }
+        public Guid StudentId { get; set; }
+        public String SlotId { get; set; }
         public string Status { get; set; } 
 
         // Navigation properties

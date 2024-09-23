@@ -34,3 +34,4 @@ H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTut
 H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\refint\OnDemandTutor.Core.dll
 H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.pdb
 H:\Product_C_Sharp\OnDemandTutor\OnDemandTutor.Core\obj\Debug\net8.0\ref\OnDemandTutor.Core.dll
+D:\Study\.Net\On-Demand-Tutor\OnDemandTutor.Core\obj\Debug\net8.0\OnDemandTutor.Core.csproj.AssemblyReference.cache
