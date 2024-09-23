@@ -70,8 +70,7 @@
               "RelativeToolTip": "OnDemandTutor.API\\Controllers\\ScheduleController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T03:46:22.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T03:46:22.366Z"
             },
             {
               "$type": "Document",
@@ -83,8 +82,7 @@
               "RelativeToolTip": "OnDemandTutor.Core\\Base\\BaseEntity.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T03:24:57.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T03:24:57.022Z"
             },
             {
               "$type": "Document",
@@ -96,8 +94,7 @@
               "RelativeToolTip": "OnDemandTutor.ModelViews\\ScheduleModelViews\\ResponseScheduleModelViews.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T03:19:28.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T03:19:28.392Z"
             },
             {
               "$type": "Document",
@@ -109,8 +106,7 @@
               "RelativeToolTip": "OnDemandTutor.ModelViews\\ScheduleModelViews\\UpdateScheduleModelViews.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T02:02:19.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T02:02:19.789Z"
             },
             {
               "$type": "Document",
@@ -122,8 +118,7 @@
               "RelativeToolTip": "OnDemandTutor.Repositories\\Mappers\\ScheduleMapping.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T01:54:23.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T01:54:23.113Z"
             },
             {
               "$type": "Document",
@@ -133,7 +128,7 @@
               "RelativeDocumentMoniker": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
               "ToolTip": "D:\\Study\\.Net\\On-Demand-Tutor\\OnDemandTutor.Services\\Service\\ScheduleService.cs",
               "RelativeToolTip": "OnDemandTutor.Services\\Service\\ScheduleService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL8AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAALwAAAAAAAAAAAAswL8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T09:02:39.32Z",
               "EditorCaption": ""
@@ -148,8 +143,7 @@
               "RelativeToolTip": "OnDemandTutor.Contract.Services\\Interface\\IScheduleService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAQwBEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T09:02:18.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-20T09:02:18.039Z"
             }
           ]
         }
