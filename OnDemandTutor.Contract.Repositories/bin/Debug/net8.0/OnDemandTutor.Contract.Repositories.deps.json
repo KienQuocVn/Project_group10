@@ -209,7 +209,14 @@
       },
       "OnDemandTutor.Core/1.0.0": {
         "runtime": {
+<<<<<<< HEAD
           "OnDemandTutor.Core.dll": {}
+=======
+          "OnDemandTutor.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+>>>>>>> 5a1353d2bb2fa93a08c15e0ed45cd1e3dec7433f
         }
       }
     }

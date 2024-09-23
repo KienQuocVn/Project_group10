@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OnDemandTutor.API",
+    "\\OnDemandTutor.Contract.Repositories",
+    "\\OnDemandTutor.Contract.Repositories\\Entity",
+    "\\OnDemandTutor.Contract.Repositories\\IUOW",
+    "\\OnDemandTutor.Core",
+    "\\OnDemandTutor.ModelViews",
+    "\\OnDemandTutor.Repositories",
+    "\\OnDemandTutor.Services",
+    "\\OnDemandTutor.Services\\Service"
+  ],
+  "PreviewInSolutionExplorer": false
+}
