@@ -1,4 +1,5 @@
-﻿using OnDemandTutor.Core.Base;
+﻿using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.Core.Base;
 
 namespace OnDemandTutor.Contract.Repositories.Interface
 {
@@ -25,6 +26,9 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         Task DeleteAsync(object id);
         Task SaveAsync();
 
+
         Task<T?> FindByNameAsync(string name);
+     Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId);
+
     }
 }
