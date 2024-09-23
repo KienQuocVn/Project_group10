@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.Repositories.Context;
@@ -28,6 +29,20 @@ namespace OnDemandTutor.Repositories.UOW
             _dbSet.Remove(entity);
         }
 
+        public async Task<T?> FindByNameAsync(string name)
+        {
+            // Kiểm tra xem kiểu T có thuộc tính "Name" hay không
+            var propertyInfo = typeof(T).GetProperty("Name");
+            if (propertyInfo == null)
+            {
+                throw new Exception($"Type {typeof(T).Name} does not contain a property named 'Name'.");
+            }
+
+            // Tìm đối tượng có thuộc tính "Name" khớp với tham số đầu vào
+            return await _dbSet.FirstOrDefaultAsync(e => EF.Property<string>(e, "Name") == name);
+        }
+
+
         public IEnumerable<T> GetAll()
         {
             return _dbSet.AsEnumerable();
@@ -46,6 +61,17 @@ namespace OnDemandTutor.Repositories.UOW
         public async Task<T?> GetByIdAsync(object id)
         {
             return await _dbSet.FindAsync(id);
+        }
+
+        public async Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId)
+        {
+            if (typeof(T) == typeof(TutorSubject))
+            {
+                return await _context.TutorSubjects
+                    .Where(ts => ts.TutorId == tutorId && ts.SubjectId == subjectId && !ts.DeletedTime.HasValue)
+                    .FirstOrDefaultAsync();
+            }
+            throw new NotImplementedException("This method is only implemented for TutorSubject.");
         }
 
         public async Task<BasePaginatedList<T>> GetPagging(IQueryable<T> query, int index, int pageSize)

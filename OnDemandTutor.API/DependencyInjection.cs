@@ -4,6 +4,7 @@ using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.Entity;
+using OnDemandTutor.Repositories.Mappers;
 using OnDemandTutor.Services;
 using OnDemandTutor.Services.Service;
 namespace OnDemandTutor.API
@@ -14,6 +15,7 @@ namespace OnDemandTutor.API
         {
             services.ConfigRoute();
             services.AddDatabase(configuration);
+            services.AddAutoMapper();
             services.AddIdentity();
             services.AddInfrastructure(configuration);
             services.AddServices();
@@ -49,8 +51,10 @@ namespace OnDemandTutor.API
                 .AddScoped<IScheduleService, ScheduleService>()
                 .AddScoped<IFeedbackService, FeedbackService>()
                 .AddScoped<ISubjectService, SubjectService>();
-
-
+        }
+        public static void AddAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }
 }

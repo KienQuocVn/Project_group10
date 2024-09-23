@@ -13,6 +13,7 @@ namespace OnDemandTutor.Repositories.UOW
     {
         protected readonly DatabaseContext _context;
         protected readonly DbSet<TutorSubject> _dbSet;
+
         public TutorRepository(DatabaseContext dbContext) : base(dbContext)
         {
             _context = dbContext;

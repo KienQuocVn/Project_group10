@@ -5,13 +5,9 @@ namespace OnDemandTutor.ModelViews.ScheduleModelViews
     public class UpdateScheduleModelViews
     {
 
-        [Required]
-        public string Status { get; set; } // Trạng thái mới
+        public string Status { get; set; } 
 
-        [Required]
-        public string StudentId { get; set; } // ID của Student mới
-
-        [Required]
-        public string SlotId { get; set; } // ID của Slot mới
+        public Guid StudentId { get; set; } 
+        public string SlotId { get; set; } 
     }
 }
