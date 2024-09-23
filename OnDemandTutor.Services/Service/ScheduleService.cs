@@ -181,11 +181,8 @@ namespace OnDemandTutor.Services.Service
             }
 
             // Lấy schedule từ database dựa trên Id
-            var existingSchedule = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
-            if (existingSchedule == null)
-            {
-                throw new Exception("The Schedule can not found!");
-            }
+            Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities.FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue) ?? throw new Exception("The Schedule can not found!");
+
 
             // Kiểm tra sự tồn tại của Student
             bool isExistStudent = await _unitOfWork.GetRepository<Accounts>().Entities
@@ -220,7 +217,7 @@ namespace OnDemandTutor.Services.Service
 
         public async Task<ResponseScheduleModelViews> DeleteScheduleAsync(String id)
         {
-            Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities.FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue) ?? throw new Exception("The Prodcut can not found!");
+            Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities.FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue) ?? throw new Exception("The Schedule can not found!");
 
             if (existingSchedule != null)
             {
