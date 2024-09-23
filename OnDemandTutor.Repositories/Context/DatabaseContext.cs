@@ -31,19 +31,20 @@ namespace OnDemandTutor.Repositories.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // Example of a many-to-many relationship between Tutor and Subject via TutorSubject
             modelBuilder.Entity<TutorSubject>()
                 .HasKey(ts => new { ts.TutorId, ts.SubjectId });
 
             modelBuilder.Entity<TutorSubject>()
                 .HasOne(ts => ts.Tutor)
                 .WithMany(t => t.TutorSubjects)
-                .HasForeignKey(ts => ts.TutorId);
+                .HasForeignKey(ts => ts.TutorId)
+                .OnDelete(DeleteBehavior.Cascade); 
 
             modelBuilder.Entity<TutorSubject>()
                 .HasOne(ts => ts.Subject)
                 .WithMany(s => s.TutorSubjects)
-                .HasForeignKey(ts => ts.SubjectId);
+                .HasForeignKey(ts => ts.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade); 
 
             modelBuilder.Entity<Complaint>()
                 .HasKey(ts => new { ts.StudentId, ts.TutorId});
@@ -70,8 +71,6 @@ namespace OnDemandTutor.Repositories.Context
                 .HasOne(ts => ts.Accounts)
                 .WithMany(s => s.Feedbacks)
                 .HasForeignKey(ts => ts.TutorId);
-
-            // Configure other relationships here as needed
         }
     }
 }

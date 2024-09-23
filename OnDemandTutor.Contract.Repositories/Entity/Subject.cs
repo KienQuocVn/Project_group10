@@ -10,18 +10,8 @@ namespace OnDemandTutor.Contract.Repositories.Entity
 {
     public class Subject : BaseEntity
     {
-        //[Key]
-        //public int Id { get; set; }
-
-        //[Required]
-        //public string Name { get; set; }
-
-        //// Navigation properties
-        //public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
-        //public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
-
-        // Navigation property
         public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
     }

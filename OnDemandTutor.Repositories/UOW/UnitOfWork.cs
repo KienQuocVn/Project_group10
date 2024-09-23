@@ -53,6 +53,20 @@ namespace OnDemandTutor.Repositories.UOW
             }
         }
 
+        
+        public IGenericRepository<Subject> subjectRepository;
+        public IGenericRepository<Subject> SubjectRepository
+        {
+            get
+            {
+                if (this.subjectRepository == null)
+                {
+                    this.subjectRepository = new GenericRepository<Subject>(_dbContext);
+                }
+                return subjectRepository;
+            }
+        }
+
         public void BeginTransaction()
         {
             _dbContext.Database.BeginTransaction();
