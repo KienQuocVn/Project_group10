@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnDemandTutor.ModelViews")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8223e853c04ff36635a9aaae31e2a939fcf51b89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+928744913d0a84372d71801a714dd7ff4038ea9d")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnDemandTutor.ModelViews")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnDemandTutor.ModelViews")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

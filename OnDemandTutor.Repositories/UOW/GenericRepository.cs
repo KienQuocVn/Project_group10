@@ -29,6 +29,20 @@ namespace OnDemandTutor.Repositories.UOW
             _dbSet.Remove(entity);
         }
 
+        public async Task<T?> FindByNameAsync(string name)
+        {
+            // Kiểm tra xem kiểu T có thuộc tính "Name" hay không
+            var propertyInfo = typeof(T).GetProperty("Name");
+            if (propertyInfo == null)
+            {
+                throw new Exception($"Type {typeof(T).Name} does not contain a property named 'Name'.");
+            }
+
+            // Tìm đối tượng có thuộc tính "Name" khớp với tham số đầu vào
+            return await _dbSet.FirstOrDefaultAsync(e => EF.Property<string>(e, "Name") == name);
+        }
+
+
         public IEnumerable<T> GetAll()
         {
             return _dbSet.AsEnumerable();

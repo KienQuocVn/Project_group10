@@ -25,6 +25,10 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         Task UpdateAsync(T obj);
         Task DeleteAsync(object id);
         Task SaveAsync();
-        Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId);
+
+
+        Task<T?> FindByNameAsync(string name);
+     Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId);
+
     }
 }
