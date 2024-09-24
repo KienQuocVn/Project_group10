@@ -11,9 +11,8 @@ namespace OnDemandTutor.Contract.Services.Interface
 
         Task<BasePaginatedList<Schedule>> GetSchedulesByFilterAsync(int pageNumber, int pageSize, Guid? studentId, string? slotId, String? status);
 
-        Task<ResponseScheduleModelViews> GetScheduleByIdAsync(string id);
         Task<ResponseScheduleModelViews> CreateScheduleAsync(CreateScheduleModelViews model);
-        Task<ResponseScheduleModelViews> UpdateScheduleAsync(String id, UpdateScheduleModelViews schedule);
-        Task<ResponseScheduleModelViews> DeleteScheduleAsync(string id);
+        Task<ResponseScheduleModelViews> UpdateScheduleAsync(Guid studentId, string slotId, UpdateScheduleModelViews schedule);
+        Task<ResponseScheduleModelViews> DeleteScheduleAsync(Guid studentId, string slotId);
     }
 }
