@@ -31,11 +31,13 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 });
 
 // Add services to the container.
-builder.Services.AddScoped<IVNPayService, VnPayService>(); 
+builder.Services.AddScoped<IVNPayService, VnPayService>();
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<ITutorService, TutorService>();
-builder.Services.AddScoped<IVNPayService, VnPayService>(); 
-
+builder.Services.AddScoped<IVNPayService, VnPayService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ITutorRepository, TutorRepository>();
+builder.Services.AddScoped<ITutorService, TutorService>();
 
 
 // Cấu hình appsettings theo môi trường
@@ -56,18 +58,45 @@ builder.Configuration
 
 
 // Cấu hình JWT Authentication
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
-    options.TokenValidationParameters = new TokenValidationParameters
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
     {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = true,
         ValidateAudience = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
         ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        ClockSkew = TimeSpan.Zero
+    };
+    // Thêm các sự kiện cho JWT
+    x.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+            return Task.CompletedTask;
+        }
     };
 });
+
 
 
 //add to swagger
@@ -97,7 +126,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 // Đăng ký TokenService
 builder.Services.AddScoped<TokenService>();
 
@@ -121,11 +149,7 @@ builder.Services.AddConfig(builder.Configuration);
 
 var app = builder.Build();
 
-
-// Cấu hình pipeline HTTP
-
-// C?u h?nh pipeline HTTP request  
-
+// Cấu hình pipeline HTTP request
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -133,11 +157,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-
-app.UseAuthentication();  // Thêm middleware cho JWT Authentication
-
-
-app.UseAuthorization();
-app.MapControllers();
+app.UseCors();  // Đảm bảo CORS nằm trước các middleware xác thực và ủy quyền
+app.UseAuthentication();  // Sử dụng Authentication middleware
+app.UseAuthorization();   // Sử dụng Authorization middleware
+app.MapControllers();     // Ánh xạ các controller
 app.Run();
