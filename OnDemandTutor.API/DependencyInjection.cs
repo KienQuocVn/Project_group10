@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Repositories.Context;
@@ -7,6 +8,7 @@ using OnDemandTutor.Repositories.Entity;
 using OnDemandTutor.Repositories.Mappers;
 using OnDemandTutor.Services;
 using OnDemandTutor.Services.Service;
+using System.Configuration;
 namespace OnDemandTutor.API
 {
     public static class DependencyInjection
@@ -56,5 +58,8 @@ namespace OnDemandTutor.API
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
+
+ 
+
     }
 }

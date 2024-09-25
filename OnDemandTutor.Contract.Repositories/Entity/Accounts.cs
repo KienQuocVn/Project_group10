@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Core.Utils;
+using System.Text.Json.Serialization;
 
 namespace OnDemandTutor.Repositories.Entity
 {
@@ -18,6 +19,7 @@ namespace OnDemandTutor.Repositories.Entity
         public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<Complaint> Complaints { get; set; }
+        [JsonIgnore] // ngăn không cho tuần tự hóa Feedbacks
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
 

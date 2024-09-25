@@ -97,7 +97,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 // Đăng ký TokenService
 builder.Services.AddScoped<TokenService>();
 
