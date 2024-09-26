@@ -71,8 +71,7 @@ namespace OnDemandTutor.Services.Service
         {
             // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
             IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities
-                .Where(p => !p.DeletedTime.HasValue)
-                .Where(p => !string.IsNullOrEmpty(p.DeletedBy))
+                .Where(p => !p.DeletedTime.HasValue || string.IsNullOrEmpty(p.DeletedBy))
                 .OrderByDescending(p => p.CreatedTime);
 
             // Điều kiện tìm kiếm theo studentId nếu có
@@ -128,7 +127,7 @@ namespace OnDemandTutor.Services.Service
 
             if (!isExistStudent)
             {
-                throw new Exception("The Student can not found!");
+                throw new Exception("The Student can not found or has been deleted!");
             }
 
             // Kiểm tra sự tồn tại của Slot
@@ -137,7 +136,7 @@ namespace OnDemandTutor.Services.Service
 
             if (!isExistSlot)
             {
-                throw new Exception("The Slot can not found!");
+                throw new Exception("The Slot can not found or has been deleted!");
             }
 
             // Kiểm tra xem Schedule đã tồn tại với StudentId và SlotId chưa
@@ -150,7 +149,7 @@ namespace OnDemandTutor.Services.Service
             }
 
             // Sử dụng AutoMapper để ánh xạ từ model sang thực thể Schedule
-            var schedule = _mapper.Map<Schedule>(model);
+            Schedule schedule = _mapper.Map<Schedule>(model);
 
             // Thiết lập thêm các thuộc tính không có trong CreateScheduleModelViews
             schedule.Id = Guid.NewGuid().ToString("N");
@@ -185,7 +184,7 @@ namespace OnDemandTutor.Services.Service
 
             if (!isExistStudent)
             {
-                throw new Exception("The Student cannot be found or is deleted!");
+                throw new Exception("The Student cannot be found or has been deleted!");
             }
 
             // Kiểm tra sự tồn tại của Slot
@@ -194,7 +193,7 @@ namespace OnDemandTutor.Services.Service
 
             if (!isExistSlot)
             {
-                throw new Exception("The Slot cannot be found or is deleted!");
+                throw new Exception("The Slot cannot be found or has been deleted!");
             }
 
             // Kiểm tra tính hợp lệ của StudentId và SlotId trước khi truy vấn
@@ -255,7 +254,6 @@ namespace OnDemandTutor.Services.Service
             _unitOfWork.ScheduleRepository.Update(existingSchedule);
             await _unitOfWork.SaveAsync();
 
-            // Trả về đối tượng đã được xóa sau khi đã map sang ResponseScheduleModelViews
             return _mapper.Map<ResponseScheduleModelViews>(existingSchedule);
         }
 
