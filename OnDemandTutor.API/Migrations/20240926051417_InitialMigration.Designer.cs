@@ -12,8 +12,8 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240924065729_UpdateDatabase")]
-    partial class UpdateDatabase
+    [Migration("20240926051417_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

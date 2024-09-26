@@ -6,11 +6,12 @@ using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Utils;
 using OnDemandTutor.ModelViews.AuthModelViews;
 using OnDemandTutor.ModelViews.UserModelViews;
-using OnDemandTutor.Repositories.Context;
+
 using OnDemandTutor.Repositories.Entity;
-using System.Collections.Generic;
+
 using System.Security.Claims;
-using System.Threading.Tasks;
+
+using IEmailSender = OnDemandTutor.Contract.Services.Interface.IEmailSender;
 
 namespace OnDemandTutor.Services.Service
 {
@@ -19,12 +20,20 @@ namespace OnDemandTutor.Services.Service
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<Accounts> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly IEmailSender _emailSender;
 
-        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager)
+        private static readonly Dictionary<string, (string Otp, DateTime Expiration)> OtpStore = new Dictionary<string, (string, DateTime)>();
+
+
+        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager, IEmailSender emailSender
+          )
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _roleManager = roleManager;
+            _emailSender = emailSender;
+          
+
 
         }
 
@@ -77,7 +86,6 @@ namespace OnDemandTutor.Services.Service
                 FullName = model.FullName,
                 Gender = model.Gender,
                 LinkCV = model.linkCV
-                
             };
 
             var newAccount = new Accounts
@@ -87,30 +95,54 @@ namespace OnDemandTutor.Services.Service
                 PasswordHash = model.Password,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserInfo = userInfo
-               
             };
-            
+
             var accountRepositoryCheck = _unitOfWork.GetRepository<Accounts>();
 
-            var user = await accountRepositoryCheck.Entities
-                .FirstOrDefaultAsync(x => x.UserName == model.Username);
-            if (user != null) {
-
-               throw new Exception("Duplicate");
+            // Kiểm tra xem username đã tồn tại chưa
+            var user = await accountRepositoryCheck.Entities.FirstOrDefaultAsync(x => x.UserName == model.Username);
+            if (user != null)
+            {
+                throw new Exception("Duplicate");
             }
 
-            var check = await accountRepositoryCheck.Entities.FirstOrDefaultAsync(x => x.UserInfo.Gender == "Male" || x.UserInfo.Gender == "FeMale" || x.UserInfo.Gender == "LGPT");
-            if (check != null) {
-                throw new Exception("Gender");
+            // Kiểm tra xem giới tính có hợp lệ không
+            var validGenders = new List<string> { "Male", "Female", "LGBT" };
+            if (!validGenders.Contains(model.Gender))
+            {
+                throw new Exception("Invalid Gender");
             }
 
             var accountRepository = _unitOfWork.GetRepository<Accounts>();
             await accountRepository.InsertAsync(newAccount);
+            await _unitOfWork.SaveAsync();
 
+            // Sau khi tài khoản được tạo thành công, thêm vai trò mặc định "User"
+            var roleRepository = _unitOfWork.GetRepository<ApplicationRole>();
+            var userRole = await roleRepository.Entities.FirstOrDefaultAsync(r => r.Name == "User");
+            if (userRole == null)
+            {
+                throw new Exception("The 'User' role does not exist. Please make sure to create it first.");
+            }
+
+            var userRoleRepository = _unitOfWork.GetRepository<ApplicationUserRoles>();
+            var applicationUserRole = new ApplicationUserRoles
+            {
+                UserId = newAccount.Id,    // ID của tài khoản vừa tạo
+                RoleId = userRole.Id,      // ID của vai trò "User"
+                CreatedBy = model.Username,
+                CreatedTime = DateTime.UtcNow,
+                LastUpdatedBy = model.Username,
+                LastUpdatedTime = DateTime.UtcNow
+            };
+
+            // Lưu vai trò mặc định "User" cho tài khoản mới
+            await userRoleRepository.InsertAsync(applicationUserRole);
             await _unitOfWork.SaveAsync();
 
             return newAccount;
         }
+
 
         // Cập nhật thông tin người dùng
 
@@ -221,7 +253,7 @@ namespace OnDemandTutor.Services.Service
             var roleRepository = _unitOfWork.GetRepository<ApplicationRole>();
             var role = await roleRepository.Entities.FirstOrDefaultAsync(r => r.Name == roleName);
 
-            if (role == null)
+            if (role == null || role.Name == "User")
             {
                 throw new Exception("Role does not exist");
             }
@@ -405,9 +437,152 @@ namespace OnDemandTutor.Services.Service
 
             return true;
         }
+        public async Task<bool> ForgotPasswordAsync(string email)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                  
+                    return false; // Trả về false nếu email không hợp lệ
+                }
+
+               
+
+                // Tìm kiếm người dùng theo email (không phân biệt chữ hoa chữ thường)
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
+                if (user == null)
+                {
+                   
+                    return false; // Trả về false nếu không tìm thấy người dùng
+                }
+
+                // Tạo OTP
+                var random = new Random();
+                string otp = random.Next(100000, 999999).ToString();
+
+                // Thiết lập thời gian hết hạn OTP
+                var expirationTime = DateTime.UtcNow.AddMinutes(10);
+
+                // Lưu OTP
+                if (OtpStore.ContainsKey(email))
+                {
+                    OtpStore[email] = (otp, expirationTime);
+                }
+                else
+                {
+                    OtpStore.Add(email, (otp, expirationTime));
+                }
+
+                // Gửi email OTP
+                await _emailSender.SendOtpEmailAsync(email, otp);
+              
+
+                return true; // Trả về true nếu mọi thứ thành công
+            }
+            catch (Exception ex)
+            {
+              
+                return false; // Trả về false nếu có ngoại lệ
+            }
+        }
+
+
+
+
+
+        // Function to reset the password using the OTP
+        public async Task<bool> ResetPasswordAsync(string email, string otp, string newPassword)
+        {
+            try
+            {
+              
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(otp) || string.IsNullOrWhiteSpace(newPassword))
+                {
+                  
+                    return false; // Trả về false nếu dữ liệu không hợp lệ
+                }
+
+                // Tìm người dùng theo email
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
+                if (user == null)
+                {
+                   
+                    return false; // Trả về false nếu không tìm thấy người dùng
+                }
+
+                // Kiểm tra tính hợp lệ của OTP
+                if (!OtpStore.ContainsKey(email) || OtpStore[email].Otp != otp || OtpStore[email].Expiration < DateTime.UtcNow)
+                {
+                 
+                    return false; // Trả về false nếu OTP không hợp lệ
+                }
+
+                // Sử dụng UserManager để đặt lại mật khẩu
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+
+                if (!result.Succeeded)
+                {
+                  
+                    return false; // Trả về false nếu việc đặt lại mật khẩu không thành công
+                }
+
+                // Xóa OTP khỏi hệ thống sau khi sử dụng
+                OtpStore.Remove(email);
+                
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+              
+                return false; // Trả về false khi có lỗi không mong đợi
+            }
+
+        }
+
+            public async Task<bool> VerifyOtpAsync(string email, string otp)
+            {
+                try
+                {
+                    // Kiểm tra email và OTP có được cung cấp hay không
+                    if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(otp))
+                    {
+                       
+                        return false;
+                    }
+
+                    // Kiểm tra xem OTP có tồn tại trong hệ thống không
+                    if (!OtpStore.ContainsKey(email))
+                    {
+                        return false;
+                    }
+
+                    var storedOtp = OtpStore[email];
+
+                   
+                    // Kiểm tra tính hợp lệ của OTP
+                    if (storedOtp.Otp != otp || storedOtp.Expiration < DateTime.UtcNow)
+                    {
+                        
+                        return false;
+                    }
+
+                    // Nếu OTP hợp lệ, trả về true
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+        }
+
+       
     }
 
 
 
-}
 
