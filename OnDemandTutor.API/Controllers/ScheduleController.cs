@@ -50,20 +50,6 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        // GET: api/Schedule/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Schedule>> GetScheduleById(string id)
-        {
-            try
-            {
-                ResponseScheduleModelViews result = await _scheduleService.GetScheduleByIdAsync(id);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
-        }
 
         // POST: api/Schedule
         [HttpPost()]
@@ -81,13 +67,14 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        // PUT: api/Schedule/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSchedule(string id, [FromBody] UpdateScheduleModelViews model)
+        // PUT: api/Schedule/{studentId}/{slotId}
+        [HttpPut("{studentId}/{slotId}")]
+        public async Task<IActionResult> UpdateSchedule(Guid studentId, string slotId, [FromBody] UpdateScheduleModelViews model)
         {
             try
             {
-                ResponseScheduleModelViews result = await _scheduleService.UpdateScheduleAsync(id, model);
+                // Gọi service để cập nhật schedule theo StudentId và SlotId
+                ResponseScheduleModelViews result = await _scheduleService.UpdateScheduleAsync(studentId, slotId, model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -96,13 +83,13 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        // DELETE: api/Schedule/delete/5
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteSchedule(string id)
+        // DELETE: api/Schedule/delete/{studentId}/{slotId}
+        [HttpDelete("delete/{studentId}/{slotId}")]
+        public async Task<IActionResult> DeleteSchedule(Guid studentId, string slotId)
         {
             try
             {
-                ResponseScheduleModelViews result = await _scheduleService.DeleteScheduleAsync(id);
+                ResponseScheduleModelViews result = await _scheduleService.DeleteScheduleAsync(studentId, slotId);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -110,5 +97,6 @@ namespace OnDemandTutor.API.Controllers
                 return BadRequest(new { Message = ex.Message });
             }
         }
+
     }
 }
