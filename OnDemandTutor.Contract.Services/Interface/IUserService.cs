@@ -41,6 +41,9 @@ namespace OnDemandTutor.Contract.Services.Interface
         Task<IEnumerable<ApplicationUserClaims>> GetUserClaimsAsync(Guid userId);
         Task<bool> UpdateClaimAsync(Guid claimId, string claimType, string claimValue, string updatedBy);
         Task<bool> SoftDeleteClaimAsync(Guid claimId, string deletedBy);
-
+    
+        Task<bool> ResetPasswordAsync(string email, string otp, string newPassword);
+        Task<bool> ForgotPasswordAsync(string email);
+        Task<bool> VerifyOtpAsync(string email, string otp);
     }
 }

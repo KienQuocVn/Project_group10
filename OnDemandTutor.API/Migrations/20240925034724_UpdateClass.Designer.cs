@@ -12,8 +12,8 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240924065729_UpdateDatabase")]
-    partial class UpdateDatabase
+    [Migration("20240925034724_UpdateClass")]
+    partial class UpdateClass
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -269,6 +269,9 @@ namespace OnDemandTutor.API.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("AmountOfSlot")
                         .HasColumnType("int");
 
@@ -300,14 +303,11 @@ namespace OnDemandTutor.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid>("TutorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectId");
+                    b.HasIndex("AccountId");
 
-                    b.HasIndex("TutorId");
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Classes");
                 });
@@ -822,21 +822,21 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
                 {
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "account")
+                        .WithMany("Classes")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Subject", "Subject")
                         .WithMany("Classes")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Tutor")
-                        .WithMany("Classes")
-                        .HasForeignKey("TutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Subject");
 
-                    b.Navigation("Tutor");
+                    b.Navigation("account");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Complaint", b =>

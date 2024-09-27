@@ -4,7 +4,6 @@ using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.Entity;
-using OnDemandTutor.Repositories.Mappers;
 using OnDemandTutor.Services;
 using OnDemandTutor.Services.Service;
 namespace OnDemandTutor.API
@@ -51,7 +50,10 @@ namespace OnDemandTutor.API
                 .AddScoped<IScheduleService, ScheduleService>()
                 .AddScoped<IFeedbackService, FeedbackService>()
                  .AddScoped<IComplaintService, ComplaintService>()
-                .AddScoped<ISubjectService, SubjectService>();
+                .AddScoped<ISubjectService, SubjectService>()
+                .AddScoped<ISubjectService, SubjectService>()
+                 .AddScoped<IEmailSender, EmailSender>()
+                .AddScoped<IClassService, ClassService>();
         }
         public static void AddAutoMapper(this IServiceCollection services)
         {

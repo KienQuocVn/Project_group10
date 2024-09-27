@@ -82,6 +82,21 @@ namespace OnDemandTutor.Repositories.UOW
         }
 
         public void BeginTransaction() // Bắt đầu giao dịch
+        public IGenericRepository<Class> classRepository;
+        public IGenericRepository<Class> ClassRepository
+        {
+            get
+            {
+                if (this.classRepository == null)
+                {
+                    this.classRepository = new GenericRepository<Class>(_dbContext);
+                }
+                return classRepository;
+            }
+        }
+
+        public void BeginTransaction()
+
         {
             _dbContext.Database.BeginTransaction();
         }

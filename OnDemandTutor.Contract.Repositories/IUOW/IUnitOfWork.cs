@@ -12,6 +12,19 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         IGenericRepository<Subject> SubjectRepository { get; } // Repository cho Subject
         IGenericRepository<Feedback> FeedbackRepository { get; } // Repository cho Feedback
         IGenericRepository<Complaint> ComplaintRepository { get; } // Đã sửa từ ComplaintRpository sang ComplaintRepository
+        IGenericRepository<T> GetRepository<T>() where T : class;
+        IGenericRepository<Schedule> ScheduleRepository { get; }
+        IGenericRepository<TutorSubject> TutorRepository { get; }
+        IGenericRepository<Subject> SubjectRepository { get; }
+        IGenericRepository<Feedback> FeedbackRepository { get; }
+        IGenericRepository<Class> ClassRepository { get; }
+
+
+        void Save();
+        Task SaveAsync();
+        void BeginTransaction();
+        void CommitTransaction();
+        void RollBack();
 
         void Save(); // Lưu thay đổi
         Task SaveAsync(); // Lưu thay đổi không đồng bộ
