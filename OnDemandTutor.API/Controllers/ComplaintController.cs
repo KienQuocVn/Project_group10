@@ -1,124 +1,62 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.ComplaintModelViews;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OnDemandTutor.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] // Đánh dấu lớp này là một controller API
+    [Route("api/[controller]")] // Định nghĩa route cho controller
     public class ComplaintController : ControllerBase
     {
-        private readonly IComplaintService _complaintService;
+        private readonly IComplaintService _complaintService; // Khai báo dịch vụ khiếu nại
 
         public ComplaintController(IComplaintService complaintService)
         {
-            _complaintService = complaintService;
+            _complaintService = complaintService; // Khởi tạo dịch vụ khiếu nại
         }
 
-        // GET: api/complaint
+        // Lấy tất cả khiếu nại với phân trang
         [HttpGet]
-        public async Task<ActionResult<BasePaginatedList<Complaint>>> GetAllComplaints(int pageNumber = 1, int pageSize = 10)
+        public async Task<ActionResult<BasePaginatedList<Complaint>>> GetAllComplaints(int pageNumber = 1, int pageSize = 5, Guid? studentId = null, Guid? tutorId = null, string? status = null)
         {
-            try
-            {
-                var complaints = await _complaintService.GetAllComplaintsAsync(pageNumber, pageSize);
-                return Ok(BaseResponse<BasePaginatedList<Complaint>>.OkResponse(complaints));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = ex.Message });
-            }
+            var result = await _complaintService.GetAllComplaintsAsync(pageNumber, pageSize, studentId, tutorId, status); // Gọi dịch vụ để lấy danh sách khiếu nại
+            return Ok(result); // Trả về kết quả với mã trạng thái 200
         }
 
-        // GET: api/complaint/{id}
+        // Lấy một khiếu nại theo ID
         [HttpGet("{id}")]
-        public async Task<ActionResult<Complaint>> GetComplaintById(Guid id)
+        public async Task<ActionResult<ResponseComplaintModel>> GetComplaintById(Guid id)
         {
-            try
-            {
-                var complaint = await _complaintService.GetComplaintByIdAsync(id);
-                if (complaint == null)
-                {
-                    return NotFound(new { Message = "Complaint not found" });
-                }
-
-                return Ok(BaseResponse<Complaint>.OkResponse(complaint));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = ex.Message });
-            }
+            var result = await _complaintService.GetComplaintByIdAsync(id); // Gọi dịch vụ để lấy khiếu nại theo ID
+            return Ok(result); // Trả về kết quả với mã trạng thái 200
         }
 
-        // POST: api/complaint
+        // Tạo một khiếu nại mới
         [HttpPost]
-        public async Task<ActionResult<Complaint>> CreateComplaint([FromBody] CreateComplaintModel model)
+        public async Task<ActionResult<ResponseComplaintModel>> CreateComplaint([FromBody] CreateComplaintModel model)
         {
-            if (model == null)
-            {
-                return BadRequest(new { Message = "Invalid complaint data" });
-            }
-
-            try
-            {
-                var createdComplaint = await _complaintService.CreateComplaintAsync(model);
-                return CreatedAtAction(nameof(GetComplaintById), new { id = createdComplaint.Id }, createdComplaint);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = ex.Message });
-            }
+            var result = await _complaintService.CreateComplaintAsync(model); // Gọi dịch vụ để tạo khiếu nại mới
+            return CreatedAtAction(nameof(GetComplaintById), new { id = result.Id }, result); // Trả về kết quả với mã trạng thái 201
         }
 
-        // PUT: api/complaint/{id}
+        // Cập nhật một khiếu nại theo ID
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateComplaint(Guid id, [FromBody] UpdateComplaintModel model)
+        public async Task<ActionResult<ResponseComplaintModel>> UpdateComplaint(Guid id, [FromBody] UpdateComplaintModel model)
         {
-            if (model == null)
-            {
-                return BadRequest(new { Message = "Invalid complaint data" });
-            }
-
-            try
-            {
-                var updated = await _complaintService.UpdateComplaintAsync(id, model);
-                if (!updated)
-                {
-                    return NotFound(new { Message = "Complaint not found" });
-                }
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = ex.Message });
-            }
+            var result = await _complaintService.UpdateComplaintAsync(id, model); // Gọi dịch vụ để cập nhật khiếu nại
+            return Ok(result); // Trả về kết quả với mã trạng thái 200
         }
 
-        // DELETE: api/complaint/{id}
+        // Xóa một khiếu nại theo ID
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteComplaint(Guid id)
+        public async Task<ActionResult<ResponseComplaintModel>> DeleteComplaint(Guid id)
         {
-            try
-            {
-                var deleted = await _complaintService.DeleteComplaintAsync(id);
-                if (!deleted)
-                {
-                    return NotFound(new { Message = "Complaint not found" });
-                }
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { Message = ex.Message });
-            }
+            var result = await _complaintService.DeleteComplaintAsync(id); // Gọi dịch vụ để xóa khiếu nại
+            return Ok(result); // Trả về kết quả với mã trạng thái 200
         }
     }
 }
