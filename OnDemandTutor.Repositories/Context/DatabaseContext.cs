@@ -44,7 +44,22 @@ namespace OnDemandTutor.Repositories.Context
                 .HasOne(ts => ts.Subject)
                 .WithMany(s => s.TutorSubjects)
                 .HasForeignKey(ts => ts.SubjectId)
-                .OnDelete(DeleteBehavior.Cascade); 
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Schedule>()
+                .HasKey(ts => new { ts.StudentId, ts.SlotId });
+
+            modelBuilder.Entity<Schedule>()
+                .HasOne(ts => ts.Student)
+                .WithMany(t => t.Schedules)
+                .HasForeignKey(ts => ts.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Schedule>()
+                .HasOne(ts => ts.Slot)
+                .WithMany(s => s.Schedules)
+                .HasForeignKey(ts => ts.SlotId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Complaint>()
                 .HasKey(ts => new { ts.StudentId, ts.TutorId});
