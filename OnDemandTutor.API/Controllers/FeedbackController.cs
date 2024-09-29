@@ -4,6 +4,7 @@ using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.FeedbackModelViews;
+using OnDemandTutor.Services.Service;
 
 namespace OnDemandTutor.API.Controllers
 {
@@ -19,30 +20,69 @@ namespace OnDemandTutor.API.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Feedback>> GetFeedbackById(string id)
-        {
-            var feedback = await _feedbackSevice.GetFeedbackByIdAsync(id);
-            if (feedback == null)
-            {
-                return NotFound();
-            }
 
-            return Ok(feedback);
+        [HttpGet("filter")]
+        public async Task<ActionResult<Feedback>> GetFeedbackByFilterAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId)
+        {
+            try
+            {
+                // Gọi service để lấy feedback theo bộ lọc
+                var feedback = await _feedbackSevice.GetFeedbackByFilterAsync(pageNumber, pageSize, studentId, tutorId, feedbackId);
+
+                // Trả về kết quả feedback
+                return Ok(feedback);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                // Trả về thông báo nếu không tìm thấy feedback
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentException ex)
+            {
+                // Trả về lỗi nếu không cung cấp thông tin hợp lệ
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                // Trả về lỗi tổng quát nếu có lỗi khác
+                return StatusCode(500, new { message = "Có lỗi xảy ra khi lấy feedback.", details = ex.Message });
+            }
+        }
+        [HttpGet("filler_delete")]
+        public async Task<IActionResult> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId)
+        {
+            try
+            {
+                // Gọi service để lấy feedback theo bộ lọc
+                var feedback = await _feedbackSevice.GetDeleteAtFeedbackAsync(pageNumber, pageSize, studentId, tutorId, feedbackId);
+
+                // Trả về kết quả feedback
+                return Ok(feedback);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                // Trả về thông báo nếu không tìm thấy feedback
+                return NotFound(new { message = ex.Message });
+            }
+            catch (ArgumentException ex)
+            {
+                // Trả về lỗi nếu không cung cấp thông tin hợp lệ
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                // Trả về lỗi tổng quát nếu có lỗi khác
+                return StatusCode(500, new { message = "Có lỗi xảy ra khi lấy feedback.", details = ex.Message });
+            }
         }
 
         [HttpPost()]
         public async Task<ActionResult<Feedback>> CreateFeedback(CreateFeedbackModelViews model)
         {
-            if (model == null)
-            {
-                return BadRequest(new { Message = "Model cannot be null" });
-            }
-
             try
             {
                 var createdFeedback = await _feedbackSevice.CreateFeedbackAsync(model);
-                return CreatedAtAction(nameof(GetFeedbackById), new { id = createdFeedback.Id }, createdFeedback);
+                return CreatedAtAction(nameof(GetFeedbackByFilterAsync), new { id = createdFeedback.Id }, createdFeedback);
             }
             catch (Exception ex)
             {
@@ -50,38 +90,16 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult<Feedback>> GetAllFeedback(int pageNumber, int pageSize)
-        {
-            try
-            {
-                var Sub = await _feedbackSevice.GetAllFeedbackAsync(pageNumber, pageSize);
-                return Ok(BaseResponse<BasePaginatedList<Feedback>>.OkResponse(Sub));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
-        }
 
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateFeedback(string id, Guid studentId, UpdateFeedbackModelViews model)
         {
-            if (model == null)
-            {
-                return BadRequest(new { Message = "Model cannot be null" });
-            }
 
             try
             {
                 var result = await _feedbackSevice.UpdateFeedbackAsync(id, studentId, model);
 
-                if (result)
-                {
-                    return Ok(new { message = "Feedback updated successfully." });
-                }
-
-                return BadRequest(new { message = "Failed to update feedback." });
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -96,17 +114,11 @@ namespace OnDemandTutor.API.Controllers
             try
             {
                 var result = await _feedbackSevice.DeleteFeedbackAsync(id, studentId);
-
-                if (result)
-                {
-                    return Ok(new { message = "Feedback delete successfully." });
-                }
-
-                return BadRequest(new { message = "Failed to delete feedback." });
+                return result ? Ok(new { message = "Xóa thành công" }) : NotFound(new { message = "Không tìm thấy feedback để xóa." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while delete feedback.", error = ex.Message });
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

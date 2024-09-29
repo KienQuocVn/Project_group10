@@ -1,9 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.FeedbackModelViews;
+using OnDemandTutor.ModelViews.ScheduleModelViews;
 using OnDemandTutor.Repositories.Entity;
 using OnDemandTutor.Repositories.UOW;
 using System;
@@ -17,23 +20,60 @@ namespace OnDemandTutor.Services.Service
     public class FeedbackService : IFeedbackService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public FeedbackService(IUnitOfWork unitOfWork)
+        private IMapper _mapper;
+        private readonly UserManager<Accounts> _userManager;
+
+        public FeedbackService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<Accounts> userManager)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
+            _userManager = userManager; // Inject UserManager<Accounts>
         }
 
         public async Task<Feedback> CreateFeedbackAsync(CreateFeedbackModelViews model)
         {
-            // Tạo một thực thể Feedback mới từ model
-            var feedback = new Feedback
+            // Tìm user dựa trên StudentId
+            var student = await _userManager.Users.FirstOrDefaultAsync(s => s.Id == model.StudentId && !s.DeletedTime.HasValue);
+
+            // kiểm tra student có tồi tại hoặc đúng vai trò
+            if (student == null || !await _userManager.IsInRoleAsync(student, "Student"))
             {
-                Id = Guid.NewGuid().ToString("N"),
-                StudentId = model.StudentId,
-                TutorId = model.TutorId,
-                FeedbackText = model.FeedbackText,
-                CreatedTime = DateTimeOffset.Now,
-                LastUpdatedTime = DateTimeOffset.Now
-            };
+                throw new Exception("Không tìm thấy sinh viên! hãy thử lại");
+            }
+
+            // Tìm user dựa trên TutorId
+            var tutor = await _userManager.Users.FirstOrDefaultAsync(s => s.Id == model.TutorId && !s.DeletedTime.HasValue);
+
+            // kiểm tra tutor có tồi tại hoặc đúng vai trò
+            if (tutor == null || !await _userManager.IsInRoleAsync(tutor, "Tutor"))
+            {
+                throw new Exception("Không tìm thấy gia sư! hãy thử lại");
+            }
+
+            // Kiểm tra sự tồn tại của Slot
+            //bool isExistSlot = await _unitOfWork.GetRepository<Slot>().Entities
+            //    .AnyAsync(s => s.Id == model.SlotId && !s.DeletedTime.HasValue);
+
+            //if (!isExistSlot)
+            //{
+            //    throw new Exception("Không tìm thấy Slot! Hãy thử lại");
+            //}
+
+            // Kiểm tra xem Student đã feedback cho Tutor này chưa
+            var feedbackExists = await _unitOfWork.FeedbackRepository.Entities
+                .AnyAsync(f => f.StudentId == model.StudentId && f.TutorId == model.TutorId && !f.DeletedTime.HasValue);
+
+            if (feedbackExists)
+            {
+                throw new Exception("Sinh viên đã phản hồi đến gia sư này.");
+            }
+
+            var feedback = _mapper.Map<Feedback>(model);
+
+            // Thiết lập các thuộc tính còn lại
+            feedback.Id = Guid.NewGuid().ToString("N");
+            feedback.CreatedTime = DateTimeOffset.Now;
+            feedback.LastUpdatedTime = DateTimeOffset.Now;
 
             // Thêm thực thể Feedback vào cơ sở dữ liệu
             await _unitOfWork.FeedbackRepository.InsertAsync(feedback);
@@ -42,54 +82,112 @@ namespace OnDemandTutor.Services.Service
             return feedback;
         }
 
+        public async Task<BasePaginatedList<Feedback>> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId)
+        {
+            IQueryable<Feedback> FeedbacksQuery = _unitOfWork.GetRepository<Feedback>().Entities
+                .Where(p => p.DeletedTime.HasValue)  // Lấy feedback đã bị xóa mềm
+                .OrderByDescending(p => p.CreatedTime);
+       
+            // Điều kiện tìm kiếm theo StudentId, TutorId, FeedbackId
+            if (studentId.HasValue && studentId != Guid.Empty)
+                FeedbacksQuery = FeedbacksQuery.Where(p => p.StudentId == studentId);
+
+            if (tutorId.HasValue && tutorId != Guid.Empty)
+                FeedbacksQuery = FeedbacksQuery.Where(p => p.TutorId == tutorId);
+
+            if (!string.IsNullOrEmpty(feedbackId))
+                FeedbacksQuery = FeedbacksQuery.Where(p => p.Id == feedbackId);
+
+            int totalCount = await FeedbacksQuery.CountAsync();
+            var feedback = await FeedbacksQuery
+                .Skip((pageNumber - 1) * pageSize) // Phân trang
+                .Take(pageSize)
+                .ToListAsync();
+            if (feedback == null)
+            {
+                throw new KeyNotFoundException("Không tìm thấy Feedback với những thông tin trên.");
+            }
+            return new BasePaginatedList<Feedback>(feedback, totalCount, pageNumber, pageSize);
+        }
+
+        public async Task<BasePaginatedList<Feedback>> GetFeedbackByFilterAsync(int pageNumber, int pageSize , Guid? studentId, Guid? tutorId, string? feedbackId)
+        {
+            IQueryable<Feedback> feedbackQuery = _unitOfWork.GetRepository<Feedback>().Entities
+                .Where(p => !p.DeletedTime.HasValue);  // Lọc feedback chưa bị xóa mềm
+
+            // Điều kiện tìm kiếm theo StudentId
+            if (studentId.HasValue && studentId != Guid.Empty)
+            {
+                feedbackQuery = feedbackQuery.Where(p => p.StudentId == studentId.Value);
+            }
+
+            if (tutorId.HasValue && tutorId != Guid.Empty)
+            {
+                // Nếu không có studentId, tìm theo TutorId
+                feedbackQuery = feedbackQuery.Where(p => p.TutorId == tutorId.Value);
+            }
+
+            // Điều kiện tìm kiếm theo FeedbackId nếu có
+            if (!string.IsNullOrEmpty(feedbackId))
+            {
+                feedbackQuery = feedbackQuery.Where(p => p.Id == feedbackId);
+            }
+
+
+            //return feedback;
+            int totalCount = await feedbackQuery.CountAsync();
+            var feedback = await feedbackQuery
+                .Skip((pageNumber - 1) * pageSize) // Phân trang
+                .Take(pageSize)
+                .ToListAsync();
+            if (feedback == null)
+            {
+                throw new KeyNotFoundException("Không tìm thấy Feedback với những thông tin trên.");
+            }
+            return new BasePaginatedList<Feedback>(feedback, totalCount, pageNumber, pageSize);
+        }
+
+
+        public async Task<Feedback> UpdateFeedbackAsync(string id, Guid studentId, UpdateFeedbackModelViews model)
+        {
+            // Tìm feedback dựa trên feedbackId và studentId
+            var feedback = await _unitOfWork.FeedbackRepository.Entities
+                .FirstOrDefaultAsync(f => f.Id == id && f.StudentId == studentId && !f.DeletedTime.HasValue);
+
+            // Nếu feedback không tồn tại hoặc không phải của sinh viên này, trả về thông báo lỗi
+            if (feedback == null)
+            {
+                throw new Exception("Không tìm thấy feedback cho sinh viên này! Hãy thử lại.");
+            }
+
+            // Sử dụng AutoMapper để ánh xạ dữ liệu
+            _mapper.Map(model, feedback);
+            feedback.LastUpdatedTime = DateTimeOffset.Now; // Cập nhật thời gian sửa đổi
+
+            await _unitOfWork.SaveAsync();
+
+            return feedback;
+        }
+
+
+
+
         public async Task<bool> DeleteFeedbackAsync(string id, Guid studentId)
         {
+            // tìm kiếm id
             var existingFeedback = await _unitOfWork.FeedbackRepository.Entities
-                .FirstOrDefaultAsync(feedback => feedback.Id == id && feedback.StudentId == studentId);
+            .FirstOrDefaultAsync(f => f.Id == id && f.StudentId == studentId && !f.DeletedTime.HasValue);
+
             if (existingFeedback != null)
             {
                 existingFeedback.DeletedTime = DateTimeOffset.Now;
                 _unitOfWork.FeedbackRepository.Update(existingFeedback);
                 await _unitOfWork.SaveAsync();
-                return true;
+
+                return true; // Trả về true nếu xóa thành công
             }
             return false;
         }
 
-        public async Task<BasePaginatedList<Feedback>> GetAllFeedbackAsync(int pageNumber, int pageSize)
-        {
-            IQueryable<Feedback> FeedbacksQuery = _unitOfWork.GetRepository<Feedback>().Entities.Where(p => !p.DeletedTime.HasValue).OrderByDescending(p => p.CreatedTime);
-            int totalCount = await FeedbacksQuery.CountAsync();
-            var feedback = await FeedbacksQuery
-                .OrderBy(s => s.Id)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
-            return new BasePaginatedList<Feedback>(feedback, totalCount, pageNumber, pageSize);
-        }
-
-        public async Task<Feedback> GetFeedbackByIdAsync(string id)
-        {
-            return await _unitOfWork.FeedbackRepository.GetByIdAsync(id);
-        }
-        public async Task<bool> UpdateFeedbackAsync(string id, Guid studentId, UpdateFeedbackModelViews Feedback)
-        {
-            // Tìm feedback dựa trên feedbackId và studentId
-            var feedback = await _unitOfWork.FeedbackRepository.Entities
-                .FirstOrDefaultAsync(feedback => feedback.Id == id && feedback.StudentId == studentId);
-
-            // Nếu feedback không tồn tại hoặc không phải của student này, trả về false
-            if (feedback == null)
-            {
-                return false;
-            }
-
-            feedback.FeedbackText = Feedback.FeedbackText;
-            feedback.LastUpdatedTime = DateTimeOffset.Now;
-
-            await _unitOfWork.SaveAsync();
-
-            return true;
-        }
     }
 }
