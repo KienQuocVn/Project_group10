@@ -11,10 +11,10 @@ namespace OnDemandTutor.Contract.Services.Interface
 {
     public interface IFeedbackService
     {
-        Task<BasePaginatedList<Feedback>> GetAllFeedbackAsync(int pageNumber, int pageSize);
-        Task<Feedback> GetFeedbackByIdAsync(string id);
+        Task<BasePaginatedList<Feedback>> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId);
+        Task<BasePaginatedList<Feedback>> GetFeedbackByFilterAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId);
         Task<Feedback> CreateFeedbackAsync(CreateFeedbackModelViews model);
-        Task<bool> UpdateFeedbackAsync(string id, Guid studentId, UpdateFeedbackModelViews Feedback);
+        Task<Feedback> UpdateFeedbackAsync(string id, Guid studentId, UpdateFeedbackModelViews model);
         Task<bool> DeleteFeedbackAsync(string id, Guid studentId);
     }
 }

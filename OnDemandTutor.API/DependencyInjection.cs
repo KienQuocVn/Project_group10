@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.Entity;
-using OnDemandTutor.Repositories.Mappers;
 using OnDemandTutor.Services;
 using OnDemandTutor.Services.Service;
+using System.Configuration;
 namespace OnDemandTutor.API
 {
     public static class DependencyInjection
@@ -50,12 +51,17 @@ namespace OnDemandTutor.API
                 .AddScoped<IUserService, UserService>()
                 .AddScoped<IScheduleService, ScheduleService>()
                 .AddScoped<IFeedbackService, FeedbackService>()
+                 .AddScoped<IComplaintService, ComplaintService>()
                 .AddScoped<ISubjectService, SubjectService>()
-                 .AddScoped<IEmailSender, EmailSender>();
+                 .AddScoped<IEmailSender, EmailSender>()
+                .AddScoped<IClassService, ClassService>();
         }
         public static void AddAutoMapper(this IServiceCollection services)
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
+
+ 
+
     }
 }
