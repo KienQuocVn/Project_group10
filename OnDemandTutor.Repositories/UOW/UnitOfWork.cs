@@ -54,8 +54,6 @@ namespace OnDemandTutor.Repositories.UOW
                 return feedbackRepository;
             }
         }
-
-<<<<<<< HEAD
         public IGenericRepository<Slot> slotRepository;
 
         public IGenericRepository<Slot> SlotRepository
@@ -71,9 +69,7 @@ namespace OnDemandTutor.Repositories.UOW
         }
 
         public IGenericRepository<Subject> subjectRepository;
-=======
         private IGenericRepository<Subject> subjectRepository; 
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
         public IGenericRepository<Subject> SubjectRepository
         {
             get
