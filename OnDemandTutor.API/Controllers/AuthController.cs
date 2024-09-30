@@ -69,7 +69,7 @@ namespace OnDemandTutor.API.Controllers
             }
 
             // Create new account
-            var account = await _userService.CreateAccountAsync(model);
+            Accounts account = await _userService.CreateAccountAsync(model);
             if (account == null)
             {
                 _logger.LogWarning("Failed to create account for email: {Email}", model.Email);
@@ -80,6 +80,20 @@ namespace OnDemandTutor.API.Controllers
 
             return Ok("Success");
         }
+        [HttpPut("update-account/{userId}")]
+        public async Task<IActionResult> UpdateAccount(string userId, [FromBody] UpdateUserModel model)
+        {
+            _logger.LogInformation("Updating account for user: {UserId}", userId);
+
+            var result = await _userService.UpdateUserAsync(userId, model);
+            if (!result)
+            {
+                return NotFound("User not found or update failed.");
+            }
+
+            return Ok("Account updated successfully.");
+        }
+
 
         [HttpPost("add-role-to-user")]
         public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleModel model)
