@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnDemandTutor.Repositories.Context;
 
@@ -11,9 +12,11 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240925034724_UpdateClass")]
+    partial class UpdateClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -409,7 +412,6 @@ namespace OnDemandTutor.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SlotId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("StudentId", "TutorId");
@@ -493,13 +495,6 @@ namespace OnDemandTutor.API.Migrations
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-<<<<<<< HEAD
-                    b.Property<string>("SlotId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-=======
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -872,10 +867,8 @@ namespace OnDemandTutor.API.Migrations
                         .HasForeignKey("ClassId");
 
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("SlotId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("SlotId");
 
                     b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
                         .WithMany("Feedbacks")
@@ -904,11 +897,7 @@ namespace OnDemandTutor.API.Migrations
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany("Schedules")
                         .HasForeignKey("SlotId")
-<<<<<<< HEAD
-                        .OnDelete(DeleteBehavior.Cascade)
-=======
                         .OnDelete(DeleteBehavior.Restrict)
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                         .IsRequired();
 
                     b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Student")
@@ -972,11 +961,6 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Slot", b =>
                 {
-<<<<<<< HEAD
-                    b.Navigation("Feedbacks");
-
-=======
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                     b.Navigation("Schedules");
                 });
 

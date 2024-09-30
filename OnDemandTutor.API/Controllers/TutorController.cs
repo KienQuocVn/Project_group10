@@ -80,7 +80,7 @@ namespace OnDemandTutor.API.Controllers
             try
             {
                 // Thiết lập thông tin tạo mới  
-                model.CreatedBy = "admin"; // Có thể thay đổi thành thông tin người dùng hiện tại  
+                model.CreatedBy = "admin";
                 model.CreatedTime = DateTime.UtcNow;
 
                 // Gọi dịch vụ để tạo môn học mới  

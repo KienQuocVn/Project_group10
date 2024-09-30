@@ -168,6 +168,13 @@ namespace OnDemandTutor.Services.Service
             var feedback = await _unitOfWork.FeedbackRepository.Entities
                 .FirstOrDefaultAsync(f => f.Id == id && f.StudentId == studentId && !f.DeletedTime.HasValue);
 
+            var student = await _unitOfWork.FeedbackRepository.Entities
+              .FirstOrDefaultAsync(f => f.StudentId == studentId && !f.DeletedTime.HasValue);
+            if (student == null)
+            {
+                throw new Exception("Không tìm thấy student! Hãy thử lại.");
+            }
+
             // Nếu feedback không tồn tại hoặc không phải của sinh viên này, trả về thông báo lỗi
             if (feedback == null)
             {

@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using OnDemandTutor.Services.Service;
 using Microsoft.AspNetCore.Authorization;
+using OnDemandTutor.Repositories.Entity;
 
 namespace OnDemandTutor.API.Controllers
 {
@@ -15,135 +16,166 @@ namespace OnDemandTutor.API.Controllers
     {
         private readonly IUserService _userService;
         private readonly TokenService _tokenService;
+        private readonly ILogger<AuthController> _logger;
 
         // Inject the user service via constructor
-        public AuthController(IUserService userService , TokenService tokenService)
+        public AuthController(IUserService userService, TokenService tokenService, ILogger<AuthController> logger)
         {
             _userService = userService;
             _tokenService = tokenService;
+            _logger = logger;
         }
 
         // Login API
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModelView model)
         {
+            _logger.LogInformation("Received login request for username: {Username}", model.Username);
+
             if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for login request.");
                 return BadRequest(ModelState);
+            }
 
             // Authenticate user
-            var account = await _userService.AuthenticateAsync(model);
+            Accounts account = await _userService.AuthenticateAsync(model);
             if (account == null)
+            {
+                _logger.LogWarning("Invalid credentials for username: {Username}", model.Username);
                 return Unauthorized("Invalid credentials");
-
+            }
 
             var token = await _tokenService.GenerateJwtTokenAsync(account.Id.ToString(), account.UserName);
-            // Add login logic here (optional token generation, etc.)
+
+            _logger.LogInformation("Login successful for user: {UserName}", account.UserName);
+
             return Ok(new
             {
                 Token = token,
-            }); 
+            });
         }
 
         // Register API
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] CreateAccountModel model)
         {
+            _logger.LogInformation("Received registration request for email: {Email}", model.Email);
+
             if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for registration request.");
                 return BadRequest(ModelState);
+            }
 
             // Create new account
             var account = await _userService.CreateAccountAsync(model);
             if (account == null)
-                return BadRequest("Failed to create account");
-
-            // You may want to return some details about the new account
-            return Ok(account);
-        }
-
-        [HttpPost("add-role")]
-        public async Task<IActionResult> AddRole([FromBody] string roleName, [FromQuery] string createdBy)
-        {
-            var result = await _userService.AddRoleAsync(roleName, createdBy);
-            if (!result)
             {
-                return BadRequest("Role already exists or creation failed.");
+                _logger.LogWarning("Failed to create account for email: {Email}", model.Email);
+                return BadRequest("Failed to create account");
             }
 
-            return Ok("Role created successfully.");
+            _logger.LogInformation("Account created successfully for email: {Email}", model.Email);
+
+            return Ok("Success");
         }
 
-
-        [HttpPost("add-role-to-user")] 
-        public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleModel model )
+        [HttpPost("add-role-to-user")]
+        public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleModel model)
         {
+            _logger.LogInformation("Received request to add role: {RoleName} to user: {UserId}", model.RoleName, model.UserId);
+
             var result = await _userService.AddRoleToAccountAsync(model.UserId, model.RoleName);
             if (!result)
             {
+                _logger.LogWarning("Failed to add role: {RoleName} to user: {UserId}", model.RoleName, model.UserId);
                 return BadRequest("Failed to add role to user or user/role does not exist.");
             }
+
+            _logger.LogInformation("Role: {RoleName} added to user: {UserId} successfully", model.RoleName, model.UserId);
 
             return Ok("Role added to user successfully.");
         }
 
         [HttpPost("add-claim-to-role")]
-
         public async Task<IActionResult> AddClaimToRole([FromBody] AddClaimToRoleModel model)
         {
+            _logger.LogInformation("Received request to add claim to role: {RoleId}", model.RoleId);
+
             var result = await _userService.AddClaimToRoleAsync(model.RoleId, model.ClaimType, model.ClaimValue, model.CreatedBy);
             if (!result)
             {
+                _logger.LogWarning("Failed to add claim to role: {RoleId}", model.RoleId);
                 return BadRequest("Failed to add claim to role or role does not exist.");
             }
 
+            _logger.LogInformation("Claim added to role: {RoleId} successfully", model.RoleId);
+
             return Ok("Claim added to role successfully.");
         }
-        [HttpPost("add-claim")]
 
+        [HttpPost("add-claim")]
         public async Task<IActionResult> AddClaimToUser([FromBody] AddClaimModel model)
         {
+            _logger.LogInformation("Received request to add claim to user: {UserId}", model.UserId);
+
             var result = await _userService.AddClaimToUserAsync(model.UserId, model.ClaimType, model.ClaimValue, model.CreatedBy);
             if (!result)
             {
+                _logger.LogWarning("Failed to add claim to user: {UserId}", model.UserId);
                 return BadRequest("Failed to add claim.");
             }
+
+            _logger.LogInformation("Claim added to user: {UserId} successfully", model.UserId);
 
             return Ok("Claim added successfully.");
         }
 
-        // API để lấy danh sách các claim của người dùng
-
         [HttpGet("user-claims/{userId}")]
         public async Task<IActionResult> GetUserClaims(Guid userId)
         {
+            _logger.LogInformation("Received request to get claims for user: {UserId}", userId);
+
             var claims = await _userService.GetUserClaimsAsync(userId);
+
+            _logger.LogInformation("Retrieved claims for user: {UserId}", userId);
+
             return Ok(claims);
         }
 
-        // API để cập nhật claim
         [HttpPut("update-claim")]
         public async Task<IActionResult> UpdateClaim([FromBody] UpdateClaimModel model)
         {
+            _logger.LogInformation("Received request to update claim: {ClaimId}", model.ClaimId);
+
             var result = await _userService.UpdateClaimAsync(model.ClaimId, model.ClaimType, model.ClaimValue, model.UpdatedBy);
             if (!result)
             {
+                _logger.LogWarning("Failed to update claim: {ClaimId}", model.ClaimId);
                 return BadRequest("Failed to update claim.");
             }
+
+            _logger.LogInformation("Claim: {ClaimId} updated successfully", model.ClaimId);
 
             return Ok("Claim updated successfully.");
         }
 
-        // API để xóa mềm claim
         [HttpDelete("delete-claim/{claimId}")]
         public async Task<IActionResult> SoftDeleteClaim(Guid claimId, [FromBody] string deletedBy)
         {
+            _logger.LogInformation("Received request to soft delete claim: {ClaimId}", claimId);
+
             var result = await _userService.SoftDeleteClaimAsync(claimId, deletedBy);
             if (!result)
             {
+                _logger.LogWarning("Failed to soft delete claim: {ClaimId}", claimId);
                 return BadRequest("Failed to delete claim.");
             }
 
+            _logger.LogInformation("Claim: {ClaimId} soft deleted successfully", claimId);
+
             return Ok("Claim deleted successfully.");
         }
-
     }
 }
