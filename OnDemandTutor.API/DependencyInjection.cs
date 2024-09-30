@@ -52,7 +52,8 @@ namespace OnDemandTutor.API
                 .AddScoped<IUserService, UserService>()
                 .AddScoped<IScheduleService, ScheduleService>()
                 .AddScoped<IFeedbackService, FeedbackService>()
-                .AddScoped<ISubjectService, SubjectService>();
+                .AddScoped<ISubjectService, SubjectService>()
+                .AddScoped<ISlotSevice, SlotService>();
         }
         public static void AddAutoMapper(this IServiceCollection services)
         {

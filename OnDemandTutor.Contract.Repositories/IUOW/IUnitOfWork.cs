@@ -10,6 +10,7 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         IGenericRepository<TutorSubject> TutorRepository { get; }
         IGenericRepository<Subject> SubjectRepository { get; }
         IGenericRepository<Feedback> FeedbackRepository { get; }
+        IGenericRepository<Slot> SlotRepository { get; }
 
         void Save();
         Task SaveAsync();

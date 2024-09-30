@@ -50,18 +50,21 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("Không tìm thấy gia sư! hãy thử lại");
             }
 
-            // Kiểm tra sự tồn tại của Slot
-            //bool isExistSlot = await _unitOfWork.GetRepository<Slot>().Entities
-            //    .AnyAsync(s => s.Id == model.SlotId && !s.DeletedTime.HasValue);
+            //Kiểm tra sự tồn tại của Slot
+            bool isExistSlot = await _unitOfWork.GetRepository<Slot>().Entities
+                .AnyAsync(s => s.Id == model.SlotId && !s.DeletedTime.HasValue);
 
-            //if (!isExistSlot)
-            //{
-            //    throw new Exception("Không tìm thấy Slot! Hãy thử lại");
-            //}
+            if (!isExistSlot)
+            {
+                throw new Exception("Không tìm thấy Slot! Hãy thử lại");
+            }
 
             // Kiểm tra xem Student đã feedback cho Tutor này chưa
             var feedbackExists = await _unitOfWork.FeedbackRepository.Entities
-                .AnyAsync(f => f.StudentId == model.StudentId && f.TutorId == model.TutorId && !f.DeletedTime.HasValue);
+                .AnyAsync(f => f.StudentId == model.StudentId && 
+                f.TutorId == model.TutorId && 
+               !f.DeletedTime.HasValue && 
+                f.SlotId == model.SlotId);
 
             if (feedbackExists)
             {
@@ -82,7 +85,7 @@ namespace OnDemandTutor.Services.Service
             return feedback;
         }
 
-        public async Task<BasePaginatedList<Feedback>> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId)
+        public async Task<BasePaginatedList<Feedback>> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, string? slotId, Guid? studentId, Guid? tutorId, string? feedbackId)
         {
             IQueryable<Feedback> FeedbacksQuery = _unitOfWork.GetRepository<Feedback>().Entities
                 .Where(p => p.DeletedTime.HasValue)  // Lấy feedback đã bị xóa mềm
@@ -95,6 +98,13 @@ namespace OnDemandTutor.Services.Service
             if (tutorId.HasValue && tutorId != Guid.Empty)
                 FeedbacksQuery = FeedbacksQuery.Where(p => p.TutorId == tutorId);
 
+            // kiểm tra xem slot có tồn tại hay không
+            if (!string.IsNullOrEmpty(slotId))
+            {
+                FeedbacksQuery = FeedbacksQuery.Where(p => p.Slot.Id == slotId);
+            }
+
+            // kiểm tra xem feedback có tồn tại hay không
             if (!string.IsNullOrEmpty(feedbackId))
                 FeedbacksQuery = FeedbacksQuery.Where(p => p.Id == feedbackId);
 
@@ -110,7 +120,7 @@ namespace OnDemandTutor.Services.Service
             return new BasePaginatedList<Feedback>(feedback, totalCount, pageNumber, pageSize);
         }
 
-        public async Task<BasePaginatedList<Feedback>> GetFeedbackByFilterAsync(int pageNumber, int pageSize , Guid? studentId, Guid? tutorId, string? feedbackId)
+        public async Task<BasePaginatedList<Feedback>> GetFeedbackByFilterAsync(int pageNumber, int pageSize ,string? slotId, Guid? studentId, Guid? tutorId, string? feedbackId)
         {
             IQueryable<Feedback> feedbackQuery = _unitOfWork.GetRepository<Feedback>().Entities
                 .Where(p => !p.DeletedTime.HasValue);  // Lọc feedback chưa bị xóa mềm
@@ -126,7 +136,11 @@ namespace OnDemandTutor.Services.Service
                 // Nếu không có studentId, tìm theo TutorId
                 feedbackQuery = feedbackQuery.Where(p => p.TutorId == tutorId.Value);
             }
-
+            // Điều kiện tìm kiếm theo FeedbackId nếu có
+            if (!string.IsNullOrEmpty(slotId))
+            {
+                feedbackQuery = feedbackQuery.Where(p => p.Slot.Id == slotId);
+            }
             // Điều kiện tìm kiếm theo FeedbackId nếu có
             if (!string.IsNullOrEmpty(feedbackId))
             {

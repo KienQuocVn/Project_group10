@@ -27,7 +27,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         //public int Id { get; set; }
 
 
-        //public int ClassId { get; set; }
+        public string ClassId { get; set; }
         public string DayOfSlot { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
@@ -36,6 +36,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         // Navigation property
         public virtual Class Class { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
 
     }
 }
