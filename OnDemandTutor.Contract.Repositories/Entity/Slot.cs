@@ -36,6 +36,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         // Navigation property
         public virtual Class Class { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
 
     }
 }

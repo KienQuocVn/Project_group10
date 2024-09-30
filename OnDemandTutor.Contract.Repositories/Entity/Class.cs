@@ -32,7 +32,11 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public virtual Accounts account { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual ICollection<Slot> Slots { get; set; }
+<<<<<<< HEAD
+
+=======
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Complaint> Complaints { get; set; }
+>>>>>>> 736f99d09baea832d78df3e5777752264735af48
     }
 }

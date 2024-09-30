@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnDemandTutor.Repositories.Context;
 
@@ -11,9 +12,11 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240930023452_UpdateClassSlotRelation")]
+    partial class UpdateClassSlotRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -266,9 +269,6 @@ namespace OnDemandTutor.API.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("AmountOfSlot")
                         .HasColumnType("int");
 
@@ -297,14 +297,16 @@ namespace OnDemandTutor.API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SubjectId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TutorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
-
                     b.HasIndex("SubjectId");
+
+                    b.HasIndex("TutorId");
 
                     b.ToTable("Classes");
                 });
@@ -316,9 +318,6 @@ namespace OnDemandTutor.API.Migrations
 
                     b.Property<Guid>("TutorId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ClassId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -357,8 +356,6 @@ namespace OnDemandTutor.API.Migrations
 
                     b.HasKey("StudentId", "TutorId");
 
-                    b.HasIndex("ClassId");
-
                     b.HasIndex("SlotId");
 
                     b.HasIndex("TutorId");
@@ -373,9 +370,6 @@ namespace OnDemandTutor.API.Migrations
 
                     b.Property<Guid>("TutorId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ClassId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -413,8 +407,6 @@ namespace OnDemandTutor.API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("StudentId", "TutorId");
-
-                    b.HasIndex("ClassId");
 
                     b.HasIndex("SlotId");
 
@@ -466,10 +458,7 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Schedule", b =>
                 {
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SlotId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedBy")
@@ -484,29 +473,28 @@ namespace OnDemandTutor.API.Migrations
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("LastUpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-<<<<<<< HEAD
                     b.Property<string>("SlotId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-=======
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("StudentId", "SlotId");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("SlotId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Schedules");
                 });
@@ -827,29 +815,23 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
                 {
-                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "account")
-                        .WithMany("Classes")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Subject", "Subject")
                         .WithMany("Classes")
-                        .HasForeignKey("SubjectId")
+                        .HasForeignKey("SubjectId");
+
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Tutor")
+                        .WithMany("Classes")
+                        .HasForeignKey("TutorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Subject");
 
-                    b.Navigation("account");
+                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Complaint", b =>
                 {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Class", null)
-                        .WithMany("Complaints")
-                        .HasForeignKey("ClassId");
-
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany()
                         .HasForeignKey("SlotId");
@@ -867,10 +849,6 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Feedback", b =>
                 {
-                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Class", null)
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("ClassId");
-
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany("Feedbacks")
                         .HasForeignKey("SlotId")
@@ -904,11 +882,7 @@ namespace OnDemandTutor.API.Migrations
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany("Schedules")
                         .HasForeignKey("SlotId")
-<<<<<<< HEAD
                         .OnDelete(DeleteBehavior.Cascade)
-=======
-                        .OnDelete(DeleteBehavior.Restrict)
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                         .IsRequired();
 
                     b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Student")
@@ -963,20 +937,13 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
                 {
-                    b.Navigation("Complaints");
-
-                    b.Navigation("Feedbacks");
-
                     b.Navigation("Slots");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Slot", b =>
                 {
-<<<<<<< HEAD
                     b.Navigation("Feedbacks");
 
-=======
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                     b.Navigation("Schedules");
                 });
 

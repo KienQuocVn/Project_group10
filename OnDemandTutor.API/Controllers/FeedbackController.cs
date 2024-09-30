@@ -22,12 +22,12 @@ namespace OnDemandTutor.API.Controllers
 
 
         [HttpGet("filter")]
-        public async Task<ActionResult<Feedback>> GetFeedbackByFilterAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId)
+        public async Task<ActionResult<Feedback>> GetFeedbackByFilter(int pageNumber, int pageSize, string? slotId, Guid? studentId, Guid? tutorId, string? feedbackId)
         {
             try
             {
                 // Gọi service để lấy feedback theo bộ lọc
-                var feedback = await _feedbackSevice.GetFeedbackByFilterAsync(pageNumber, pageSize, studentId, tutorId, feedbackId);
+                var feedback = await _feedbackSevice.GetFeedbackByFilterAsync(pageNumber, pageSize, slotId, studentId, tutorId, feedbackId);
 
                 // Trả về kết quả feedback
                 return Ok(feedback);
@@ -49,12 +49,12 @@ namespace OnDemandTutor.API.Controllers
             }
         }
         [HttpGet("filler_delete")]
-        public async Task<IActionResult> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, Guid? studentId, Guid? tutorId, string? feedbackId)
+        public async Task<IActionResult> GetDeleteAtFeedbackAsync(int pageNumber, int pageSize, string? slotId, Guid? studentId, Guid? tutorId, string? feedbackId)
         {
             try
             {
                 // Gọi service để lấy feedback theo bộ lọc
-                var feedback = await _feedbackSevice.GetDeleteAtFeedbackAsync(pageNumber, pageSize, studentId, tutorId, feedbackId);
+                var feedback = await _feedbackSevice.GetDeleteAtFeedbackAsync(pageNumber, pageSize, slotId, studentId, tutorId, feedbackId);
 
                 // Trả về kết quả feedback
                 return Ok(feedback);
@@ -82,7 +82,7 @@ namespace OnDemandTutor.API.Controllers
             try
             {
                 var createdFeedback = await _feedbackSevice.CreateFeedbackAsync(model);
-                return CreatedAtAction(nameof(GetFeedbackByFilterAsync), new { id = createdFeedback.Id }, createdFeedback);
+                return CreatedAtAction(nameof(GetFeedbackByFilter), new { id = createdFeedback.Id }, createdFeedback);
             }
             catch (Exception ex)
             {

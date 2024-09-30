@@ -75,6 +75,12 @@ namespace OnDemandTutor.Repositories.Context
                 .HasForeignKey(ts => ts.TutorId);
 
             modelBuilder.Entity<Feedback>()
+               .HasOne(ts => ts.Slot)
+               .WithMany(s => s.Feedbacks)
+               .HasForeignKey(ts => ts.SlotId)
+               .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Feedback>()
                 .HasKey(ts => new { ts.StudentId, ts.TutorId });
 
             modelBuilder.Entity<Feedback>()
@@ -86,6 +92,11 @@ namespace OnDemandTutor.Repositories.Context
                 .HasOne(ts => ts.Accounts)
                 .WithMany(s => s.Feedbacks)
                 .HasForeignKey(ts => ts.TutorId);
+
+            modelBuilder.Entity<Slot>()
+                .HasOne(s => s.Class)
+                .WithMany(c => c.Slots)
+                .HasForeignKey(s => s.ClassId);
         }
     }
 }

@@ -55,7 +55,25 @@ namespace OnDemandTutor.Repositories.UOW
             }
         }
 
+<<<<<<< HEAD
+        public IGenericRepository<Slot> slotRepository;
+
+        public IGenericRepository<Slot> SlotRepository
+        {
+            get
+            {
+                if (this.slotRepository == null)
+                {
+                    this.slotRepository = new GenericRepository<Slot>(_dbContext);
+                }
+                return slotRepository;
+            }
+        }
+
+        public IGenericRepository<Subject> subjectRepository;
+=======
         private IGenericRepository<Subject> subjectRepository; 
+>>>>>>> 736f99d09baea832d78df3e5777752264735af48
         public IGenericRepository<Subject> SubjectRepository
         {
             get
@@ -129,7 +147,7 @@ namespace OnDemandTutor.Repositories.UOW
             _dbContext.Database.RollbackTransaction();
         }
 
-        public void Save() /
+        public void Save() 
         {
             _dbContext.SaveChanges();
         }
