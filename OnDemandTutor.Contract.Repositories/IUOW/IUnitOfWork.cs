@@ -12,9 +12,6 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         IGenericRepository<Subject> SubjectRepository { get; }
         IGenericRepository<Feedback> FeedbackRepository { get; }
         IGenericRepository<Slot> SlotRepository { get; }
-        IGenericRepository<TutorSubject> TutorRepository { get; } 
-        IGenericRepository<Subject> SubjectRepository { get; } 
-        IGenericRepository<Feedback> FeedbackRepository { get; } 
         IGenericRepository<Complaint> ComplaintRepository { get; } 
         IGenericRepository<Class> ClassRepository { get; }
 
