@@ -22,12 +22,12 @@ namespace OnDemandTutor.API.Controllers
 
         // GET: api/Class
         [HttpGet()]
-        public async Task<ActionResult<BasePaginatedList<Class>>> GetAllClasses(int pageNumber = 1,int pageSize = 5, Guid? accountId = null,string? subjectId = null,DateTime? startDay = null,DateTime? endDay = null)
+        public async Task<ActionResult<BasePaginatedList<Class>>> GetAllClasses(int pageNumber = 1,int pageSize = 5, string? id = null, Guid? accountId = null,string? subjectId = null,DateTime? startDay = null,DateTime? endDay = null)
         {
             try
             {
                 // Gọi service với các tham số tìm kiếm
-                var result = await _classService.GetAllClassesAsync(pageNumber, pageSize, accountId, subjectId, startDay, endDay);
+                var result = await _classService.GetAllClassesAsync(pageNumber, pageSize, id, accountId, subjectId, startDay, endDay);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -35,21 +35,6 @@ namespace OnDemandTutor.API.Controllers
                 return BadRequest(new { Message = ex.Message });
             }
         }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Class>> GetClassById(string id)
-        {
-            try
-            {
-                // Gọi service để lấy class theo ID
-                var result = await _classService.GetClassByIdAsync(id);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(new { Message = ex.Message });
-            }
-        }
-
 
 
         // POST: api/Class

@@ -22,9 +22,7 @@ namespace OnDemandTutor.API.Migrations
                 name: "PK_Schedules",
                 table: "Schedules");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Schedules_StudentId",
-                table: "Schedules");
+
 
             migrationBuilder.AlterColumn<string>(
                 name: "SlotId",

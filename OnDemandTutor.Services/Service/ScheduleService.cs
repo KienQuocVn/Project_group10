@@ -206,6 +206,17 @@ namespace OnDemandTutor.Services.Service
             {
                 throw new Exception("SlotId is invalid.");
             }
+            // Kiểm tra sự tồn tại và sự thay đổi của Schedule
+            bool isChange = await _unitOfWork.GetRepository<Schedule>().Entities
+                .AnyAsync(s =>
+                    s.SlotId == model.SlotId &&
+                    s.StudentId == model.StudentId &&
+                    s.Status == model.Status);
+
+            if (isChange)
+            {
+                throw new Exception("The Schedule does not have any changes.");
+            }
 
             // Truy vấn để tìm schedule từ database dựa trên StudentId và SlotId
             Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities

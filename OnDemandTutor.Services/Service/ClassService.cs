@@ -24,12 +24,18 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Lấy về tất cả các class chưa bị xóa mềm và lọc theo các tham số được truyền vào nếu có
-        public async Task<BasePaginatedList<Class>> GetAllClassesAsync(int pageNumber, int pageSize, Guid? accountId, string? subjectId, DateTime? startDay, DateTime? endDay)
+        public async Task<BasePaginatedList<Class>> GetAllClassesAsync(int pageNumber, int pageSize, string? classId, Guid? accountId, string? subjectId, DateTime? startDay, DateTime? endDay)
         {
             // Lấy tất cả các bản ghi từ bảng Class với điều kiện tìm kiếm
             IQueryable<Class> classesQuery = _unitOfWork.GetRepository<Class>().Entities
                 .Where(p => !p.DeletedTime.HasValue || string.IsNullOrEmpty(p.DeletedBy))
                 .OrderByDescending(c => c.CreatedTime);
+
+            // Điều kiện tìm kiếm theo classId nếu có
+            if (!string.IsNullOrWhiteSpace(classId))
+            {
+                classesQuery = classesQuery.Where(c => c.Id == classId);
+            }
 
             // Điều kiện tìm kiếm theo accountId nếu có
             if (accountId.HasValue)
@@ -58,24 +64,20 @@ namespace OnDemandTutor.Services.Service
             // Đếm tổng số bản ghi phù hợp với điều kiện tìm kiếm
             int totalCount = await classesQuery.CountAsync();
 
-            // Áp dụng phân trang
-            List<Class> paginatedClasses = await classesQuery
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            // Áp dụng phân trang nếu không tìm kiếm theo classId
+            if (string.IsNullOrWhiteSpace(classId))
+            {
+                classesQuery = classesQuery
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize);
+            }
+
+            List<Class> paginatedClasses = await classesQuery.ToListAsync();
 
             return new BasePaginatedList<Class>(paginatedClasses, totalCount, pageNumber, pageSize);
         }
 
-
-        // Tìm kiếm 1 class theo id được chuyền vào
-        public async Task<Class> GetClassByIdAsync(string id)
-        {
-            return await _unitOfWork.GetRepository<Class>().Entities
-                 .FirstOrDefaultAsync(c => c.Id == id && !c.DeletedTime.HasValue)
-                 ?? throw new Exception("Class not found or has been deleted.");
-        }
-
+        // tạo 1 class mới với tham số chuyền vào AccountId SubjectId AmountOfSlot StartDay EndDay 
         public async Task<ResponseClassModelView> CreateClassAsync(CreateClassModelView model)
         {
             // Kiểm tra các thuộc tính không được để trống hoặc giá trị hợp lệ
@@ -142,6 +144,8 @@ namespace OnDemandTutor.Services.Service
             return _mapper.Map<ResponseClassModelView>(newClass);
         }
 
+
+        // cập nhật thông tin của class
         public async Task<ResponseClassModelView> UpdateClassAsync(string id, UpdateClassModelView model)
         {
             if (string.IsNullOrWhiteSpace(id))
@@ -200,6 +204,16 @@ namespace OnDemandTutor.Services.Service
             if (model.StartDay >= model.EndDay)
             {
                 throw new Exception("StartDay must be earlier than EndDay.");
+            }
+
+            // Kiểm tra sự thay đổi trong thực thể
+            if (existingClass.AccountId == model.AccountId &&
+                existingClass.SubjectId == model.SubjectId &&
+                existingClass.AmountOfSlot == model.AmountOfSlot &&
+                existingClass.StartDay == model.StartDay &&
+                existingClass.EndDay == model.EndDay)
+            {
+                throw new Exception("No changes detected to update.");
             }
 
             // Sử dụng AutoMapper để ánh xạ từ model sang thực thể Class
