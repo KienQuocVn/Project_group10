@@ -68,7 +68,6 @@ namespace OnDemandTutor.Repositories.UOW
             }
         }
 
-        public IGenericRepository<Subject> subjectRepository;
         private IGenericRepository<Subject> subjectRepository; 
         public IGenericRepository<Subject> SubjectRepository
         {

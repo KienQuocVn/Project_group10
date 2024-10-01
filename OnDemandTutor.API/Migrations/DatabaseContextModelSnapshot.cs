@@ -493,13 +493,11 @@ namespace OnDemandTutor.API.Migrations
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-<<<<<<< HEAD
                     b.Property<string>("SlotId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-=======
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -904,11 +902,7 @@ namespace OnDemandTutor.API.Migrations
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
                         .WithMany("Schedules")
                         .HasForeignKey("SlotId")
-<<<<<<< HEAD
-                        .OnDelete(DeleteBehavior.Cascade)
-=======
                         .OnDelete(DeleteBehavior.Restrict)
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                         .IsRequired();
 
                     b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Student")
@@ -972,11 +966,8 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Slot", b =>
                 {
-<<<<<<< HEAD
                     b.Navigation("Feedbacks");
 
-=======
->>>>>>> 736f99d09baea832d78df3e5777752264735af48
                     b.Navigation("Schedules");
                 });
 
