@@ -2,7 +2,9 @@
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
+using OnDemandTutor.ModelViews.ScheduleModelViews;
 using OnDemandTutor.ModelViews.TutorSubjectModelViews;
+using OnDemandTutor.Services.Service;
 namespace OnDemandTutor.API.Controllers
 {
     // Định nghĩa route cho controller này  
@@ -19,134 +21,75 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // Phương thức GET để lấy tất cả các môn học của gia sư với phân trang  
-        // Phương thức GET để lấy tất cả các môn học của gia sư với phân trang  
         [HttpGet]
-        public async Task<ActionResult<BasePaginatedList<TutorSubject>>> GetAllTutorSubjects(int pageNumber = 1, int pageSize = 5)
-        {
-            // Gọi dịch vụ để lấy danh sách môn học của gia sư  
-            var result = await _tutorService.GetAllTutorSubjectsAsync(pageNumber, pageSize);
-
-            // Kiểm tra nếu result là null (có thể do lỗi trong service)  
-            if (result == null)
-            {
-                return StatusCode(500, new { Message = "Internal server error" });
-            }
-
-            // Trả về danh sách môn học của gia sư  
-            return Ok(result);
-        }
-
-        // Phương thức GET để lấy thông tin môn học của gia sư theo ID  
-        [HttpGet("id/{tutorId}/{subjectId}")]
-        public async Task<ActionResult<TutorSubject>> GetByTutorIdSubjectId(Guid tutorId, string subjectId)
-        {
-            // Gọi dịch vụ để lấy môn học của gia sư theo ID  
-            var tutorSubject = await _tutorService.GetByTutorIdSubjectIdAsync(tutorId, subjectId);
-
-            // Kiểm tra nếu tutorSubject là null (có thể do lỗi trong service)  
-            if (tutorSubject == null)
-            {
-                return NotFound(new { Message = "Tutor subject not found" });
-            }
-
-            // Nếu không có lỗi, trả về kết quả 200 OK  
-            return Ok(tutorSubject);
-        }
-
-        [HttpGet("search")]
-        public async Task<IActionResult> SearchTutorSubjectsByName(string subjectName, int pageNumber = 1, int pageSize = 10)
+        public async Task<ActionResult<BasePaginatedList<TutorSubject>>> GetAllTutor(int pageNumber = 1, int pageSize = 5, Guid? TutorId = null, string? SubjectId = null)
         {
             try
             {
-                var result = await _tutorService.SearchTutorSubjectsByNameAsync(subjectName, pageNumber, pageSize);
+                var result = await _tutorService.GetAllTutor(pageNumber, pageSize, TutorId, SubjectId);
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Có lỗi xảy ra khi tìm kiếm môn học.");
+                return BadRequest(new { Message = ex.Message });
             }
         }
 
-        // Phương thức POST để tạo môn học mới cho gia sư  
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchById(int pageNumber = 1, int pageSize = 5, Guid? TutorId = null, string? SubjectId = null)
+        {
+            try
+            {
+                var result = await _tutorService.SearchById(pageNumber, pageSize, TutorId, SubjectId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<TutorSubject>> CreateTutorSubject([FromBody] CreateTutorSubjectModelViews model)
         {
-            // Kiểm tra xem model có null hay không  
-            if (model == null)
-            {
-                return BadRequest(new { Message = "Model cannot be null" });
-            }
-
             try
             {
-                // Thiết lập thông tin tạo mới  
-                model.CreatedBy = "admin";
-                model.CreatedTime = DateTime.UtcNow;
-
-                // Gọi dịch vụ để tạo môn học mới  
-                var createdTutorSubject = await _tutorService.CreateTutorSubjectAsync(model);
-
-                // Trả về kết quả 201 Created với thông tin môn học vừa tạo  
-                return CreatedAtAction(nameof(CreateTutorSubject), new { id = createdTutorSubject.Id }, createdTutorSubject);
+                ResponseTutorModelViews result = await _tutorService.CreateTutorSubjectAsync(model);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                // Trả về lỗi mà không ghi log  
-                return StatusCode(500, new { Message = "Internal server error", Details = ex.Message });
+                return BadRequest(new { Message = ex.Message });
             }
         }
 
-        // Phương thức PUT để cập nhật thông tin môn học của gia sư  
         [HttpPut("{tutorId}/{subjectId}")]
-        public async Task<IActionResult> UpdateTutorSubject(Guid tutorId, string subjectId, [FromBody] UpdateTutorSubjectModelViews model)
+        public async Task<ActionResult> UpdateTutorSubject(Guid tutorId, string subjectId, [FromBody] UpdateTutorSubjectModelViews model)
         {
-            // Kiểm tra xem model có null hay không  
-            if (model == null)
-            {
-                return BadRequest("Invalid data.");
-            }
-
             try
             {
-                // Gọi dịch vụ để cập nhật môn học  
-                var updatedTutorSubject = await _tutorService.UpdateTutorSubjectAsync(tutorId, subjectId, model);
-
-                // Kiểm tra nếu không tìm thấy môn học để cập nhật  
-                if (updatedTutorSubject == null)
-                {
-                    return NotFound("TutorSubject not found.");
-                }
-
-                // Trả về kết quả 200 OK với thông tin môn học đã cập nhật  
-                return Ok(updatedTutorSubject);
+                ResponseTutorModelViews result = await _tutorService.UpdateTutorSubjectAsync(tutorId, subjectId, model);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                // Trả về lỗi mà không ghi log  
-                return StatusCode(500, new { Message = "Internal server error", Details = ex.Message });
+                return BadRequest(new { Message = ex.Message });
             }
         }
 
         // Phương thức DELETE để xóa môn học của gia sư theo ID  
-        [HttpDelete("deleteByTutorIdAndSubjectId")]
-        public async Task<IActionResult> DeleteByTutorIdAndSubjectId(Guid tutorId, string subjectId)
+        [HttpDelete("delete/{tutorId}/{subjectId}")]
+        public async Task<IActionResult> DeleteTutorSubjectAsync(Guid tutorId, string subjectId)
         {
             try
             {
-                // Gọi dịch vụ để xóa môn học  
-                bool isDeleted = await _tutorService.DeleteTutorSubjectByTutorIdAndSubjectIdAsync(tutorId, subjectId);
-
-                // Kiểm tra nếu không tìm thấy môn học để xóa  
-                if (!isDeleted)
-                {
-                    return NotFound(new { Message = "Tutor subject not found" });
-                }
-                return NoContent(); // Trả về 204 No Content nếu xóa thành công  
+                ResponseTutorModelViews result = await _tutorService.DeleteTutorSubjectAsync(tutorId, subjectId);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                // Trả về lỗi mà không ghi log  
-                return StatusCode(500, new { Message = "Internal server error", Details = ex.Message });
+                return BadRequest(new { Message = ex.Message });
             }
         }
     }
