@@ -121,6 +121,11 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("Please enter SlotId.");
             }
 
+            if (string.IsNullOrWhiteSpace(model.Status))
+            {
+                throw new Exception("Please enter Status.");
+            }
+
             // Kiểm tra sự tồn tại của Student
             bool isExistStudent = await _unitOfWork.GetRepository<Accounts>().Entities
                 .AnyAsync(s => s.Id == model.StudentId && !s.DeletedTime.HasValue);
@@ -165,7 +170,7 @@ namespace OnDemandTutor.Services.Service
         }
 
 
-
+        // cập nhật lịch tham số truyền vào là studentID, SlotId, Status
         public async Task<ResponseScheduleModelViews> UpdateScheduleAsync(Guid studentId, string slotId, UpdateScheduleModelViews model)
         {
             if (studentId == Guid.Empty)
@@ -207,22 +212,20 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("SlotId is invalid.");
             }
             // Kiểm tra sự tồn tại và sự thay đổi của Schedule
-            bool isChange = await _unitOfWork.GetRepository<Schedule>().Entities
-                .AnyAsync(s =>
-                    s.SlotId == model.SlotId &&
-                    s.StudentId == model.StudentId &&
-                    s.Status == model.Status);
 
-            if (isChange)
-            {
-                throw new Exception("The Schedule does not have any changes.");
-            }
+
 
             // Truy vấn để tìm schedule từ database dựa trên StudentId và SlotId
             Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities
                 .FirstOrDefaultAsync(p => p.StudentId == studentId && p.SlotId == slotId && !p.DeletedTime.HasValue)
                 ?? throw new Exception("The Schedule cannot be found or deleted!");
 
+            if (existingSchedule.SlotId == model.SlotId &&
+                existingSchedule.StudentId == model.StudentId &&
+                existingSchedule.Status == model.Status)
+            {
+                throw new Exception("The Schedule does not have any changes.");
+            }
 
             // Sử dụng AutoMapper để cập nhật dữ liệu từ model vào thực thể Schedule
             _mapper.Map(model, existingSchedule);
@@ -238,7 +241,7 @@ namespace OnDemandTutor.Services.Service
             return _mapper.Map<ResponseScheduleModelViews>(existingSchedule);
         }
 
-
+        // xóa mềm 1 lịch truyền vào studentID, SlotId
         public async Task<ResponseScheduleModelViews> DeleteScheduleAsync(Guid studentId, string slotId)
         {
             // Validate đầu vào: Kiểm tra xem StudentId và SlotId có hợp lệ hay không

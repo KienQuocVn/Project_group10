@@ -21,6 +21,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/Class
+        // lấy danh sách các class có fillter hoặc không
         [HttpGet()]
         public async Task<ActionResult<BasePaginatedList<Class>>> GetAllClasses(int pageNumber = 1,int pageSize = 5, string? id = null, Guid? accountId = null,string? subjectId = null,DateTime? startDay = null,DateTime? endDay = null)
         {
@@ -38,6 +39,7 @@ namespace OnDemandTutor.API.Controllers
 
 
         // POST: api/Class
+        // tạo 1 class mới 
         [HttpPost()]
         public async Task<ActionResult<ResponseClassModelView>> CreateClass([FromBody] CreateClassModelView model)
         {
@@ -53,6 +55,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // PUT: api/Class/{id}
+        // cập nhật 1 class với id truyền vào
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateClass(string id, [FromBody] UpdateClassModelView model)
         {
@@ -68,6 +71,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // DELETE: api/Class/{id}
+        // thực hiện xóa mềm 1 class
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClass(string id)
         {
@@ -83,6 +87,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/Class
+        // lấy tống giá tiền của class đó từ số amoutOfSlot và price trong slot
         [HttpGet("GetTotalAmountClasses/{id}")]
         public async Task<IActionResult> GetTotalAmountClasses(string id)
         {
