@@ -96,8 +96,37 @@ builder.Services.AddAuthentication(x =>
         }
     };
 });
+// Thêm dịch vụ xác thực  
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddGoogle(options =>
+{
+    options.ClientId = "YOUR_CLIENT_ID";
+    options.ClientSecret = "YOUR_CLIENT_SECRET";
+    options.Scope.Add("email");
+    options.Scope.Add("profile");
+    options.SaveTokens = true;
+});
 
+// Cấu hình dịch vụ xác thực  
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddFacebook(options =>
+{
+    options.AppId = "YOUR_APP_ID"; // Thay thế bằng App ID mà bạn đã lấy từ Facebook  
+    options.AppSecret = "YOUR_APP_SECRET"; // Thay thế bằng App Secret mà bạn đã lấy từ Facebook  
+    options.Scope.Add("email");
+    options.SaveTokens = true;
 
+    // Thiết lập URL redirect  
+    options.CallbackPath = "/signin-facebook"; // Thêm đường dẫn callback  
+});
 
 //add to swagger
 builder.Services.AddSwaggerGen(c =>
