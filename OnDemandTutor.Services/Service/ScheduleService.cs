@@ -38,13 +38,13 @@ namespace OnDemandTutor.Services.Service
             // Điều kiện tìm kiếm theo studentId nếu có
             if (studentId.HasValue)
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Student.Id == studentId);
+                schedulesQuery = schedulesQuery.Where(p => p.StudentId == studentId);
             }
 
             // Điều kiện tìm kiếm theo slotId nếu có
             if (!string.IsNullOrWhiteSpace(slotId))
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Slot.Id == slotId);
+                schedulesQuery = schedulesQuery.Where(p => p.SlotId == slotId);
             }
 
             // Điều kiện tìm kiếm theo status nếu có
@@ -77,13 +77,13 @@ namespace OnDemandTutor.Services.Service
             // Điều kiện tìm kiếm theo studentId nếu có
             if (studentId.HasValue)
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Student.Id == studentId);
+                schedulesQuery = schedulesQuery.Where(p => p.StudentId == studentId);
             }
 
             // Điều kiện tìm kiếm theo slotId nếu có
             if (!string.IsNullOrWhiteSpace(slotId))
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Slot.Id == slotId);
+                schedulesQuery = schedulesQuery.Where(p => p.SlotId == slotId);
             }
 
             // Điều kiện tìm kiếm theo status nếu có
@@ -206,23 +206,19 @@ namespace OnDemandTutor.Services.Service
             {
                 throw new Exception("SlotId is invalid.");
             }
-            // Kiểm tra sự tồn tại và sự thay đổi của Schedule
-            bool isChange = await _unitOfWork.GetRepository<Schedule>().Entities
-                .AnyAsync(s =>
-                    s.SlotId == model.SlotId &&
-                    s.StudentId == model.StudentId &&
-                    s.Status == model.Status);
 
-            if (isChange)
-            {
-                throw new Exception("The Schedule does not have any changes.");
-            }
 
             // Truy vấn để tìm schedule từ database dựa trên StudentId và SlotId
             Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities
                 .FirstOrDefaultAsync(p => p.StudentId == studentId && p.SlotId == slotId && !p.DeletedTime.HasValue)
                 ?? throw new Exception("The Schedule cannot be found or deleted!");
 
+            if (existingSchedule.SlotId == model.SlotId &&
+                existingSchedule.StudentId == model.StudentId &&
+                existingSchedule.Status == model.Status)
+            {
+                throw new Exception("The Schedule does not have any changes.");
+            }
 
             // Sử dụng AutoMapper để cập nhật dữ liệu từ model vào thực thể Schedule
             _mapper.Map(model, existingSchedule);
