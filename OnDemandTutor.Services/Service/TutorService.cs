@@ -13,8 +13,7 @@ namespace OnDemandTutor.Services.Service
 {
     public class TutorService : ITutorService
     {
-        // Khai báo biến _unitOfWork để truy cập các repository
-        //testtttt
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         // Constructor nhận vào IUnitOfWork để khởi tạo service  
