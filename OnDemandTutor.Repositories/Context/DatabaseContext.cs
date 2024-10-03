@@ -50,11 +50,6 @@ namespace OnDemandTutor.Repositories.Context
                 .HasKey(ts => new { ts.TutorId, ts.UserId }); // Khóa chính cho TutorSubject  
 
             modelBuilder.Entity<TutorSubject>()
-
-                .HasOne(ts => ts.Tutor)
-                .WithMany(t => t.TutorSubjects)
-                .HasForeignKey(ts => ts.TutorId)
-
                 .HasOne(ts => ts.User) // Mối quan hệ với Accounts  
                 .WithMany(a => a.TutorSubjects)
                 .HasForeignKey(ts => ts.UserId)
@@ -149,7 +144,9 @@ namespace OnDemandTutor.Repositories.Context
                 .HasForeignKey(b => b.TutorSubjectId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-                .HasOne(f => f.Accounts) // Mối quan hệ với Accounts  
+
+            modelBuilder.Entity<Feedback>()
+               .HasOne(f => f.Accounts) // Mối quan hệ với Accounts  
                 .WithMany(a => a.Feedbacks)
                 .HasForeignKey(f => f.StudentId);
 

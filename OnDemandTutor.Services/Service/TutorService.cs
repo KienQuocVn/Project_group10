@@ -24,7 +24,7 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Phương thức lấy danh sách tất cả các môn học của gia sư với phân trang  
-        public async Task<BasePaginatedList<TutorSubject>> GetAllTutor(int pageNumber, int pageSize, Guid? TutorId,string? SubjectId)
+        public async Task<BasePaginatedList<TutorSubject>> GetAllTutor(int pageNumber, int pageSize, Guid? TutorId, string? SubjectId)
         {
             IQueryable<TutorSubject> tutorQuery = _unitOfWork.GetRepository<TutorSubject>().Entities
                 .OrderByDescending(p => p.CreatedTime);
@@ -72,13 +72,7 @@ namespace OnDemandTutor.Services.Service
             return new BasePaginatedList<TutorSubject>(tutorpage, totalCount, pageNumber, pageSize);
         }
 
-        // Phương thức lấy thông tin môn học của gia sư theo ID của gia sư và môn học  
-
-        //get theo name hoac id
-        public async Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId)
-
         public async Task<ResponseTutorModelViews> CreateTutorSubjectAsync(CreateTutorSubjectModelViews model)
-
         {
             if (string.IsNullOrWhiteSpace(model.SubjectId))
             {
@@ -91,15 +85,8 @@ namespace OnDemandTutor.Services.Service
                 throw new ArgumentException("Please provide a Bio for the tutor.");
             }
 
-
-        public async Task<TutorSubject> CreateTutorSubjectAsync(CreateTutorSubjectModelViews model)
-        {
-            // thiếu điều kiện check 
-            try
-
             // Validate the Rating  
             if (model.Rating < 0 || model.Rating > 5)
-
             {
                 throw new ArgumentException("Rating must be between 0 and 5.");
             }
@@ -110,22 +97,9 @@ namespace OnDemandTutor.Services.Service
                 throw new ArgumentException("HourlyRate cannot be negative.");
             }
 
-
-                // Tạo một đối tượng TutorSubject mới với thông tin từ model  
-                var tutorSubject = new TutorSubject
-                {
-                    Tutor = _account,///chỉ cần lưu id account 
-                    Id = Guid.NewGuid(), // Tạo ID mới cho môn học  
-                    TutorId = model.TutorId, // Gán ID của gia sư từ model  
-                    SubjectId = model.SubjectId, // Gán ID của môn học từ model  
-                    CreatedTime = DateTimeOffset.Now, // Ghi lại thời gian tạo  
-                    LastUpdatedTime = DateTimeOffset.Now // Ghi lại thời gian cập nhật lần cuối  
-                };
-
             // Check if the subject exists  
             bool isExistSubject = await _unitOfWork.GetRepository<Subject>().Entities
                 .AnyAsync(s => s.Id == model.SubjectId && !s.DeletedTime.HasValue);
-
 
             if (!isExistSubject)
             {
@@ -144,16 +118,16 @@ namespace OnDemandTutor.Services.Service
             // Create a new TutorSubject entity  
             var tutorSubject = new TutorSubject
             {
-                TutorId = Guid.NewGuid(), 
+                TutorId = Guid.NewGuid(),
                 UserId = model.UserId,
-                SubjectId = model.SubjectId, 
+                SubjectId = model.SubjectId,
                 Bio = model.Bio,
                 Rating = model.Rating,
                 Experience = model.Experience,
                 HourlyRate = model.HourlyRate,
                 Id = Guid.NewGuid().ToString("N"),
-                CreatedBy= "admin",
-                CreatedTime = DateTimeOffset.Now, 
+                CreatedBy = "admin",
+                CreatedTime = DateTimeOffset.Now,
             };
 
             await _unitOfWork.TutorRepository.InsertAsync(tutorSubject);
@@ -174,20 +148,8 @@ namespace OnDemandTutor.Services.Service
             // Kiểm tra xem subjectId có hợp lệ không  
             if (string.IsNullOrWhiteSpace(subjectId))
             {
-
-
-
-                // Lấy thông tin môn học hiện tại dựa trên ID của gia sư và môn học  
-                var existingTutorSubject = await _unitOfWork.TutorRepository.GetByTutorIdSubjectIdAsync(tutorId, subjectId);
-                if (existingTutorSubject != null)
-                {
-                    // Cập nhật thời gian cập nhật  
-                    existingTutorSubject.LastUpdatedTime = DateTimeOffset.Now;
-                    // Cập nhật các trường khác từ model nếu cần (có thể thêm logic ở đây)  
-
                 throw new ArgumentException("Please enter a valid subjectId.", nameof(subjectId));
             }
-
 
             //// Kiểm tra xem gia sư có tồn tại không  
             //bool isExistTutor = await _unitOfWork.GetRepository<Accounts>().Entities
@@ -212,15 +174,7 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("TutorId is invalid.");
             }
 
-
-        public async Task<bool> DeleteTutorSubjectByTutorIdAndSubjectIdAsync(Guid tutorId, string subjectId)
-        {
-
-            //check delete time xem thử delete chưa
-            try
-
             if (string.IsNullOrWhiteSpace(subjectId))
-
             {
                 throw new Exception("subjectId is invalid.");
             }
@@ -244,7 +198,7 @@ namespace OnDemandTutor.Services.Service
             _mapper.Map(model, existingTutorSubject);
 
             // Thiết lập các thuộc tính bổ sung
-            existingTutorSubject.LastUpdatedBy = "admin";  
+            existingTutorSubject.LastUpdatedBy = "admin";
             existingTutorSubject.LastUpdatedTime = DateTimeOffset.UtcNow;
 
             _unitOfWork.TutorRepository.Update(existingTutorSubject);
@@ -270,7 +224,7 @@ namespace OnDemandTutor.Services.Service
                 ?? throw new Exception("The Tutor cannot be found or it has been deleted!");
 
             existingTutorSubject.DeletedTime = DateTimeOffset.UtcNow;
-            existingTutorSubject.DeletedBy = "admin"; 
+            existingTutorSubject.DeletedBy = "admin";
             _unitOfWork.TutorRepository.Update(existingTutorSubject);
             await _unitOfWork.SaveAsync();
             return _mapper.Map<ResponseTutorModelViews>(existingTutorSubject);
