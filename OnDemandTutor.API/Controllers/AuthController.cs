@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using OnDemandTutor.Services.Service;
 using Microsoft.AspNetCore.Authorization;
 using OnDemandTutor.Repositories.Entity;
+using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.Core.Base;
 
 namespace OnDemandTutor.API.Controllers
 {
@@ -190,6 +192,20 @@ namespace OnDemandTutor.API.Controllers
             _logger.LogInformation("Claim: {ClaimId} soft deleted successfully", claimId);
 
             return Ok("Claim deleted successfully.");
+        }
+
+        [HttpGet("getAccountByRolename")]
+        public async Task<ActionResult<BasePaginatedList<Schedule>>> GetAllSchedules(int pageNumber = 1, int pageSize = 5, string roleName = null)
+        {
+            try
+            {
+                var result = await _userService.GetAccountsByRoleAsync(roleName, pageNumber, pageSize);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 }

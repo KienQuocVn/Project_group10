@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Contract.Services.Interface;
+using OnDemandTutor.Core.Base;
 using OnDemandTutor.Core.Utils;
 using OnDemandTutor.ModelViews.AuthModelViews;
 using OnDemandTutor.ModelViews.UserModelViews;
@@ -578,10 +579,53 @@ namespace OnDemandTutor.Services.Service
                 }
             }
 
+        // lấy danh sách account theo roleName
+        public async Task<BasePaginatedList<Accounts>> GetAccountsByRoleAsync(string roleName, int pageNumber, int pageSize)
+        {
+
+            // Kiểm tra tham số roleName có tồn tại không
+            if (string.IsNullOrWhiteSpace(roleName))
+            {
+                throw new Exception("RoleName is empty.");
+
+            }
+
+            // Kiểm tra vai trò có tồn tại không
+            ApplicationRole role = await _unitOfWork.GetRepository<ApplicationRole>().Entities.FirstOrDefaultAsync(r => r.Name == roleName);
+
+            if (role == null || role.Name == "User")
+            {
+                throw new Exception("Role does not exist");
+            }
+
+            // Lấy danh sách các ApplicationUserRoles liên kết với Role
+            List<ApplicationUserRoles> userRoles = await _unitOfWork.GetRepository<ApplicationUserRoles>().Entities
+                .Where(ur => ur.RoleId == role.Id && !ur.DeletedTime.HasValue)
+                .ToListAsync();
+
+            // Lấy danh sách AccountId từ ApplicationUserRoles
+            List<Guid> accountIds = userRoles.Select(ur => ur.UserId).Distinct().ToList();
+
+            // Lấy danh sách Accounts tương ứng với AccountId và áp dụng phân trang
+            IQueryable<Accounts> accountsQuery = _unitOfWork.GetRepository<Accounts>().Entities
+                .Where(a => accountIds.Contains(a.Id) && !a.DeletedTime.HasValue)
+                .OrderBy(a => a.UserName);
+
+            int totalCount = await accountsQuery.CountAsync();
+
+            List<Accounts> paginatedAccounts = await accountsQuery
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new BasePaginatedList<Accounts>(paginatedAccounts, totalCount, pageNumber, pageSize);
         }
 
-       
+
     }
+
+
+}
 
 
 

@@ -38,13 +38,13 @@ namespace OnDemandTutor.Services.Service
             // Điều kiện tìm kiếm theo studentId nếu có
             if (studentId.HasValue)
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Student.Id == studentId);
+                schedulesQuery = schedulesQuery.Where(p => p.StudentId == studentId);
             }
 
             // Điều kiện tìm kiếm theo slotId nếu có
             if (!string.IsNullOrWhiteSpace(slotId))
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Slot.Id == slotId);
+                schedulesQuery = schedulesQuery.Where(p => p.SlotId == slotId);
             }
 
             // Điều kiện tìm kiếm theo status nếu có
@@ -77,13 +77,13 @@ namespace OnDemandTutor.Services.Service
             // Điều kiện tìm kiếm theo studentId nếu có
             if (studentId.HasValue)
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Student.Id == studentId);
+                schedulesQuery = schedulesQuery.Where(p => p.StudentId == studentId);
             }
 
             // Điều kiện tìm kiếm theo slotId nếu có
             if (!string.IsNullOrWhiteSpace(slotId))
             {
-                schedulesQuery = schedulesQuery.Where(p => p.Slot.Id == slotId);
+                schedulesQuery = schedulesQuery.Where(p => p.SlotId == slotId);
             }
 
             // Điều kiện tìm kiếm theo status nếu có
@@ -211,8 +211,6 @@ namespace OnDemandTutor.Services.Service
             {
                 throw new Exception("SlotId is invalid.");
             }
-            // Kiểm tra sự tồn tại và sự thay đổi của Schedule
-
 
 
             // Truy vấn để tìm schedule từ database dựa trên StudentId và SlotId
@@ -220,6 +218,7 @@ namespace OnDemandTutor.Services.Service
                 .FirstOrDefaultAsync(p => p.StudentId == studentId && p.SlotId == slotId && !p.DeletedTime.HasValue)
                 ?? throw new Exception("The Schedule cannot be found or deleted!");
 
+            // Kiểm tra sự tồn tại và sự thay đổi của Schedule
             if (existingSchedule.SlotId == model.SlotId &&
                 existingSchedule.StudentId == model.StudentId &&
                 existingSchedule.Status == model.Status)

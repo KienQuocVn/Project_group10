@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnDemandTutor.API.Migrations
 {
     /// <inheritdoc />
-    public partial class FisrtMigration : Migration
+    public partial class update : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,6 +36,7 @@ namespace OnDemandTutor.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -253,11 +254,11 @@ namespace OnDemandTutor.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AmountOfSlot = table.Column<int>(type: "int", nullable: false),
                     StartDay = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDay = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -269,8 +270,8 @@ namespace OnDemandTutor.API.Migrations
                 {
                     table.PrimaryKey("PK_Classes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Classes_AspNetUsers_TutorId",
-                        column: x => x.TutorId,
+                        name: "FK_Classes_AspNetUsers_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -278,7 +279,8 @@ namespace OnDemandTutor.API.Migrations
                         name: "FK_Classes_Subjects_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subjects",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -312,8 +314,13 @@ namespace OnDemandTutor.API.Migrations
                 columns: table => new
                 {
                     TutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<double>(type: "float", nullable: false),
+                    Experience = table.Column<int>(type: "int", nullable: false),
+                    HourlyRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -323,10 +330,10 @@ namespace OnDemandTutor.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TutorSubjects", x => new { x.TutorId, x.SubjectId });
+                    table.PrimaryKey("PK_TutorSubjects", x => new { x.TutorId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_TutorSubjects_AspNetUsers_TutorId",
-                        column: x => x.TutorId,
+                        name: "FK_TutorSubjects_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -343,11 +350,11 @@ namespace OnDemandTutor.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClassId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DayOfSlot = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     EndTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    ClassId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -376,6 +383,7 @@ namespace OnDemandTutor.API.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SlotId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClassId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -394,6 +402,11 @@ namespace OnDemandTutor.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Complaints_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Complaints_Slots_SlotId",
                         column: x => x.SlotId,
                         principalTable: "Slots",
@@ -407,9 +420,10 @@ namespace OnDemandTutor.API.Migrations
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FeedbackText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SlotId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     NumberOfViolations = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SlotId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClassId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -428,20 +442,26 @@ namespace OnDemandTutor.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Feedbacks_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Feedbacks_Slots_SlotId",
                         column: x => x.SlotId,
                         principalTable: "Slots",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Schedules",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SlotId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    SlotId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -451,7 +471,7 @@ namespace OnDemandTutor.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Schedules", x => x.Id);
+                    table.PrimaryKey("PK_Schedules", x => new { x.StudentId, x.SlotId });
                     table.ForeignKey(
                         name: "FK_Schedules_AspNetUsers_StudentId",
                         column: x => x.StudentId,
@@ -462,7 +482,8 @@ namespace OnDemandTutor.API.Migrations
                         name: "FK_Schedules_Slots_SlotId",
                         column: x => x.SlotId,
                         principalTable: "Slots",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -510,14 +531,19 @@ namespace OnDemandTutor.API.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Classes_AccountId",
+                table: "Classes",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Classes_SubjectId",
                 table: "Classes",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Classes_TutorId",
-                table: "Classes",
-                column: "TutorId");
+                name: "IX_Complaints_ClassId",
+                table: "Complaints",
+                column: "ClassId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Complaints_SlotId",
@@ -528,6 +554,11 @@ namespace OnDemandTutor.API.Migrations
                 name: "IX_Complaints_TutorId",
                 table: "Complaints",
                 column: "TutorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Feedbacks_ClassId",
+                table: "Feedbacks",
+                column: "ClassId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_SlotId",
@@ -550,11 +581,6 @@ namespace OnDemandTutor.API.Migrations
                 column: "SlotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Schedules_StudentId",
-                table: "Schedules",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Slots_ClassId",
                 table: "Slots",
                 column: "ClassId");
@@ -563,6 +589,11 @@ namespace OnDemandTutor.API.Migrations
                 name: "IX_TutorSubjects_SubjectId",
                 table: "TutorSubjects",
                 column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TutorSubjects_UserId",
+                table: "TutorSubjects",
+                column: "UserId");
         }
 
         /// <inheritdoc />
