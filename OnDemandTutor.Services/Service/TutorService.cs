@@ -80,6 +80,8 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Phương thức lấy thông tin môn học của gia sư theo ID của gia sư và môn học  
+
+        //get theo name hoac id
         public async Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId)
         {
             try
@@ -113,6 +115,7 @@ namespace OnDemandTutor.Services.Service
 
         public async Task<TutorSubject> CreateTutorSubjectAsync(CreateTutorSubjectModelViews model)
         {
+            // thiếu điều kiện check 
             try
             {
                 var _account = new Accounts
@@ -123,7 +126,7 @@ namespace OnDemandTutor.Services.Service
                 // Tạo một đối tượng TutorSubject mới với thông tin từ model  
                 var tutorSubject = new TutorSubject
                 {
-                    Tutor = _account,
+                    Tutor = _account,///chỉ cần lưu id account 
                     Id = Guid.NewGuid(), // Tạo ID mới cho môn học  
                     TutorId = model.TutorId, // Gán ID của gia sư từ model  
                     SubjectId = model.SubjectId, // Gán ID của môn học từ model  
@@ -155,6 +158,8 @@ namespace OnDemandTutor.Services.Service
         {
             try
             {
+
+
                 // Lấy thông tin môn học hiện tại dựa trên ID của gia sư và môn học  
                 var existingTutorSubject = await _unitOfWork.TutorRepository.GetByTutorIdSubjectIdAsync(tutorId, subjectId);
                 if (existingTutorSubject != null)
@@ -189,6 +194,8 @@ namespace OnDemandTutor.Services.Service
 
         public async Task<bool> DeleteTutorSubjectByTutorIdAndSubjectIdAsync(Guid tutorId, string subjectId)
         {
+
+            //check delete time xem thử delete chưa
             try
             {
                 // Lấy thông tin môn học hiện tại dựa trên ID của gia sư và môn học  

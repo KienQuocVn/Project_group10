@@ -22,11 +22,12 @@ namespace OnDemandTutor.Repositories.Entity
         [JsonIgnore] // ngăn không cho tuần tự hóa Feedbacks
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
-
+        public virtual ICollection<Booking> Bookings { get; set; }
         public Accounts()
         {
             CreatedTime = CoreHelper.SystemTimeNow;
             LastUpdatedTime = CreatedTime;
         }
+       
     }
 }

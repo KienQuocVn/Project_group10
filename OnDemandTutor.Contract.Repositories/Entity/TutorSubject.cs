@@ -11,5 +11,6 @@ namespace OnDemandTutor.Contract.Repositories.Entity
 
         public virtual Accounts Tutor { get; set; }
         public virtual Subject Subject { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

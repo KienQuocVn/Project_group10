@@ -94,7 +94,7 @@ namespace OnDemandTutor.API.Controllers
             return Ok("Account updated successfully.");
         }
 
-
+        [Authorize]
         [HttpPost("add-role-to-user")]
         public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleModel model)
         {
