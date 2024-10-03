@@ -15,5 +15,6 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public string Name { get; set; }
         public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

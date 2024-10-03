@@ -10,6 +10,10 @@ using OnDemandTutor.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Core.Base;
 
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+
+
 namespace OnDemandTutor.API.Controllers
 {
     [Route("api/[controller]")]
@@ -96,7 +100,7 @@ namespace OnDemandTutor.API.Controllers
             return Ok("Account updated successfully.");
         }
 
-
+        [Authorize]
         [HttpPost("add-role-to-user")]
         public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleModel model)
         {
@@ -207,5 +211,48 @@ namespace OnDemandTutor.API.Controllers
                 return BadRequest(new { Message = ex.Message });
             }
         }
+        //[HttpGet("signin-google")]
+        //public IActionResult SignInWithGoogle()
+        //{
+        //    var redirectUrl = Url.Action("GoogleResponse", "Auth");
+        //    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+        //    return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        //}
+
+        //[HttpGet("google-response")]
+        //public async Task<IActionResult> GoogleResponse()
+        //{
+        //    var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+        //    if (!result.Succeeded)
+        //        return BadRequest(); // Xử lý lỗi  
+
+        //    // Lấy thông tin người dùng từ result  
+        //    var email = result.Principal.FindFirstValue(ClaimTypes.Email);
+        //    // Xử lý đăng nhập (tạo token, lưu vào database, v.v.)  
+
+        //    return Ok(new { Email = email });
+        //}
+
+        //[HttpGet("signin-facebook")]
+        //public IActionResult SignInWithFacebook()
+        //{
+        //    var redirectUrl = Url.Action("FacebookResponse", "Auth");
+        //    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+        //    return Challenge(properties, FacebookDefaults.AuthenticationScheme);
+        //}
+
+        //[HttpGet("facebook-response")]
+        //public async Task<IActionResult> FacebookResponse()
+        //{
+        //    var result = await HttpContext.AuthenticateAsync(FacebookDefaults.AuthenticationScheme);
+        //    if (!result.Succeeded)
+        //        return BadRequest(); // Xử lý lỗi  
+
+        //    // Lấy thông tin người dùng từ result  
+        //    var email = result.Principal.FindFirstValue(ClaimTypes.Email);
+        //    // Xử lý đăng nhập (tạo token, lưu vào cơ sở dữ liệu, v.v.)  
+
+        //    return Ok(new { Email = email });
+        //}
     }
 }

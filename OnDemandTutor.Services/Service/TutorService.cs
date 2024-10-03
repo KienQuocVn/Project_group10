@@ -13,8 +13,7 @@ namespace OnDemandTutor.Services.Service
 {
     public class TutorService : ITutorService
     {
-        // Khai báo biến _unitOfWork để truy cập các repository
-        //testtttt
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         // Constructor nhận vào IUnitOfWork để khởi tạo service  
@@ -25,7 +24,7 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Phương thức lấy danh sách tất cả các môn học của gia sư với phân trang  
-        public async Task<BasePaginatedList<TutorSubject>> GetAllTutor(int pageNumber, int pageSize, Guid? TutorId,string? SubjectId)
+        public async Task<BasePaginatedList<TutorSubject>> GetAllTutor(int pageNumber, int pageSize, Guid? TutorId, string? SubjectId)
         {
             IQueryable<TutorSubject> tutorQuery = _unitOfWork.GetRepository<TutorSubject>().Entities
                 .OrderByDescending(p => p.CreatedTime);
@@ -119,16 +118,16 @@ namespace OnDemandTutor.Services.Service
             // Create a new TutorSubject entity  
             var tutorSubject = new TutorSubject
             {
-                TutorId = Guid.NewGuid(), 
+                TutorId = Guid.NewGuid(),
                 UserId = model.UserId,
-                SubjectId = model.SubjectId, 
+                SubjectId = model.SubjectId,
                 Bio = model.Bio,
                 Rating = model.Rating,
                 Experience = model.Experience,
                 HourlyRate = model.HourlyRate,
                 Id = Guid.NewGuid().ToString("N"),
-                CreatedBy= "admin",
-                CreatedTime = DateTimeOffset.Now, 
+                CreatedBy = "admin",
+                CreatedTime = DateTimeOffset.Now,
             };
 
             await _unitOfWork.TutorRepository.InsertAsync(tutorSubject);
@@ -199,7 +198,7 @@ namespace OnDemandTutor.Services.Service
             _mapper.Map(model, existingTutorSubject);
 
             // Thiết lập các thuộc tính bổ sung
-            existingTutorSubject.LastUpdatedBy = "admin";  
+            existingTutorSubject.LastUpdatedBy = "admin";
             existingTutorSubject.LastUpdatedTime = DateTimeOffset.UtcNow;
 
             _unitOfWork.TutorRepository.Update(existingTutorSubject);
@@ -225,7 +224,7 @@ namespace OnDemandTutor.Services.Service
                 ?? throw new Exception("The Tutor cannot be found or it has been deleted!");
 
             existingTutorSubject.DeletedTime = DateTimeOffset.UtcNow;
-            existingTutorSubject.DeletedBy = "admin"; 
+            existingTutorSubject.DeletedBy = "admin";
             _unitOfWork.TutorRepository.Update(existingTutorSubject);
             await _unitOfWork.SaveAsync();
             return _mapper.Map<ResponseTutorModelViews>(existingTutorSubject);

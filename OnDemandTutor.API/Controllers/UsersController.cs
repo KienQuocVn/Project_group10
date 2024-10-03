@@ -38,7 +38,7 @@ namespace OnDemandTutor.API.Controllers
             catch (Exception ex)
             {
                 // Ghi log và trả về lỗi 500 nếu có lỗi không mong đợi
-                _logger.LogError(ex, "Error occurred while processing forgot password request.");
+                _logger.LogError(ex, "Lỗi xử lý");
                 return StatusCode(500, "Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn. Vui lòng thử lại sau.");
             }
         }
@@ -89,7 +89,5 @@ namespace OnDemandTutor.API.Controllers
                 return StatusCode(500, "Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn. Vui lòng thử lại sau.");
             }
         }
-
-
     }
 }
