@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using OnDemandTutor.Services.Service;
 using Microsoft.AspNetCore.Authorization;
 using OnDemandTutor.Repositories.Entity;
+using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.Core.Base;
 
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
@@ -196,6 +198,19 @@ namespace OnDemandTutor.API.Controllers
             return Ok("Claim deleted successfully.");
         }
 
+        [HttpGet("getAccountByRolename")]
+        public async Task<ActionResult<BasePaginatedList<Schedule>>> GetAllSchedules(int pageNumber = 1, int pageSize = 5, string roleName = null)
+        {
+            try
+            {
+                var result = await _userService.GetAccountsByRoleAsync(roleName, pageNumber, pageSize);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
         //[HttpGet("signin-google")]
         //public IActionResult SignInWithGoogle()
         //{
