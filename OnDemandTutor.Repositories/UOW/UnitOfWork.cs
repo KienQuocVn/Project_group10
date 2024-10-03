@@ -54,6 +54,19 @@ namespace OnDemandTutor.Repositories.UOW
                 return feedbackRepository;
             }
         }
+        public IGenericRepository<Slot> slotRepository;
+
+        public IGenericRepository<Slot> SlotRepository
+        {
+            get
+            {
+                if (this.slotRepository == null)
+                {
+                    this.slotRepository = new GenericRepository<Slot>(_dbContext);
+                }
+                return slotRepository;
+            }
+        }
 
         private IGenericRepository<Subject> subjectRepository; 
         public IGenericRepository<Subject> SubjectRepository

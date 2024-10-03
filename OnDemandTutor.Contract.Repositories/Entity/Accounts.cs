@@ -19,7 +19,7 @@ namespace OnDemandTutor.Repositories.Entity
         public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<Complaint> Complaints { get; set; }
-        [JsonIgnore] // ngăn không cho tuần tự hóa Feedbacks
+        [JsonIgnore] 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }

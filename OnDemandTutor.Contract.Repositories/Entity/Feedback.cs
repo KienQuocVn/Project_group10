@@ -33,10 +33,12 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         //public virtual Slot Slot { get; set; }
         //public int Id { get; set; }
 
+        //[Key] // Đánh dấu Id là khóa chính
+        //public Guid Id { get; set; } = Guid.NewGuid(); // Tự động tạo GUID mới
         public Guid StudentId { get; set; }
         public Guid TutorId { get; set; }
         public string FeedbackText { get; set; }
-
+        public string SlotId { get; set; }
         public int NumberOfViolations { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
