@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Repositories.Entity;
+using System;
 
 namespace OnDemandTutor.Repositories.Context
 {
@@ -10,7 +11,7 @@ namespace OnDemandTutor.Repositories.Context
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
-        // DbSets cho các thực thể  
+
         public virtual DbSet<Accounts> ApplicationUsers => Set<Accounts>();
         public virtual DbSet<ApplicationRole> ApplicationRoles => Set<ApplicationRole>();
         public virtual DbSet<ApplicationUserClaims> ApplicationUserClaims => Set<ApplicationUserClaims>();
@@ -18,6 +19,11 @@ namespace OnDemandTutor.Repositories.Context
         public virtual DbSet<ApplicationUserLogins> ApplicationUserLogins => Set<ApplicationUserLogins>();
         public virtual DbSet<ApplicationRoleClaims> ApplicationRoleClaims => Set<ApplicationRoleClaims>();
         public virtual DbSet<ApplicationUserTokens> ApplicationUserTokens => Set<ApplicationUserTokens>();
+
+
+        // Custom entities
+        public DbSet<Accounts> Students { get; set; }
+
         public virtual DbSet<UserInfo> UserInfos => Set<UserInfo>();
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<Complaint> Complaints { get; set; }
@@ -28,18 +34,31 @@ namespace OnDemandTutor.Repositories.Context
         public virtual DbSet<TutorSubject> TutorSubjects { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
 
+        public virtual DbSet<Booking> Bookings { get; set; } // Thêm bảng Booking
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+
+            // TutorSubject relationships
+
             // Cấu hình mối quan hệ cho TutorSubject  
+
             modelBuilder.Entity<TutorSubject>()
                 .HasKey(ts => new { ts.TutorId, ts.UserId }); // Khóa chính cho TutorSubject  
 
             modelBuilder.Entity<TutorSubject>()
+
+                .HasOne(ts => ts.Tutor)
+                .WithMany(t => t.TutorSubjects)
+                .HasForeignKey(ts => ts.TutorId)
+
                 .HasOne(ts => ts.User) // Mối quan hệ với Accounts  
                 .WithMany(a => a.TutorSubjects)
                 .HasForeignKey(ts => ts.UserId)
+
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TutorSubject>()
@@ -48,7 +67,11 @@ namespace OnDemandTutor.Repositories.Context
                 .HasForeignKey(ts => ts.SubjectId) // Khóa ngoại  
                 .OnDelete(DeleteBehavior.Cascade);
 
+
+            // Schedule relationships
+
             // Cấu hình mối quan hệ cho Schedule  
+
             modelBuilder.Entity<Schedule>()
                 .HasKey(s => new { s.StudentId, s.SlotId }); // Khóa chính cho Schedule  
 
@@ -64,9 +87,15 @@ namespace OnDemandTutor.Repositories.Context
                 .HasForeignKey(s => s.SlotId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
+            // Complaint relationships
+            modelBuilder.Entity<Complaint>()
+                .HasKey(ts => new { ts.StudentId, ts.TutorId });
+
             // Cấu hình mối quan hệ cho Complaint  
             modelBuilder.Entity<Complaint>()
                 .HasKey(c => new { c.StudentId, c.TutorId }); // Khóa chính cho Complaint  
+
 
             modelBuilder.Entity<Complaint>()
                 .HasOne(c => c.Accounts) // Mối quan hệ với Accounts  
@@ -78,7 +107,11 @@ namespace OnDemandTutor.Repositories.Context
                 .WithMany(a => a.Complaints)
                 .HasForeignKey(c => c.TutorId);
 
+
+            // Feedback relationships
+
             // Cấu hình mối quan hệ cho Feedback  
+
             modelBuilder.Entity<Feedback>()
                 .HasKey(f => new { f.StudentId, f.TutorId }); // Khóa chính cho Feedback  
 
@@ -89,6 +122,33 @@ namespace OnDemandTutor.Repositories.Context
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Feedback>()
+
+               .HasOne(ts => ts.Accounts)
+                .WithMany(s => s.Feedbacks)
+                .HasForeignKey(ts => ts.TutorId);
+
+            // Booking relationships
+            modelBuilder.Entity<Booking>()
+                .HasKey(b => b.Id);
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Student)
+                .WithMany(s => s.Bookings)
+                .HasForeignKey(b => b.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Subject)
+                .WithMany(s => s.Bookings)
+                .HasForeignKey(b => b.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.TutorSubject)
+                .WithMany(ts => ts.Bookings)
+                .HasForeignKey(b => b.TutorSubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
                 .HasOne(f => f.Accounts) // Mối quan hệ với Accounts  
                 .WithMany(a => a.Feedbacks)
                 .HasForeignKey(f => f.StudentId);
@@ -103,6 +163,7 @@ namespace OnDemandTutor.Repositories.Context
                 .HasOne(s => s.Class) // Mối quan hệ với Class  
                 .WithMany(c => c.Slots)
                 .HasForeignKey(s => s.ClassId);
+
         }
     }
 }

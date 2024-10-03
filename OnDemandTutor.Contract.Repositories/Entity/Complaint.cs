@@ -45,5 +45,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         // Navigation properties
         public virtual Accounts Accounts { get; set; }
         public virtual Slot Slot { get; set; }
+
+
     }
 }
