@@ -58,6 +58,14 @@ namespace OnDemandTutor.Services.Service
             // Thêm lớp vào cơ sở dữ liệu
             await _unitOfWork.ClassRepository.InsertAsync(newClass);
             await _unitOfWork.SaveAsync();
+
+            //fix chọn ngày giờ linh động không set mặc định ngày
+
+            // chọn ngày học rảnh 
+
+            // linh động chọn giờ chọn lsot , xem có lớp có hay k ,,
+
+            // linh hoạt chọn ngày vs môn học 
             for (int i = 0; i < 20; i++)
             {
                 var startDateTime = DateTime.Now.Date.AddDays(i).Add(slot.StartTime);  // Bắt đầu tại thời gian trong ngày
