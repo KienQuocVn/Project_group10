@@ -119,7 +119,7 @@ namespace OnDemandTutor.Repositories.Context
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Feedback>()
-<<<<<<< HEAD
+
 
                .HasOne(ts => ts.Accounts)
                 .WithMany(s => s.Feedbacks)
@@ -151,8 +151,6 @@ namespace OnDemandTutor.Repositories.Context
             ///////////////////////////////////////////////////////// 
 
             modelBuilder.Entity<Feedback>()
-=======
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
                .HasOne(f => f.Accounts) // Mối quan hệ với Accounts  
                 .WithMany(a => a.Feedbacks)
                 .HasForeignKey(f => f.StudentId);
