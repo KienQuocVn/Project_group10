@@ -33,7 +33,6 @@ namespace OnDemandTutor.Repositories.Context
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<TutorSubject> TutorSubjects { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
-
         public virtual DbSet<Booking> Bookings { get; set; } // Thêm bảng Booking
 
 
@@ -120,6 +119,40 @@ namespace OnDemandTutor.Repositories.Context
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Feedback>()
+<<<<<<< HEAD
+
+               .HasOne(ts => ts.Accounts)
+                .WithMany(s => s.Feedbacks)
+                .HasForeignKey(ts => ts.TutorId);
+
+            // Booking relationships
+            modelBuilder.Entity<Booking>()
+        .HasKey(b => b.Id); // Định nghĩa khóa chính cho Booking
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Student) // Mối quan hệ 1-n với Accounts (Student)
+                .WithMany(s => s.Bookings)
+                .HasForeignKey(b => b.StudentId)
+                .OnDelete(DeleteBehavior.Cascade); // Nếu Student bị xóa, xóa luôn các Booking liên quan
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.Subject) // Mối quan hệ 1-n với Subject
+                .WithMany(s => s.Bookings)
+                .HasForeignKey(b => b.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade); // Nếu Subject bị xóa, xóa luôn các Booking liên quan
+
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.TutorSubject) // Mối quan hệ với TutorSubject
+                .WithMany(ts => ts.Bookings)
+                .HasForeignKey(b => new { b.TutorId, b.SubjectId }) // Khóa ngoại ghép
+                .OnDelete(DeleteBehavior.Cascade); // Nếu TutorSubject bị xóa, xóa luôn các Booking liên quan
+
+
+            ///////////////////////////////////////////////////////// 
+
+            modelBuilder.Entity<Feedback>()
+=======
+>>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
                .HasOne(f => f.Accounts) // Mối quan hệ với Accounts  
                 .WithMany(a => a.Feedbacks)
                 .HasForeignKey(f => f.StudentId);

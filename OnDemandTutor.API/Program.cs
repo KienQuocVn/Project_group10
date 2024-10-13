@@ -38,13 +38,13 @@ builder.Services.AddScoped<IVNPayService, VnPayService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<ITutorService, TutorService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
 
 
 // Cấu hình appsettings theo môi trường
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<ITutorService, TutorService>();
 

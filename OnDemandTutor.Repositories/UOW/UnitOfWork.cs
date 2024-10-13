@@ -15,6 +15,18 @@ namespace OnDemandTutor.Repositories.UOW
         {
             _dbContext = dbContext;
         }
+        private IGenericRepository<Booking> bookingRepository;
+        public IGenericRepository<Booking> BookingRepository
+        {
+            get
+            {
+                if (bookingRepository == null)
+                {
+                    bookingRepository = new GenericRepository<Booking>(_dbContext);
+                }
+                return bookingRepository;
+            }
+        }
 
         private IGenericRepository<Schedule> scheduleRepository; 
         public IGenericRepository<Schedule> ScheduleRepository

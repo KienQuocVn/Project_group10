@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnDemandTutor.API.Migrations
 {
     /// <inheritdoc />
-    public partial class update : Migration
+    public partial class FixStudentIdRelationship : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -374,6 +374,46 @@ namespace OnDemandTutor.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_AspNetUsers_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bookings_TutorSubjects_TutorId_UserId",
+                        columns: x => new { x.TutorId, x.UserId },
+                        principalTable: "TutorSubjects",
+                        principalColumns: new[] { "TutorId", "UserId" },
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Complaints",
                 columns: table => new
                 {
@@ -538,6 +578,21 @@ namespace OnDemandTutor.API.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bookings_StudentId",
+                table: "Bookings",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_SubjectId",
+                table: "Bookings",
+                column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_TutorId_UserId",
+                table: "Bookings",
+                columns: new[] { "TutorId", "UserId" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Classes_AccountId",
                 table: "Classes",
                 column: "AccountId");
@@ -622,6 +677,9 @@ namespace OnDemandTutor.API.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Bookings");
+
+            migrationBuilder.DropTable(
                 name: "Complaints");
 
             migrationBuilder.DropTable(
@@ -634,10 +692,10 @@ namespace OnDemandTutor.API.Migrations
                 name: "Schedules");
 
             migrationBuilder.DropTable(
-                name: "TutorSubjects");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "TutorSubjects");
 
             migrationBuilder.DropTable(
                 name: "Slots");

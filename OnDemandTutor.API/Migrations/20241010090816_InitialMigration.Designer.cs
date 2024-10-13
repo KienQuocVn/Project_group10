@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnDemandTutor.Repositories.Context;
 
@@ -11,9 +12,11 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241010090816_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -294,21 +297,10 @@ namespace OnDemandTutor.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-<<<<<<< HEAD
                     b.Property<Guid>("TutorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
-=======
-                    b.Property<string>("TutorSubjectId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TutorSubjectTutorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TutorSubjectUserId")
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -317,11 +309,7 @@ namespace OnDemandTutor.API.Migrations
 
                     b.HasIndex("SubjectId");
 
-<<<<<<< HEAD
                     b.HasIndex("TutorId", "UserId");
-=======
-                    b.HasIndex("TutorSubjectTutorId", "TutorSubjectUserId");
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
 
                     b.ToTable("Bookings");
                 });
@@ -433,10 +421,10 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Feedback", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountsId")
+                    b.Property<Guid>("TutorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ClassId")
@@ -461,6 +449,9 @@ namespace OnDemandTutor.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastUpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -474,19 +465,13 @@ namespace OnDemandTutor.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TutorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountsId");
+                    b.HasKey("StudentId", "TutorId");
 
                     b.HasIndex("ClassId");
 
                     b.HasIndex("SlotId");
+
+                    b.HasIndex("TutorId");
 
                     b.ToTable("Feedbacks");
                 });
@@ -924,11 +909,7 @@ namespace OnDemandTutor.API.Migrations
 
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.TutorSubject", "TutorSubject")
                         .WithMany("Bookings")
-<<<<<<< HEAD
                         .HasForeignKey("TutorId", "UserId")
-=======
-                        .HasForeignKey("TutorSubjectTutorId", "TutorSubjectUserId")
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -981,12 +962,6 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Feedback", b =>
                 {
-                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("AccountsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Class", null)
                         .WithMany("Feedbacks")
                         .HasForeignKey("ClassId");
@@ -995,6 +970,12 @@ namespace OnDemandTutor.API.Migrations
                         .WithMany("Feedbacks")
                         .HasForeignKey("SlotId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("TutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Accounts");
