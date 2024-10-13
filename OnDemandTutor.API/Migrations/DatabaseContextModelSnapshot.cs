@@ -294,13 +294,12 @@ namespace OnDemandTutor.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-<<<<<<< HEAD
+
                     b.Property<Guid>("TutorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
-=======
-                    b.Property<string>("TutorSubjectId")
+                    b.Property<Guid>("UserId");
+                  b.Property<string>("TutorSubjectId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -308,7 +307,7 @@ namespace OnDemandTutor.API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("TutorSubjectUserId")
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
+
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -317,11 +316,10 @@ namespace OnDemandTutor.API.Migrations
 
                     b.HasIndex("SubjectId");
 
-<<<<<<< HEAD
-                    b.HasIndex("TutorId", "UserId");
-=======
+                 b.HasIndex("TutorId", "UserId");
+
                     b.HasIndex("TutorSubjectTutorId", "TutorSubjectUserId");
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
+
 
                     b.ToTable("Bookings");
                 });
@@ -924,11 +922,11 @@ namespace OnDemandTutor.API.Migrations
 
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.TutorSubject", "TutorSubject")
                         .WithMany("Bookings")
-<<<<<<< HEAD
+
                         .HasForeignKey("TutorId", "UserId")
-=======
+
                         .HasForeignKey("TutorSubjectTutorId", "TutorSubjectUserId")
->>>>>>> 991e0be3e63b3e2c7914793e6fa4efd988597bf0
+
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

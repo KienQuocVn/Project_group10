@@ -16,6 +16,7 @@ using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.UOW;
 
 using OnDemandTutor.Services.Service;
+using OnDemandTutor.Services.Service.AccountUltil;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,10 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<ITutorService, TutorService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddScoped<AccountUtils>();
+
 
 
 // Cấu hình appsettings theo môi trường

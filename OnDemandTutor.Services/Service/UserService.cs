@@ -86,7 +86,8 @@ namespace OnDemandTutor.Services.Service
             {
                 FullName = model.FullName,
                 Gender = model.Gender,
-                LinkCV = model.linkCV
+                LinkCV = model.linkCV,
+                Balance = 0              
             };
 
             var newAccount = new Accounts
