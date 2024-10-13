@@ -10,38 +10,36 @@ namespace OnDemandTutor.Repositories.UOW
     {
         protected readonly DatabaseContext _context;
         protected readonly DbSet<T> _dbSet;
+
         public GenericRepository(DatabaseContext dbContext)
         {
             _context = dbContext;
             _dbSet = _context.Set<T>();
         }
+
         public IQueryable<T> Entities => _context.Set<T>();
 
         public void Delete(object id)
         {
-            T entity = _dbSet.Find(id) ?? throw new Exception();
+            T entity = _dbSet.Find(id) ?? throw new Exception("Entity not found.");
             _dbSet.Remove(entity);
         }
 
         public async Task DeleteAsync(object id)
         {
-            T entity = await _dbSet.FindAsync(id) ?? throw new Exception();
+            T entity = await _dbSet.FindAsync(id) ?? throw new Exception("Entity not found.");
             _dbSet.Remove(entity);
         }
 
         public async Task<T?> FindByNameAsync(string name)
         {
-            // Kiểm tra xem kiểu T có thuộc tính "Name" hay không
             var propertyInfo = typeof(T).GetProperty("Name");
             if (propertyInfo == null)
             {
                 throw new Exception($"Type {typeof(T).Name} does not contain a property named 'Name'.");
             }
-
-            // Tìm đối tượng có thuộc tính "Name" khớp với tham số đầu vào
             return await _dbSet.FirstOrDefaultAsync(e => EF.Property<string>(e, "Name") == name);
         }
-
 
         public IEnumerable<T> GetAll()
         {
@@ -63,7 +61,7 @@ namespace OnDemandTutor.Repositories.UOW
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId)
+        public async Task<TutorSubject?> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId)
         {
             if (typeof(T) == typeof(TutorSubject))
             {
@@ -78,7 +76,7 @@ namespace OnDemandTutor.Repositories.UOW
         {
             query = query.AsNoTracking();
             int count = await query.CountAsync();
-            IReadOnlyCollection<T> items = await query.Skip((pageSize - 1) * pageSize).Take(pageSize).ToListAsync();
+            var items = await query.Skip((index - 1) * pageSize).Take(pageSize).ToListAsync();
             return new BasePaginatedList<T>(items, count, index, pageSize);
         }
 
@@ -114,7 +112,12 @@ namespace OnDemandTutor.Repositories.UOW
 
         public Task UpdateAsync(T obj)
         {
-            return Task.FromResult(_dbSet.Update(obj));
+            _dbSet.Update(obj);
+            return Task.CompletedTask;
+        }
+        public async Task<T?> FindAsync(object id)
+        {
+            return await _dbSet.FindAsync(id);
         }
     }
 }

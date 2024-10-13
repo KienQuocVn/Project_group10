@@ -9,8 +9,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         [Key]
         public Guid TutorId { get; set; }
         public Guid UserId { get; set; }
-        public string SubjectId { get; set; }
-
+        public string SubjectId { get; set; } = Guid.NewGuid().ToString();
         public string Bio { get; set; }
         public double Rating { get; set; }
         public int Experience { get; set; }

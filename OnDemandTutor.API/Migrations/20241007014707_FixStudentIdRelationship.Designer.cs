@@ -12,8 +12,8 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20241002030305_update")]
-    partial class update
+    [Migration("20241007014707_FixStudentIdRelationship")]
+    partial class FixStudentIdRelationship
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -262,6 +262,56 @@ namespace OnDemandTutor.API.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Booking", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("BookingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("CreatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("DeletedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LastUpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("LastUpdatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SubjectId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TutorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("TutorId", "UserId");
+
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
@@ -843,6 +893,33 @@ namespace OnDemandTutor.API.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Booking", b =>
+                {
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Student")
+                        .WithMany("Bookings")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Subject", "Subject")
+                        .WithMany("Bookings")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.TutorSubject", "TutorSubject")
+                        .WithMany("Bookings")
+                        .HasForeignKey("TutorId", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("TutorSubject");
+                });
+
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Class", b =>
                 {
                     b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "account")
@@ -993,13 +1070,22 @@ namespace OnDemandTutor.API.Migrations
 
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Subject", b =>
                 {
+                    b.Navigation("Bookings");
+
                     b.Navigation("Classes");
 
                     b.Navigation("TutorSubjects");
                 });
 
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.TutorSubject", b =>
+                {
+                    b.Navigation("Bookings");
+                });
+
             modelBuilder.Entity("OnDemandTutor.Repositories.Entity.Accounts", b =>
                 {
+                    b.Navigation("Bookings");
+
                     b.Navigation("Classes");
 
                     b.Navigation("Complaints");

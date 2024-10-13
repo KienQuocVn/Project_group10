@@ -9,10 +9,11 @@ namespace OnDemandTutor.ModelViews.Booking
     
         public class BookingDto
         {
-            public string StudentId { get; set; }
-            public string SubjectId { get; set; }
-            public string TutorSubjectId { get; set; }
-        }
+            public Guid StudentId { get; set; }
+            public Guid SubjectId { get; set; }
+            public Guid TutorSubjectId { get; set; }
+             public Guid SlotId { get; set; }
+    }
     
 
 }
