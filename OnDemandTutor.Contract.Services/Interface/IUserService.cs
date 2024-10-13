@@ -1,4 +1,5 @@
 ﻿using OnDemandTutor.Contract.Repositories.Entity;
+using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.AuthModelViews;
 using OnDemandTutor.ModelViews.UserModelViews;
 using OnDemandTutor.Repositories.Entity;
@@ -45,5 +46,7 @@ namespace OnDemandTutor.Contract.Services.Interface
         Task<bool> ResetPasswordAsync(string email, string otp, string newPassword);
         Task<bool> ForgotPasswordAsync(string email);
         Task<bool> VerifyOtpAsync(string email, string otp);
+
+        Task<BasePaginatedList<Accounts>> GetAccountsByRoleAsync(string roleName, int pageNumber, int pageSize);
     }
 }

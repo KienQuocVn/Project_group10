@@ -21,6 +21,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/Schedule
+        // lấy tất cả các lịch
         [HttpGet()]
         public async Task<ActionResult<BasePaginatedList<Schedule>>> GetAllSchedules(int pageNumber = 1, int pageSize = 5, Guid? studentId = null, string? slotId = null, string status = null)
         {
@@ -36,6 +37,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/Schedule
+        // lấy tất cả lịch trừ những lịch đã được xóa
         [HttpGet("searchSchedule")]
         public async Task<ActionResult<BasePaginatedList<Schedule>>> SearchSchedules(int pageNumber = 1, int pageSize = 5, Guid? studentId = null, string? slotId = null, string status = null)
         {
@@ -52,6 +54,7 @@ namespace OnDemandTutor.API.Controllers
 
 
         // POST: api/Schedule
+        // tạo 1 lịch mới chuyền vào studentID, SlotId, Status
         [HttpPost()]
         public async Task<ActionResult<Schedule>> CreateSchedule([FromBody] CreateScheduleModelViews model)
         {
@@ -84,6 +87,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // DELETE: api/Schedule/delete/{studentId}/{slotId}
+        // Xóa lịch truyền vào gồm student id và slotId
         [HttpDelete("delete/{studentId}/{slotId}")]
         public async Task<IActionResult> DeleteSchedule(Guid studentId, string slotId)
         {
