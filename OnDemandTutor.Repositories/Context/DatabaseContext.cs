@@ -151,7 +151,6 @@ namespace OnDemandTutor.Repositories.Context
             ///////////////////////////////////////////////////////// 
 
             modelBuilder.Entity<Feedback>()
-
                .HasOne(f => f.Accounts) // Mối quan hệ với Accounts  
                 .WithMany(a => a.Feedbacks)
                 .HasForeignKey(f => f.StudentId);

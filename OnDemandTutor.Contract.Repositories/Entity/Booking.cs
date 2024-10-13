@@ -1,3 +1,4 @@
+
 ﻿
 
 using OnDemandTutor.Core.Base;
@@ -12,15 +13,13 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public Guid TutorId { get; set; }
         public Guid SubjectId { get; set; }
         public Guid SlotId { get; set; }
-        public virtual Accounts Student { get; set; }
-
-        public virtual Subject Subject { get; set; }
-
         public DateTime BookingDate { get; set; }
         public double TotalPrice { get; set; }
 
         // Navigation properties
+        public virtual Accounts Student { get; set; }
         public virtual TutorSubject TutorSubject { get; set; }
+        public virtual Subject Subject { get; set; }
         public virtual Slot Slot { get; set; }
     }
 }

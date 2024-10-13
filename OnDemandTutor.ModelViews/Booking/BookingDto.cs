@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,7 @@ namespace OnDemandTutor.ModelViews.Booking
             public Guid SubjectId { get; set; }
             public Guid TutorSubjectId { get; set; }
              public Guid SlotId { get; set; }
-    
-        }
+    }
 
     
 
