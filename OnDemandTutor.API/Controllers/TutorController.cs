@@ -22,7 +22,7 @@ namespace OnDemandTutor.API.Controllers
 
         // Phương thức GET để lấy tất cả các môn học của gia sư với phân trang  
         [HttpGet]
-        public async Task<ActionResult<BasePaginatedList<TutorSubject>>> GetAllTutor(int pageNumber = 1, int pageSize = 5, Guid? TutorId = null, string? SubjectId = null)
+        public async Task<ActionResult<BasePaginatedList<TutorSubject>>> GetAllTutor(int pageNumber = 1, int pageSize = 5, Guid? TutorId = null, Guid? SubjectId = null)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace OnDemandTutor.API.Controllers
 
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchById(int pageNumber = 1, int pageSize = 5, Guid? TutorId = null, string? SubjectId = null)
+        public async Task<IActionResult> SearchById(int pageNumber = 1, int pageSize = 5, Guid? TutorId = null, Guid? SubjectId = null)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         [HttpPut("{tutorId}/{subjectId}")]
-        public async Task<ActionResult> UpdateTutorSubject(Guid tutorId, string subjectId, [FromBody] UpdateTutorSubjectModelViews model)
+        public async Task<ActionResult> UpdateTutorSubject(Guid tutorId, Guid subjectId, [FromBody] UpdateTutorSubjectModelViews model)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace OnDemandTutor.API.Controllers
 
         // Phương thức DELETE để xóa môn học của gia sư theo ID  
         [HttpDelete("delete/{tutorId}/{subjectId}")]
-        public async Task<IActionResult> DeleteTutorSubjectAsync(Guid tutorId, string subjectId)
+        public async Task<IActionResult> DeleteTutorSubjectAsync(Guid tutorId, Guid subjectId)
         {
             try
             {

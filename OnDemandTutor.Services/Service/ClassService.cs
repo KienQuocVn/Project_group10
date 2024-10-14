@@ -121,13 +121,13 @@ namespace OnDemandTutor.Services.Service
             }
 
             // Kiểm tra sự tồn tại của Subject
-            bool isExistSubject = await _unitOfWork.GetRepository<Subject>().Entities
-                .AnyAsync(s => s.Id == model.SubjectId && !s.DeletedTime.HasValue);
+            //bool isExistSubject = await _unitOfWork.GetRepository<Subject>().Entities
+            //    .AnyAsync(s => s.Id == model.SubjectId && !s.DeletedTime.HasValue);
 
-            if (!isExistSubject)
-            {
-                throw new Exception("The Subject cannot be found or has been deleted!");
-            }
+            //if (!isExistSubject)
+            //{
+            //    throw new Exception("The Subject cannot be found or has been deleted!");
+            //}
 
 
             Class newClass = _mapper.Map<Class>(model);
@@ -168,13 +168,13 @@ namespace OnDemandTutor.Services.Service
             }
 
             // Kiểm tra sự tồn tại của Subject
-            bool isExistSubject = await _unitOfWork.GetRepository<Subject>().Entities
-                .AnyAsync(s => s.Id == model.SubjectId && !s.DeletedTime.HasValue);
+            //bool isExistSubject = await _unitOfWork.GetRepository<Subject>().Entities
+            //    .AnyAsync(s => s.Id == model.SubjectId && !s.DeletedTime.HasValue);
 
-            if (!isExistSubject)
-            {
-                throw new Exception("The Subject cannot be found or has been deleted!");
-            }
+            //if (!isExistSubject)
+            //{
+            //    throw new Exception("The Subject cannot be found or has been deleted!");
+            //}
 
             // Kiểm tra tính hợp lệ của AmountOfSlot
             if (model.AmountOfSlot <= 0)
