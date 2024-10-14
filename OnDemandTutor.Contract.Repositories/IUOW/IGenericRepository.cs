@@ -29,7 +29,7 @@ namespace OnDemandTutor.Contract.Repositories.Interface
 
 
         Task<T?> FindByNameAsync(string name);
-     Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId);
+     Task<TutorSubject> GetByTutorIdSubjectIdAsync(Guid tutorId, Guid subjectId);
         
     }
 }

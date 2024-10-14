@@ -10,7 +10,7 @@ namespace OnDemandTutor.ModelViews.TutorSubjectModelViews
     public class CreateTutorSubjectModelViews
     {
         public Guid UserId { get; set; }
-        public string SubjectId { get; set; }
+        public Guid SubjectId { get; set; }
         public string Bio { get; set; }
         public double Rating { get; set; }
         public int Experience { get; set; }

@@ -56,7 +56,7 @@ public class SubjectService : ISubjectService
             // T?o ??i t??ng môn h?c m?i t? mô hình  
             var subjectEntity = new Subject
             {
-                Id = model.Id ?? Guid.NewGuid().ToString(), // T?o ID m?i n?u không có  
+                Id = Guid.NewGuid(),
                 Name = model.Name,
                 CreatedBy = model.CreatedBy,
                 CreatedTime = DateTimeOffset.Now,

@@ -61,7 +61,7 @@ namespace OnDemandTutor.Repositories.UOW
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<TutorSubject?> GetByTutorIdSubjectIdAsync(Guid tutorId, string subjectId)
+        public async Task<TutorSubject?> GetByTutorIdSubjectIdAsync(Guid tutorId, Guid subjectId)
         {
             if (typeof(T) == typeof(TutorSubject))
             {

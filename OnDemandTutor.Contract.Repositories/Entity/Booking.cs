@@ -1,6 +1,3 @@
-
-﻿
-
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.Repositories.Entity;
 

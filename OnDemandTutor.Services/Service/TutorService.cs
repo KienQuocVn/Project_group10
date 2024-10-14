@@ -24,18 +24,18 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Phương thức lấy danh sách tất cả các môn học của gia sư với phân trang  
-        public async Task<BasePaginatedList<TutorSubject>> GetAllTutor(int pageNumber, int pageSize, Guid? TutorId, string? SubjectId)
+        public async Task<BasePaginatedList<TutorSubject>> GetAllTutor(int pageNumber, int pageSize, Guid? tutorId, Guid? subjectId)
         {
             IQueryable<TutorSubject> tutorQuery = _unitOfWork.GetRepository<TutorSubject>().Entities
                 .OrderByDescending(p => p.CreatedTime);
-            if (TutorId.HasValue)
+            if (tutorId.HasValue)
             {
-                tutorQuery = tutorQuery.Where(p => p.User.Id == TutorId);
+                tutorQuery = tutorQuery.Where(p => p.User.Id == tutorId);
             }
 
-            if (!string.IsNullOrWhiteSpace(SubjectId))
+            if (subjectId.HasValue)
             {
-                tutorQuery = tutorQuery.Where(p => p.Subject.Id == SubjectId);
+                tutorQuery = tutorQuery.Where(p => p.Subject.Id == subjectId);
             }
             int totalCount = await tutorQuery.CountAsync();
             List<TutorSubject> tutorpage = await tutorQuery
@@ -46,21 +46,21 @@ namespace OnDemandTutor.Services.Service
             return new BasePaginatedList<TutorSubject>(tutorpage, totalCount, pageNumber, pageSize);
         }
 
-        public async Task<BasePaginatedList<TutorSubject>> SearchById(int pageNumber, int pageSize, Guid? TutorId, string? SubjectId)
+        public async Task<BasePaginatedList<TutorSubject>> SearchById(int pageNumber, int pageSize, Guid? tutorId, Guid? subjectId)
         {
             // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
             IQueryable<TutorSubject> tutorQuery = _unitOfWork.GetRepository<TutorSubject>().Entities
                 .Where(p => !p.DeletedTime.HasValue || string.IsNullOrEmpty(p.DeletedBy))
                 .OrderByDescending(p => p.CreatedTime);
 
-            if (TutorId.HasValue)
+            if (tutorId.HasValue)
             {
-                tutorQuery = tutorQuery.Where(p => p.User.Id == TutorId);
+                tutorQuery = tutorQuery.Where(p => p.User.Id == tutorId);
             }
 
-            if (!string.IsNullOrWhiteSpace(SubjectId))
+            if (subjectId.HasValue)
             {
-                tutorQuery = tutorQuery.Where(p => p.Subject.Id == SubjectId);
+                tutorQuery = tutorQuery.Where(p => p.User.Id == subjectId);
             }
 
             int totalCount = await tutorQuery.CountAsync();
@@ -74,9 +74,9 @@ namespace OnDemandTutor.Services.Service
 
         public async Task<ResponseTutorModelViews> CreateTutorSubjectAsync(CreateTutorSubjectModelViews model)
         {
-            if (string.IsNullOrWhiteSpace(model.SubjectId))
+            if (model.SubjectId == Guid.Empty)
             {
-                throw new ArgumentException("Please enter SubjectId.");
+                throw new ArgumentException("Please enter a valid SubjectId.");
             }
 
             // Validate the Bio  
@@ -137,21 +137,20 @@ namespace OnDemandTutor.Services.Service
             return _mapper.Map<ResponseTutorModelViews>(tutorSubject);
         }
 
-        public async Task<ResponseTutorModelViews> UpdateTutorSubjectAsync(Guid tutorId, string subjectId, UpdateTutorSubjectModelViews model)
+        public async Task<ResponseTutorModelViews> UpdateTutorSubjectAsync(Guid tutorId, Guid subjectId, UpdateTutorSubjectModelViews model)
         {
             // Kiểm tra xem tutorId có hợp lệ không  
             if (tutorId == Guid.Empty)
             {
                 throw new ArgumentException("Please enter a valid tutorId.", nameof(tutorId));
             }
-
             // Kiểm tra xem subjectId có hợp lệ không  
-            if (string.IsNullOrWhiteSpace(subjectId))
+            if (subjectId == Guid.Empty)
             {
                 throw new ArgumentException("Please enter a valid subjectId.", nameof(subjectId));
             }
 
-            //// Kiểm tra xem gia sư có tồn tại không  
+            // Kiểm tra xem gia sư có tồn tại không  
             //bool isExistTutor = await _unitOfWork.GetRepository<Accounts>().Entities
             //    .AnyAsync(s => s.Id == model.TutorId && !s.DeletedTime.HasValue);
 
@@ -173,11 +172,11 @@ namespace OnDemandTutor.Services.Service
             {
                 throw new Exception("TutorId is invalid.");
             }
-
-            if (string.IsNullOrWhiteSpace(subjectId))
+            if (subjectId == Guid.Empty)
             {
-                throw new Exception("subjectId is invalid.");
+                throw new Exception("SubjectId is invalid.");
             }
+
             // Kiểm tra sự tồn tại và sự thay đổi của Tutor
             bool isChange = await _unitOfWork.GetRepository<TutorSubject>().Entities
                 .AnyAsync(s =>
@@ -208,14 +207,13 @@ namespace OnDemandTutor.Services.Service
             return _mapper.Map<ResponseTutorModelViews>(existingTutorSubject);
         }
 
-        public async Task<ResponseTutorModelViews> DeleteTutorSubjectAsync(Guid tutorId, string subjectId)
+        public async Task<ResponseTutorModelViews> DeleteTutorSubjectAsync(Guid tutorId, Guid subjectId)
         {
             if (tutorId == Guid.Empty)
             {
                 throw new Exception("Please provide a valid tutorId ID.");
             }
-
-            if (string.IsNullOrWhiteSpace(subjectId))
+            if (subjectId == Guid.Empty)
             {
                 throw new Exception("Please provide a valid subjectId ID.");
             }
