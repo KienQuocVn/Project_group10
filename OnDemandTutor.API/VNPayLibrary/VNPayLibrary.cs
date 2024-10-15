@@ -4,10 +4,10 @@ using System.Globalization;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 using static OnDemandTutor.API.VNPayLibrary.Utils;
+
 namespace OnDemandTutor.API.VNPayLibrary
 {
     public class VnPayLibrary
@@ -45,8 +45,6 @@ namespace OnDemandTutor.API.VNPayLibrary
             }
         }
 
-        #region Request
-
         public string CreateRequestUrl(string baseUrl, string vnp_HashSecret)
         {
             StringBuilder data = new StringBuilder();
@@ -58,25 +56,16 @@ namespace OnDemandTutor.API.VNPayLibrary
                 }
             }
             string queryString = data.ToString();
-
             baseUrl += "?" + queryString;
             String signData = queryString;
             if (signData.Length > 0)
             {
-
                 signData = signData.Remove(data.Length - 1, 1);
             }
             string vnp_SecureHash = Utils.HmacSHA512(vnp_HashSecret, signData);
             baseUrl += "vnp_SecureHash=" + vnp_SecureHash;
-
             return baseUrl;
         }
-
-
-
-        #endregion
-
-        #region Response process
 
         public bool ValidateSignature(string inputHash, string secretKey)
         {
@@ -84,9 +73,9 @@ namespace OnDemandTutor.API.VNPayLibrary
             string myChecksum = Utils.HmacSHA512(secretKey, rspRaw);
             return myChecksum.Equals(inputHash, StringComparison.InvariantCultureIgnoreCase);
         }
+
         private string GetResponseData()
         {
-
             StringBuilder data = new StringBuilder();
             if (_responseData.ContainsKey("vnp_SecureHashType"))
             {
@@ -103,21 +92,16 @@ namespace OnDemandTutor.API.VNPayLibrary
                     data.Append(WebUtility.UrlEncode(kv.Key) + "=" + WebUtility.UrlEncode(kv.Value) + "&");
                 }
             }
-            //remove last '&'
             if (data.Length > 0)
             {
                 data.Remove(data.Length - 1, 1);
             }
             return data.ToString();
         }
-
-        #endregion
     }
 
     public class Utils
     {
-
-
         public static String HmacSHA512(string key, String inputData)
         {
             var hash = new StringBuilder();
@@ -131,9 +115,9 @@ namespace OnDemandTutor.API.VNPayLibrary
                     hash.Append(theByte.ToString("x2"));
                 }
             }
-
             return hash.ToString();
         }
+
         public static string GetIpAddress(HttpContext context)
         {
             string ipAddress;
