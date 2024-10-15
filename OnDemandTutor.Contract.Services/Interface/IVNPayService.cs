@@ -15,6 +15,6 @@ namespace OnDemandTutor.Contract.Services.Interface
     {
         string CreatePaymentUrl(PaymentInfo model, HttpContext context);
         PaymentResponse ProcessPaymentCallback(IQueryCollection collections);
-        
+        bool CheckPaymentStatus(double amount);
     }
 }

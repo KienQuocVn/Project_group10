@@ -132,9 +132,9 @@ namespace OnDemandTutor.API.VNPayLibrary
                     hash.Append(theByte.ToString("x2"));
                 }
             }
-
             return hash.ToString();
         }
+
         public static string GetIpAddress(HttpContext context)
         {
             string ipAddress = string.Empty;
