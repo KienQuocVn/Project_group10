@@ -32,7 +32,7 @@ namespace OnDemandTutor.Services.Service
                 return "Subject not found";
 
             var tutorSubject = await _unitOfWork.TutorRepository.Entities
-              .FirstOrDefaultAsync(ts => Guid.Parse(ts.Id) == dto.TutorSubjectId && ts.SubjectId == dto.SubjectId.ToString());
+              .FirstOrDefaultAsync(ts => ts.Id == dto.TutorSubjectId && ts.SubjectId == dto.SubjectId);
 
             if (tutorSubject == null)
                 return "Tutor for this subject not found";

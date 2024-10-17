@@ -11,8 +11,8 @@ namespace OnDemandTutor.Contract.Repositories.Entity
 
         public Guid StudentId { get; set; }
         public Guid TutorId { get; set; }
-        public Guid SubjectId { get; set; }
-        public Guid SlotId { get; set; }
+        public String SubjectId { get; set; }
+        public String SlotId { get; set; }
         public DateTime BookingDate { get; set; }
         public double TotalPrice { get; set; }
 
