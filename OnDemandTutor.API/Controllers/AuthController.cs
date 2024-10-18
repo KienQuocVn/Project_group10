@@ -81,6 +81,10 @@ namespace OnDemandTutor.API.Controllers
                 _logger.LogWarning("Failed to create account for email: {Email}", model.Email);
                 return BadRequest("Failed to create account");
             }
+            if(account.UserInfo.Gender!="Male" && account.UserInfo.Gender!= "Female")
+            {
+                return BadRequest("Gender not correct");
+            }
 
             _logger.LogInformation("Account created successfully for email: {Email}", model.Email);
 

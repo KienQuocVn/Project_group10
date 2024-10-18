@@ -109,11 +109,12 @@ namespace OnDemandTutor.Services.Service
             }
 
             // Kiểm tra xem giới tính có hợp lệ không
-            var validGenders = new List<string> { "Male", "Female", "LGBT" };
-            if (!validGenders.Contains(model.Gender))
+            
+            if (model.Gender != "Male" && model.Gender != "Female")
             {
                 throw new Exception("Invalid Gender");
             }
+
 
             var accountRepository = _unitOfWork.GetRepository<Accounts>();
             await accountRepository.InsertAsync(newAccount);

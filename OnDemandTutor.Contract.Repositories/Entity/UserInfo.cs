@@ -1,4 +1,5 @@
-﻿using OnDemandTutor.Core.Base;
+﻿using System.ComponentModel.DataAnnotations;
+using OnDemandTutor.Core.Base;
 
 namespace OnDemandTutor.Contract.Repositories.Entity
 {
@@ -9,6 +10,8 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public string LinkCV{ get; set; }
         public DateTime? Yob {get; set; }
         //public string PhoneNumber { get; set; }
+        [Required]
+        [RegularExpression("Male|Female", ErrorMessage = "Invalid Gender")]
         public string Gender { get; set; }
         public double Balance { get; set; }
         public string? BankAccount { get; set; }
