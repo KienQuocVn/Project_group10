@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +17,7 @@ using OnDemandTutor.Repositories.UOW;
 
 using OnDemandTutor.Services.Service;
 using OnDemandTutor.Services.Service.AccountUltil;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

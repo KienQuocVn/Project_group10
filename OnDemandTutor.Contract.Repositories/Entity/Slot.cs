@@ -11,22 +11,6 @@ namespace OnDemandTutor.Contract.Repositories.Entity
 {
     public class Slot : BaseEntity
     {
-        //[Key]
-        //public int Id { get; set; }
-
-        //[ForeignKey("Class")]
-        //public int ClassId { get; set; }
-
-        //public string DayOfSlot { get; set; }
-        //public TimeSpan StartTime { get; set; }
-        //public TimeSpan EndTime { get; set; }
-        //public int Price { get; set; }
-
-        //// Navigation properties
-        //public virtual Class Class { get; set; }
-        //public int Id { get; set; }
-
-
         public string ClassId { get; set; }
         public string DayOfSlot { get; set; }
         public TimeSpan StartTime { get; set; }
@@ -37,6 +21,7 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public virtual Class Class { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
-
+        public virtual ICollection<Complaint> Complaints { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }
