@@ -11,7 +11,6 @@ namespace OnDemandTutor.Contract.Repositories.Entity
         public DateTime StartDay { get; set; }
         public DateTime EndDay { get; set; }
 
-        // Navigation properties
         public virtual Accounts account { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual ICollection<Slot> Slots { get; set; }
