@@ -5,6 +5,7 @@ using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.ModelViews.AuthModelViews;
 using OnDemandTutor.Repositories.Entity;
 using OnDemandTutor.Services.Service.AccountUltil;
+using OnDemandTutor.Repositories.UOW;
 
 namespace OnDemandTutor.API.Controllers
 {
@@ -15,12 +16,14 @@ namespace OnDemandTutor.API.Controllers
         private readonly IVNPayService _vnPayService;
         private readonly IConfiguration _configuration;
         private readonly AccountUtils _accountUtil;
+        private readonly AuthenticationRepository _accountRepository;
 
-        public PaymentController(IVNPayService vnPayService, IConfiguration configuration,AccountUtils accountUtils)
+        public PaymentController(IVNPayService vnPayService, IConfiguration configuration,AccountUtils accountUtils, AuthenticationRepository authenticationRepository)
         {
             _vnPayService = vnPayService;
             _configuration = configuration;
             _accountUtil = accountUtils;
+            _accountRepository = authenticationRepository; 
         }
         [HttpPost("submitOrder")]
         public IActionResult SubmitOrder([FromQuery] string amount)
@@ -59,6 +62,7 @@ namespace OnDemandTutor.API.Controllers
                 if (response.Success)
                 {
                     accounts.UserInfo.Balance += double.Parse(totalPrice);
+                    _accountRepository.Update(accounts);
                     return Ok(new
                     {
                         Status = "Success",
@@ -86,8 +90,5 @@ namespace OnDemandTutor.API.Controllers
             }
         }
        
-
-
-
     }
 }
