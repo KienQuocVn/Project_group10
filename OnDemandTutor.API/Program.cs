@@ -44,6 +44,9 @@ builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
 builder.Services.AddScoped<AccountUtils>();
+builder.Services.AddScoped<AuthenticationRepository>(); // Đăng ký AuthenticationRepository
+
+
 
 
 
