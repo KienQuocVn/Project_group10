@@ -8,8 +8,10 @@ namespace OnDemandTutor.Repositories.Mappers
     {
         public BookingMapping()
         {
-            CreateMap<BookingDto, Booking>();
-            CreateMap<Booking, BookingDto>();
+            CreateMap<SlotBookingDto, Booking>();
+            CreateMap<Booking, SlotBookingDto>();
+            CreateMap<TimeBookingDto, Booking>();
+            CreateMap<Booking, TimeBookingDto>();
         }
     }
 }
