@@ -14,6 +14,7 @@ namespace OnDemandTutor.Contract.Repositories.Interface
         IGenericRepository<Slot> SlotRepository { get; }
         IGenericRepository<Complaint> ComplaintRepository { get; } 
         IGenericRepository<Class> ClassRepository { get; }
+        IGenericRepository<RequestRefund> RequestRefundRepository { get; }
 
         void Save();
         Task SaveAsync();

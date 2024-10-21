@@ -12,8 +12,8 @@ using OnDemandTutor.Repositories.Context;
 namespace OnDemandTutor.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20241018031817_NewMigration")]
-    partial class NewMigration
+    [Migration("20241021023335_addRequestRefund")]
+    partial class addRequestRefund
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -535,6 +535,56 @@ namespace OnDemandTutor.API.Migrations
                     b.ToTable("Payments");
                 });
 
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.RequestRefund", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ClassId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("CreatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("DeletedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastUpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("LastUpdatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("RequestRefunds");
+                });
+
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Schedule", b =>
                 {
                     b.Property<Guid>("StudentId")
@@ -1026,6 +1076,25 @@ namespace OnDemandTutor.API.Migrations
                     b.Navigation("Accounts");
                 });
 
+            modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.RequestRefund", b =>
+                {
+                    b.HasOne("OnDemandTutor.Repositories.Entity.Accounts", "Accounts")
+                        .WithMany("RequestRefunds")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Class", "Class")
+                        .WithMany("RequestRefunds")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Accounts");
+
+                    b.Navigation("Class");
+                });
+
             modelBuilder.Entity("OnDemandTutor.Contract.Repositories.Entity.Schedule", b =>
                 {
                     b.HasOne("OnDemandTutor.Contract.Repositories.Entity.Slot", "Slot")
@@ -1090,6 +1159,8 @@ namespace OnDemandTutor.API.Migrations
 
                     b.Navigation("Feedbacks");
 
+                    b.Navigation("RequestRefunds");
+
                     b.Navigation("Slots");
                 });
 
@@ -1129,6 +1200,8 @@ namespace OnDemandTutor.API.Migrations
                     b.Navigation("Feedbacks");
 
                     b.Navigation("Payments");
+
+                    b.Navigation("RequestRefunds");
 
                     b.Navigation("Schedules");
 

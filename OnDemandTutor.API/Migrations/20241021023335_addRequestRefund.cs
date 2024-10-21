@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnDemandTutor.API.Migrations
 {
     /// <inheritdoc />
-    public partial class news : Migration
+    public partial class addRequestRefund : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -346,6 +346,40 @@ namespace OnDemandTutor.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RequestRefunds",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ClassId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    LastUpdatedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DeletedTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RequestRefunds", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RequestRefunds_AspNetUsers_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_RequestRefunds_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Slots",
                 columns: table => new
                 {
@@ -380,10 +414,13 @@ namespace OnDemandTutor.API.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SlotId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<double>(type: "float", nullable: false),
+                    EndTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -413,8 +450,8 @@ namespace OnDemandTutor.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Bookings_TutorSubjects_TutorId_StudentId",
-                        columns: x => new { x.TutorId, x.StudentId },
+                        name: "FK_Bookings_TutorSubjects_TutorId_UserId",
+                        columns: x => new { x.TutorId, x.UserId },
                         principalTable: "TutorSubjects",
                         principalColumns: new[] { "TutorId", "UserId" },
                         onDelete: ReferentialAction.Restrict);
@@ -595,9 +632,9 @@ namespace OnDemandTutor.API.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookings_TutorId_StudentId",
+                name: "IX_Bookings_TutorId_UserId",
                 table: "Bookings",
-                columns: new[] { "TutorId", "StudentId" });
+                columns: new[] { "TutorId", "UserId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Classes_AccountId",
@@ -643,6 +680,16 @@ namespace OnDemandTutor.API.Migrations
                 name: "IX_Payments_AccountsId",
                 table: "Payments",
                 column: "AccountsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RequestRefunds_AccountId",
+                table: "RequestRefunds",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RequestRefunds_ClassId",
+                table: "RequestRefunds",
+                column: "ClassId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Schedules_SlotId",
@@ -694,6 +741,9 @@ namespace OnDemandTutor.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Payments");
+
+            migrationBuilder.DropTable(
+                name: "RequestRefunds");
 
             migrationBuilder.DropTable(
                 name: "Schedules");
