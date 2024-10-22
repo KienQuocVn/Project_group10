@@ -126,7 +126,7 @@ namespace OnDemandTutor.Services.Service
             newRequestRefund.Id = Guid.NewGuid().ToString("N");
             //Accounts accounts = await _unitOfWork.GetRepository<Accounts>().GetByIdAsync(_accountUtil.GetCurrentUser);
             //newRequestRefund.CreatedBy = accounts.Id.ToString("N");
-            newRequestRefund.CreatedBy = "dsds";
+            newRequestRefund.CreatedBy = "clam Admin";
             newRequestRefund.Amount = await _classService.CalculateTotalAmount(model.ClassId);
             newRequestRefund.CreatedTime = DateTimeOffset.UtcNow;
             newRequestRefund.LastUpdatedTime = DateTimeOffset.UtcNow;

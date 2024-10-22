@@ -19,7 +19,8 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/RequestRefund
-        // Lấy danh sách các yêu cầu hoàn tiền có điều kiện lọc hoặc không
+        // API này lấy danh sách các yêu cầu hoàn tiền, có thể kèm theo các điều kiện lọc nếu cần.
+        // Các tham số hỗ trợ phân trang và lọc dữ liệu theo ID yêu cầu, tài khoản, trạng thái và khoảng thời gian.
         [HttpGet()]
         public async Task<ActionResult<BasePaginatedList<ResponseRequestRefundModelViews>>> GetAllRequestRefunds(int pageNumber = 1, int pageSize = 5, string? requestId = null, Guid? accountId = null, string? status = null, DateTime? startDate = null, DateTime? endDate = null)
         {
@@ -36,7 +37,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // POST: api/RequestRefund
-        // Tạo mới một yêu cầu hoàn tiền
+        // API này tạo mới một yêu cầu hoàn tiền dựa trên thông tin từ client gửi lên.
         [HttpPost()]
         public async Task<ActionResult<ResponseRequestRefundModelViews>> CreateRequestRefund([FromBody] CreateRequestRefundModelViews model)
         {
