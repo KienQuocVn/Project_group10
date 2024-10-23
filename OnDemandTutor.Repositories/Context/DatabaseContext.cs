@@ -34,6 +34,8 @@ namespace OnDemandTutor.Repositories.Context
         public virtual DbSet<TutorSubject> TutorSubjects { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; } // Thêm bảng Booking
+        public virtual DbSet<RequestRefund> RequestRefunds { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -202,14 +204,26 @@ namespace OnDemandTutor.Repositories.Context
             //    .HasForeignKey(b => b.TutorSubjectId)
             //    .OnDelete(DeleteBehavior.Cascade);
 
-
-
-
             // Cấu hình mối quan hệ cho Slot  
             modelBuilder.Entity<Slot>()
                 .HasOne(s => s.Class) // Mối quan hệ với Class  
                 .WithMany(c => c.Slots)
                 .HasForeignKey(s => s.ClassId);
+
+
+            modelBuilder.Entity<RequestRefund>().HasKey(b => b.Id);
+
+            modelBuilder.Entity<RequestRefund>()
+                .HasOne(b => b.Class) // Mối quan hệ với TutorSubject  
+                .WithMany(ts => ts.RequestRefunds)
+                .HasForeignKey(b =>  b.ClassId ) // Sử dụng cả TutorId và UserId để liên kết với TutorSubject  
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RequestRefund>()
+                .HasOne(b => b.Accounts) // Mối quan hệ 1-n với Accounts (Student)  
+                .WithMany(s => s.RequestRefunds)
+                .HasForeignKey(b => b.AccountId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

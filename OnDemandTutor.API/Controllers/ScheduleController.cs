@@ -21,7 +21,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/Schedule
-        // lấy tất cả các lịch
+        // lấy tất cả các lịch và lọc theo các tham số được truyền vào
         [HttpGet()]
         public async Task<ActionResult<BasePaginatedList<Schedule>>> GetAllSchedules(int pageNumber = 1, int pageSize = 5, Guid? studentId = null, string? slotId = null, string status = null)
         {
@@ -37,7 +37,7 @@ namespace OnDemandTutor.API.Controllers
         }
 
         // GET: api/Schedule
-        // lấy tất cả lịch trừ những lịch đã được xóa
+        // lấy tất cả lịch trừ những lịch đã được xóa và lọc theo các tham số được truyền vào
         [HttpGet("searchSchedule")]
         public async Task<ActionResult<BasePaginatedList<Schedule>>> SearchSchedules(int pageNumber = 1, int pageSize = 5, Guid? studentId = null, string? slotId = null, string status = null)
         {
