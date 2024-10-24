@@ -23,6 +23,7 @@ namespace OnDemandTutor.Repositories.Entity
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<RequestRefund> RequestRefunds { get; set; }
         public Accounts()
         {
             CreatedTime = CoreHelper.SystemTimeNow;

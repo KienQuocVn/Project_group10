@@ -9,11 +9,11 @@ namespace OnDemandTutor.Repositories.UOW
     class ClassRepository : GenericRepository<Class>, IClassRepository
     {
         protected readonly DatabaseContext _context;
-        protected readonly DbSet<Schedule> _dbSet;
+        protected readonly DbSet<Class> _dbSet;
         public ClassRepository(DatabaseContext dbContext) : base(dbContext)
         {
             _context = dbContext;
-            _dbSet = _context.Set<Schedule>();
+            _dbSet = _context.Set<Class>();
         }
     }
 }

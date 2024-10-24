@@ -222,6 +222,7 @@ namespace OnDemandTutor.Services.Service
             const decimal hourlyRate = 50m; // Ví dụ: 50 đồng/giờ  
             return durationInHours * (double)hourlyRate; // Tính tổng giá  
         }
+
         public async Task<string> CancelBooking(Guid bookingId, string deletedBy)
         {
             // Tìm booking theo ID
@@ -268,6 +269,7 @@ namespace OnDemandTutor.Services.Service
 
             return "Booking canceled successfully and refund processed.";
         }
+
 
 
 

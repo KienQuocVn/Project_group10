@@ -120,6 +120,19 @@ namespace OnDemandTutor.Repositories.UOW
             }
         }
 
+        public IGenericRepository<RequestRefund> requestRefundRepository;
+        public IGenericRepository<RequestRefund> RequestRefundRepository
+        {
+            get
+            {
+                if (this.requestRefundRepository == null)
+                {
+                    this.requestRefundRepository = new GenericRepository<RequestRefund>(_dbContext);
+                }
+                return requestRefundRepository;
+            }
+        }
+
         public void BeginTransaction()
 
         {
