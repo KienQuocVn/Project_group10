@@ -24,5 +24,8 @@ namespace OnDemandTutor.Core.Base
         public DateTimeOffset CreatedTime { get; set; }
         public DateTimeOffset LastUpdatedTime { get; set; }
         public DateTimeOffset? DeletedTime { get; set; }
+
+        // Đánh dấu trạng thái đã bị xóa (soft delete)
+        public bool IsDeleted => DeletedTime.HasValue;
     }
 }

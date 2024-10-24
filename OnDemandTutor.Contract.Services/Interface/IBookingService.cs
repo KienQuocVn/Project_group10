@@ -12,6 +12,8 @@ namespace OnDemandTutor.Contract.Services.Interface
     {
         Task<string> BookSubjectBySlot(SlotBookingDto dto);
         Task<string> BookSubjectByTime(TimeBookingDto dto);
+
+        Task<string> CancelBooking(Guid bookingId,String deleteby);
     }
 
 }

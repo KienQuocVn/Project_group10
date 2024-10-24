@@ -51,6 +51,18 @@ namespace OnDemandTutor.API.Controllers
             // Nếu thành công, trả về mã 200 kèm theo thông điệp thành công  
             return Ok(result);
         }
+        [HttpDelete("cancel/{bookingId}")]
+        public async Task<IActionResult> CancelBooking(Guid bookingId, [FromBody] string deletedBy)
+        {
+            var result = await _bookingService.CancelBooking(bookingId, deletedBy);
+
+            if (result == "Booking not found or already canceled." || result == "Student not found." || result == "Slot not found.")
+            {
+                return NotFound(new { message = result });
+            }
+
+            return Ok(new { message = result });
+        }
     }
 /*{
   "studentId": "78270973-0EF2-417F-A252-A1ACC525A86B",

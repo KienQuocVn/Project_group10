@@ -27,126 +27,109 @@ namespace OnDemandTutor.Services.Service
             _accountUtil = accountUtil ?? throw new ArgumentNullException(nameof(accountUtil));
             _authenticationRepository = authenticationRepository;
         }
-        
+
 
         public async Task<string> BookSubjectBySlot(SlotBookingDto dto)
         {
-
             Accounts accounts = _accountUtil.GetCurrentUser();
 
-            // Kiểm tra xem dữ liệu đặt chỗ có null không và trả về thông báo lỗi nếu có  
             if (dto == null)
-                return "Booking data is null"; // Trả về thông báo lỗi nếu dữ liệu đặt chỗ không hợp lệ  
-
-            // Lấy thông tin sinh viên dựa trên StudentId từ DTO  
+                return "Booking data is null";
 
             var student = await _unitOfWork.GetRepository<Accounts>().FindAsync(dto.StudentId);
-            // Kiểm tra xem sinh viên có tồn tại không  
             if (student == null)
-                return "Student not found"; // Trả về thông báo lỗi nếu không tìm thấy sinh viên  
+                return "Student not found";
 
-            // Lấy thông tin môn học dựa trên SubjectId từ DTO  
             var subject = await _unitOfWork.SubjectRepository.FindAsync(dto.SubjectId);
-            // Kiểm tra xem môn học có tồn tại không  
             if (subject == null)
-                return "Subject not found"; // Trả về thông báo lỗi nếu không tìm thấy môn học  
+                return "Subject not found";
 
-            // Tìm thông tin TutorSubject bao gồm cả UserId  
             var tutorSubject = await _unitOfWork.TutorRepository.Entities
                 .FirstOrDefaultAsync(ts => ts.TutorId == dto.TutorSubjectId);
-
-            // Kiểm tra xem giáo viên cho môn học có tồn tại không  
             if (tutorSubject == null)
-                return "Tutor for this subject not found"; // Trả về thông báo lỗi nếu không tìm thấy giáo viên cho môn học  
+                return "Tutor for this subject not found";
 
-            // Lấy thông tin slot đã chọn dựa trên SlotId từ DTO  
             var selectedSlot = await _unitOfWork.SlotRepository.FindAsync(dto.SlotId);
-            // Kiểm tra xem slot đã chọn có tồn tại không  
             if (selectedSlot == null)
-                return "Selected slot not found"; // Trả về thông báo lỗi nếu không tìm thấy slot đã chọn  
+                return "Selected slot not found";
 
-
-            double durationInHours = (slot.EndTime - slot.StartTime).TotalHours;
-            double totalPrice = slot.Price * durationInHours;
-            if (accounts.UserInfo.Balance >= totalPrice) {
-                accounts.UserInfo.Balance -= totalPrice;
-                _authenticationRepository.Update(accounts);
-                var newClass = new Class
-                {
-                    AccountId = tutorSubject.TutorId, // Gán gia sư cho lớp
-                    SubjectId = dto.SubjectId.ToString(),
-                    AmountOfSlot = 20, // Đặt số lượng slot mặc định
-                    StartDay = DateTime.UtcNow, // Ngày bắt đầu lớp học
-                    EndDay = DateTime.UtcNow.AddMonths(1), // Giả sử lớp học kéo dài 1 tháng
-                };
-
-                // Thêm lớp vào cơ sở dữ liệu
-                await _unitOfWork.ClassRepository.InsertAsync(newClass);
-                await _unitOfWork.SaveAsync();
-
-                //fix chọn ngày giờ linh động không set mặc định ngày
-
-                // chọn ngày học rảnh 
-
-                // linh động chọn giờ chọn lsot , xem có lớp có hay k ,,
-
-                // linh hoạt chọn ngày vs môn học 
-                for (int i = 0; i < 20; i++)
-                {
-                    var startDateTime = DateTime.Now.Date.AddDays(i).Add(slot.StartTime);  // Bắt đầu tại thời gian trong ngày
-                    var endDateTime = DateTime.Now.Date.AddDays(i).Add(slot.EndTime);      // Kết thúc tại thời gian trong ngày
-
-                    var newSlot = new Slot
-                    {
-                        ClassId = newClass.Id, // Gán slot cho lớp mới tạo
-                        StartTime = startDateTime.TimeOfDay, // Chỉ lấy phần TimeSpan của thời gian
-                        EndTime = endDateTime.TimeOfDay,     // Chỉ lấy phần TimeSpan của thời gian
-                        Price = slot.Price, // Giữ nguyên giá slot
-                        DayOfSlot = DateTime.Now.AddDays(i).DayOfWeek.ToString() // Ngày của slot
-                    };
-
-                    // Thêm slot vào cơ sở dữ liệu
-                    await _unitOfWork.SlotRepository.InsertAsync(newSlot);
-                }
-
-                await _unitOfWork.SaveAsync();
-
-            // Kiểm tra xem có đặt chỗ nào đã tồn tại trong slot đã chọn cho ngày đã chọn không  
+            // Kiểm tra nếu slot đã được đặt trước
             var existingBookings = await _unitOfWork.GetRepository<Booking>().Entities
                 .Where(b => b.SlotId == selectedSlot.Id.ToString() && b.BookingDate.Date == dto.SelectedDate.Date)
                 .ToListAsync();
 
-            // Nếu có đặt chỗ đã tồn tại cho slot, trả về thông báo lỗi  
             if (existingBookings.Any())
             {
                 return "The selected slot is already booked.";
             }
 
-            // Tạo một đối tượng đặt chỗ mới với các thông tin liên quan  
-            var booking = new Booking
+            double durationInHours = (selectedSlot.EndTime - selectedSlot.StartTime).TotalHours;
+            double totalPrice = selectedSlot.Price * durationInHours;
+
+            if (accounts.UserInfo.Balance >= totalPrice)
             {
-                StudentId = dto.StudentId, // Gán StudentId từ DTO  
-                SubjectId = dto.SubjectId, // Gán SubjectId từ DTO  
-                TutorId = tutorSubject.TutorId, // Gán TutorId từ TutorSubject  
-                UserId = tutorSubject.UserId, // Gán UserId từ TutorSubject  
-                SlotId = selectedSlot.Id.ToString(), // Gán SlotId từ slot đã chọn  
-                BookingDate = DateTime.UtcNow, // Đặt ngày đặt chỗ là thời gian UTC hiện tại  
-                TotalPrice = selectedSlot.Price, // Đặt tổng giá là giá của slot  
-                StartTime = selectedSlot.StartTime, // Đặt thời gian bắt đầu của đặt chỗ  
-                EndTime = selectedSlot.EndTime // Đặt thời gian kết thúc của đặt chỗ  
-            };
+                accounts.UserInfo.Balance -= totalPrice;
+                _authenticationRepository.Update(accounts);
 
-            // Chèn đặt chỗ mới vào cơ sở dữ liệu  
-            await _unitOfWork.GetRepository<Booking>().InsertAsync(booking);
-            // Lưu các thay đổi vào cơ sở dữ liệu  
-            await _unitOfWork.SaveAsync();
+                var newClass = new Class
+                {
+                    AccountId = tutorSubject.TutorId,
+                    SubjectId = dto.SubjectId.ToString(),
+                    AmountOfSlot = 20,
+                    StartDay = DateTime.UtcNow,
+                    EndDay = DateTime.UtcNow.AddMonths(1),
+                };
 
-            // Trả về thông báo thành công với tổng giá được định dạng dưới dạng tiền tệ  
-            return $"Subject booked successfully. Total Price: {selectedSlot.Price:C}";
+                await _unitOfWork.ClassRepository.InsertAsync(newClass);
+                await _unitOfWork.SaveAsync();
+
+                for (int i = 0; i < 20; i++)
+                {
+                    var startDateTime = DateTime.Now.Date.AddDays(i).Add(selectedSlot.StartTime);
+                    var endDateTime = DateTime.Now.Date.AddDays(i).Add(selectedSlot.EndTime);
+
+                    var newSlot = new Slot
+                    {
+                        ClassId = newClass.Id,
+                        StartTime = startDateTime.TimeOfDay,
+                        EndTime = endDateTime.TimeOfDay,
+                        Price = selectedSlot.Price,
+                        DayOfSlot = DateTime.Now.AddDays(i).DayOfWeek.ToString()
+                    };
+
+                    await _unitOfWork.SlotRepository.InsertAsync(newSlot);
+                }
+
+                await _unitOfWork.SaveAsync();
+
+                var booking = new Booking
+                {
+                    StudentId = dto.StudentId,
+                    SubjectId = dto.SubjectId,
+                    TutorId = tutorSubject.TutorId,
+                    UserId = tutorSubject.UserId,
+                    SlotId = selectedSlot.Id.ToString(),
+                    BookingDate = DateTime.UtcNow,
+                    TotalPrice = selectedSlot.Price,
+                    StartTime = selectedSlot.StartTime,
+                    EndTime = selectedSlot.EndTime
+                };
+
+                await _unitOfWork.GetRepository<Booking>().InsertAsync(booking);
+                await _unitOfWork.SaveAsync();
+
+                return $"Subject booked successfully. Total Price: {selectedSlot.Price:C}";
+            }
+            else
+            {
+                return "Insufficient balance.";
+            }
         }
 
         public async Task<string> BookSubjectByTime(TimeBookingDto dto)
         {
+
+            Accounts accounts = _accountUtil.GetCurrentUser();
             // Kiểm tra xem sinh viên có tồn tại không  
             var student = await _unitOfWork.GetRepository<Accounts>().FindAsync(dto.StudentId);
             if (student == null)
@@ -173,7 +156,6 @@ namespace OnDemandTutor.Services.Service
                 return "The selected time is not available for this tutor.";
             }
 
-
             // Kiểm tra SlotId hợp lệ  
             var slot = await _unitOfWork.GetRepository<Slot>().FindAsync(dto.SlotId);
             if (slot == null)
@@ -184,8 +166,10 @@ namespace OnDemandTutor.Services.Service
             // Tính toán tổng thời gian và giá  
             double durationInHours = (dto.EndTime - dto.StartTime).TotalHours;
             double totalPrice = CalculateTotalPrice(durationInHours);
-
-
+            if (accounts.UserInfo.Balance >= totalPrice)
+            {
+                accounts.UserInfo.Balance -= totalPrice;
+                _authenticationRepository.Update(accounts);
                 // Đặt booking cho môn học này
                 var booking = new Booking
                 {
@@ -194,46 +178,24 @@ namespace OnDemandTutor.Services.Service
                     TutorId = tutorSubject.TutorId,
                     SlotId = dto.SlotId,
                     BookingDate = DateTime.UtcNow,
-                    TotalPrice = totalPrice
+                    TotalPrice = totalPrice,
+                    StartTime = dto.StartTime, // Thời gian bắt đầu
+                    EndTime = dto.EndTime // Thời gian kết thúc
                 };
-               
+
+                // Thêm booking vào cơ sở dữ liệu  
                 await _unitOfWork.GetRepository<Booking>().InsertAsync(booking);
+
+                // Lưu các thay đổi vào cơ sở dữ liệu  
                 await _unitOfWork.SaveAsync();
 
+                // Trả về thông báo thành công với tổng giá
                 return $"Subject booked successfully and class has been scheduled. Total Price: {totalPrice:C}";
             }
-            else {
-                return $"Subject booked Fail";
-                 }
-            // Tạo một lớp mới
-            
-
-       
-
-            // Tạo một booking mới  
-            var booking = new Booking
-            {
-                StudentId = dto.StudentId,
-                SubjectId = dto.SubjectId,
-                TutorId = tutorSubject.TutorId, // Gán TutorId  
-                UserId = tutorSubject.UserId, // Gán UserId từ tutorSubject  
-                BookingDate = DateTime.UtcNow, // Ngày đặt chỗ hiện tại  
-                TotalPrice = totalPrice, // Tổng giá đã tính  
-                StartTime = dto.StartTime, // Thời gian bắt đầu  
-                EndTime = dto.EndTime, // Thời gian kết thúc  
-                SlotId = dto.SlotId // Cập nhật SlotId hợp lệ  
-            };
-
-            // Thêm booking vào cơ sở dữ liệu  
-            await _unitOfWork.GetRepository<Booking>().InsertAsync(booking);
-            // Lưu các thay đổi vào cơ sở dữ liệu  
-            await _unitOfWork.SaveAsync();
-
-            // Trả về thông báo thành công với tổng giá  
-            return $"Subject booked successfully. Total Price: {totalPrice:C}";
-
+            else { return $"Booking fail"; }
         }
 
+        // Kiểm tra xem thời gian có khả dụng không
         private async Task<bool> IsTimeAvailable(Guid tutorId, DateTime selectedDate, TimeSpan startTime, TimeSpan endTime)
         {
             // Lấy danh sách các booking hiện có cho giáo viên trong ngày đã chọn  
@@ -260,6 +222,54 @@ namespace OnDemandTutor.Services.Service
             const decimal hourlyRate = 50m; // Ví dụ: 50 đồng/giờ  
             return durationInHours * (double)hourlyRate; // Tính tổng giá  
         }
+        public async Task<string> CancelBooking(Guid bookingId, string deletedBy)
+        {
+            // Tìm booking theo ID
+            var booking = await _unitOfWork.GetRepository<Booking>().FindAsync(bookingId);
+
+            if (booking == null || booking.IsDeleted)
+            {
+                return "Booking not found or already canceled.";
+            }
+
+            // Lấy thông tin sinh viên và kiểm tra tài khoản
+            var student = await _unitOfWork.GetRepository<Accounts>().FindAsync(booking.StudentId);
+            if (student == null)
+            {
+                return "Student not found.";
+            }
+
+            // Hoàn tiền lại cho sinh viên (nếu cần)
+            var slot = await _unitOfWork.GetRepository<Slot>().FindAsync(booking.SlotId);
+            if (slot == null)
+            {
+                return "Slot not found.";
+            }
+
+            double durationInHours = (slot.EndTime - slot.StartTime).TotalHours;
+            double totalPrice = slot.Price * durationInHours;
+
+            // Kiểm tra nếu có hoàn tiền
+            if (student.UserInfo.Balance != null)
+            {
+                student.UserInfo.Balance += totalPrice;
+                _authenticationRepository.Update(student);
+            }
+
+            // Đánh dấu booking là đã bị hủy bằng cách cập nhật thời gian xóa mềm
+            booking.DeletedTime = DateTimeOffset.UtcNow;
+            booking.DeletedBy = deletedBy;
+
+            // Cập nhật trạng thái booking
+            _unitOfWork.GetRepository<Booking>().Update(booking);
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            await _unitOfWork.SaveAsync();
+
+            return "Booking canceled successfully and refund processed.";
+        }
+
+
 
     }
 }
