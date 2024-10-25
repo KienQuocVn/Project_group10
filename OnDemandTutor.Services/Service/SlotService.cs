@@ -194,13 +194,23 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("Đã tồn tại slot với thời gian trùng lặp trong class này!");
             }
 
+            // Kiểm tra nếu không có gì thay đổi
+            if (slot.ClassId == model.ClassId &&
+                slot.StartTime == model.StartTime &&
+                slot.EndTime == model.EndTime &&
+                slot.Price == model.Price)
+            {
+                throw new Exception("Không có gì thay đổi!");
+            }
+
             _mapper.Map(model, slot);
             slot.LastUpdatedBy = "admin"; // ví dụ: lấy thông tin từ xác thực
             slot.LastUpdatedTime = DateTimeOffset.Now; // Cập nhật thời gian sửa đổi
 
             await _unitOfWork.SaveAsync();
 
-            return slot;
+            //return slot;
+            throw new Exception("Cập nhật thành công!");
         }
 
         public async Task<bool> DeleteSlotAsync(string id)
