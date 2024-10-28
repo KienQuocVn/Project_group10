@@ -214,12 +214,6 @@ namespace OnDemandTutor.Repositories.Context
             modelBuilder.Entity<RequestRefund>().HasKey(b => b.Id);
 
             modelBuilder.Entity<RequestRefund>()
-                .HasOne(b => b.Class) // Mối quan hệ với TutorSubject  
-                .WithMany(ts => ts.RequestRefunds)
-                .HasForeignKey(b =>  b.ClassId ) // Sử dụng cả TutorId và UserId để liên kết với TutorSubject  
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<RequestRefund>()
                 .HasOne(b => b.Accounts) // Mối quan hệ 1-n với Accounts (Student)  
                 .WithMany(s => s.RequestRefunds)
                 .HasForeignKey(b => b.AccountId)
