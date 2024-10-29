@@ -272,26 +272,36 @@ namespace OnDemandTutor.Services.Service
 
             return existedClass.AmountOfSlot * existedSlot.Price;
         }
-        public async Task<BasePaginatedList<Class>> GetClassByTutorIDAsync(Guid tutorId, int pageNumber, int pageSize)
+        public async Task<BasePaginatedList<Class>> GetClassByTutorIDAsync(Guid userId, int pageNumber, int pageSize)
         {
-            // Kiểm tra tham số tutorId có tồn tại không
-            if (tutorId == Guid.Empty)
+            // Kiểm tra tham số userId có tồn tại không
+            if (userId == Guid.Empty)
             {
-                throw new Exception("TutorID cannot be empty.");
+                throw new Exception("userId cannot be empty.");
             }
 
-            // Lấy danh sách các TutorSubject liên kết với TutorId
+            // Lấy danh sách các TutorSubject liên kết với userId
             List<TutorSubject> tutorSubjects = await _unitOfWork.GetRepository<TutorSubject>().Entities
-                .Where(ts => ts.TutorId == tutorId && !ts.DeletedTime.HasValue)
+                .Where(ts => ts.UserId == userId && !ts.DeletedTime.HasValue)
                 .ToListAsync();
+            if (tutorSubjects == null || !tutorSubjects.Any())
+            {
+                throw new Exception("The account is not a tutor or has been deleted!");
+            }
 
-            // Lấy danh sách SubjectId từ TutorSubject (sửa thành List<Guid>)
+            // Lấy danh sách SubjectId từ TutorSubject 
             List<String> subjectIds = tutorSubjects.Select(ts =>ts.SubjectId).Distinct().ToList();
 
-            // Lấy danh sách Classes tương ứng với SubjectId và TutorId, áp dụng phân trang
+            // Lấy danh sách Classes tương ứng với SubjectId, áp dụng phân trang
             IQueryable<Class> classesQuery = _unitOfWork.GetRepository<Class>().Entities
                 .Where(c => subjectIds.Contains(c.SubjectId) && !c.DeletedTime.HasValue) 
                 .OrderBy(c => c.StartDay);
+
+            if (!classesQuery.Any())
+            {
+                throw new Exception("Any account has not been registered for a class!");
+
+            }
 
             int totalCount = await classesQuery.CountAsync();
 

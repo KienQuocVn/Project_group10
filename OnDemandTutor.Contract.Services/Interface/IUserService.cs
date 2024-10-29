@@ -42,11 +42,12 @@ namespace OnDemandTutor.Contract.Services.Interface
         Task<IEnumerable<ApplicationUserClaims>> GetUserClaimsAsync(Guid userId);
         Task<bool> UpdateClaimAsync(Guid claimId, string claimType, string claimValue, string updatedBy);
         Task<bool> SoftDeleteClaimAsync(Guid claimId, string deletedBy);
-    
+
         Task<bool> ResetPasswordAsync(string email, string otp, string newPassword);
         Task<bool> ForgotPasswordAsync(string email);
         Task<bool> VerifyOtpAsync(string email, string otp);
 
         Task<BasePaginatedList<Accounts>> GetAccountsByRoleAsync(string roleName, int pageNumber, int pageSize);
+        Task<double> CalculateSalaryAsync(Guid userId, double commissionRate, DateTime? startDate = null, DateTime? endDate = null, string? subjectId = null);
     }
 }

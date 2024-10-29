@@ -104,16 +104,16 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        // GET: api/GetClassByTutorID
+        // GET: api/GetClassByUserID
         // lấy class theo id gia sư
-        [HttpGet("GetClassByTutorID/{tutorId}")]
-        public async Task<IActionResult> GetClassByTutorID(Guid tutorId, int pageNumber = 1, int pageSize = 5)
+        [HttpGet("GetClassByUserID/{userId}")]
+        public async Task<IActionResult> GetClassByTutorID(Guid userId, int pageNumber = 1, int pageSize = 5)
         {
 
             try
             {
                 // Gọi service với các tham số tìm kiếm
-                var result = await _classService.GetClassByTutorIDAsync(tutorId,pageNumber,pageSize);
+                var result = await _classService.GetClassByTutorIDAsync(userId, pageNumber,pageSize);
                 return Ok(result);
             }
             catch (Exception ex)

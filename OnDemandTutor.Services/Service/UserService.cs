@@ -22,17 +22,19 @@ namespace OnDemandTutor.Services.Service
         private readonly UserManager<Accounts> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly IEmailSender _emailSender;
+        private readonly IClassService _classService;
 
         private static readonly Dictionary<string, (string Otp, DateTime Expiration)> OtpStore = new Dictionary<string, (string, DateTime)>();
 
 
-        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager, IEmailSender emailSender
+        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager, IEmailSender emailSender, IClassService classService
           )
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
+            _classService = classService;
           
 
 
@@ -622,6 +624,74 @@ namespace OnDemandTutor.Services.Service
 
             return new BasePaginatedList<Accounts>(paginatedAccounts, totalCount, pageNumber, pageSize);
         }
+
+        public async Task<double> CalculateSalaryAsync(Guid userId, double commissionRate, DateTime? startDate = null, DateTime? endDate = null, string? subjectId = null)
+        {
+            // Kiểm tra userId hợp lệ
+            if (userId == Guid.Empty)
+            {
+                throw new ArgumentException("User ID is not valid.");
+            }
+
+            try
+            {
+                // Lấy danh sách các booking liên quan đến gia sư, có kiểm tra khoảng thời gian và môn học nếu cần
+                var bookingsQuery = _unitOfWork.GetRepository<Booking>().Entities
+                    .Where(b => b.UserId == userId && !b.DeletedTime.HasValue);
+
+                if (startDate.HasValue && endDate.HasValue)
+                {
+                    if (startDate > endDate)
+                    {
+                        throw new ArgumentException("Start date cannot be later than end date.");
+                    }
+                    bookingsQuery = bookingsQuery.Where(b => b.BookingDate >= startDate.Value && b.BookingDate <= endDate.Value);
+                }
+
+                if (!string.IsNullOrEmpty(subjectId))
+                {
+                    bookingsQuery = bookingsQuery.Where(b => b.SubjectId == subjectId);
+                }
+
+                var bookings = await bookingsQuery.ToListAsync();
+
+                // Kiểm tra nếu không có booking nào trong khoảng thời gian này
+                if (!bookings.Any())
+                {
+                    throw new Exception("No bookings found for this tutor within the specified time range.");
+                }
+
+                double totalSalary = 0;
+
+                foreach (var booking in bookings)
+                {
+                    // Kiểm tra SlotDate và EndTime của Slot để đảm bảo buổi học đã kết thúc
+                    var slot = await _unitOfWork.GetRepository<Slot>().Entities
+                        .FirstOrDefaultAsync(s => s.Id == booking.SlotId && !s.DeletedTime.HasValue);
+
+                    if (slot == null || slot.CreatedTime > DateTime.Now.Date || (slot.CreatedTime == DateTime.Now.Date && slot.EndTime > DateTime.Now.TimeOfDay))
+                    {
+                        // Bỏ qua nếu slot chưa kết thúc
+                        continue;
+                    }
+
+                    // Tính lương từ TotalPrice của booking với tỉ lệ phần trăm
+                    double salaryFromBooking = booking.TotalPrice * (1 - commissionRate);
+                    totalSalary += salaryFromBooking;
+                }
+
+                return totalSalary;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error calculating tutor's salary: {ex.Message}", ex);
+            }
+        }
+
+
+
+
+
 
 
     }

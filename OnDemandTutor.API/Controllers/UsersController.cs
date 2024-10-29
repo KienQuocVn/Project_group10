@@ -89,5 +89,29 @@ namespace OnDemandTutor.API.Controllers
                 return StatusCode(500, "Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn. Vui lòng thử lại sau.");
             }
         }
+
+
+        // GET: api/GetSalaryByUserID
+        // Lấy lương theo id gia sư với các bộ lọc tùy chọn
+        [HttpGet("GetSalaryByUserID")]
+        public async Task<IActionResult> GetSalaryByUserID(
+            Guid userId,
+            [FromQuery] double commissionRate = 0.1, 
+            [FromQuery] DateTime? startDate = null,
+            [FromQuery] DateTime? endDate = null,
+            [FromQuery] string? subjectId = null)
+        {
+            try
+            {
+                // Gọi service với các tham số tìm kiếm
+                var result = await _userService.CalculateSalaryAsync(userId, commissionRate, startDate, endDate, subjectId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
     }
 }
