@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.ClassModelViews;
 using System;
+using System.Drawing.Printing;
 using System.Threading.Tasks;
 
 namespace OnDemandTutor.API.Controllers
@@ -86,7 +88,7 @@ namespace OnDemandTutor.API.Controllers
             }
         }
 
-        // GET: api/Class
+        // GET: api/GetTotalAmountClasses
         // lấy tống giá tiền của class đó từ số amoutOfSlot và price trong slot
         [HttpGet("GetTotalAmountClasses/{id}")]
         public async Task<IActionResult> GetTotalAmountClasses(string id)
@@ -101,6 +103,25 @@ namespace OnDemandTutor.API.Controllers
                 return BadRequest(new { Message = ex.Message });
             }
         }
+
+        // GET: api/GetClassByUserID
+        // lấy class theo id gia sư
+        [HttpGet("GetClassByUserID/{userId}")]
+        public async Task<IActionResult> GetClassByTutorID(Guid userId, int pageNumber = 1, int pageSize = 5)
+        {
+
+            try
+            {
+                // Gọi service với các tham số tìm kiếm
+                var result = await _classService.GetClassByTutorIDAsync(userId, pageNumber,pageSize);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
 
     }
 }

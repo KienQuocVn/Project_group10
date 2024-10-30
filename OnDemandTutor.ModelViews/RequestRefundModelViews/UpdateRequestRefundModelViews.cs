@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace OnDemandTutor.ModelViews.RequestRefundModelViews
 {
-    public class CreateRequestRefundModelViews
+    public class UpdateRequestRefundModelViews
     {
-        public double Amount { get; set; }
-        public String? Description { get; set; } 
+        public String Status { get; set; }
+        public String? Description { get; set; }
 
     }
 }
