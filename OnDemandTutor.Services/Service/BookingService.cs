@@ -19,9 +19,9 @@ namespace OnDemandTutor.Services.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly AccountUtils _accountUtil;  // Sửa lại thành AccountUtils
-        private readonly AuthenticationRepository _authenticationRepository;
+        private readonly IAuthenticationRepository _authenticationRepository;
 
-        public BookingService(IUnitOfWork unitOfWork, AccountUtils accountUtil, AuthenticationRepository authenticationRepository)  // Sửa lại thành AccountUtils
+        public BookingService(IUnitOfWork unitOfWork, AccountUtils accountUtil, IAuthenticationRepository authenticationRepository)  // Sửa lại thành AccountUtils
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _accountUtil = accountUtil ?? throw new ArgumentNullException(nameof(accountUtil));

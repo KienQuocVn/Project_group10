@@ -10,5 +10,6 @@ namespace OnDemandTutor.Contract.Repositories.IUOW
     public interface IAuthenticationRepository
     {
         Accounts FindByEmail(string email);
+        void Update(Accounts accounts);
     }
 }
