@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Contract.Services.Interface;
@@ -23,11 +24,12 @@ namespace OnDemandTutor.Services.Service
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly IEmailSender _emailSender;
         private readonly IClassService _classService;
+        private readonly ILogger<UserService> _logger;
 
         private static readonly Dictionary<string, (string Otp, DateTime Expiration)> OtpStore = new Dictionary<string, (string, DateTime)>();
 
 
-        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager, IEmailSender emailSender, IClassService classService
+        public UserService(IUnitOfWork unitOfWork, UserManager<Accounts> userManager, RoleManager<ApplicationRole> roleManager, IEmailSender emailSender, IClassService classService, ILogger<UserService> logger
           )
         {
             _unitOfWork = unitOfWork;
@@ -35,7 +37,7 @@ namespace OnDemandTutor.Services.Service
             _roleManager = roleManager;
             _emailSender = emailSender;
             _classService = classService;
-          
+            _logger = logger;
 
 
         }
@@ -52,7 +54,7 @@ namespace OnDemandTutor.Services.Service
             {
                 userResponses.Add(new UserResponseModel
                 {
-                    
+
                     UserName = user.UserName,
                     Email = user.Email,
                     FullName = user.UserInfo?.FullName,
@@ -73,7 +75,7 @@ namespace OnDemandTutor.Services.Service
 
             return new UserResponseModel
             {
-              
+
                 UserName = user.UserName,
                 Email = user.Email,
                 FullName = user.UserInfo?.FullName,
@@ -89,7 +91,7 @@ namespace OnDemandTutor.Services.Service
                 FullName = model.FullName,
                 Gender = model.Gender,
                 LinkCV = model.linkCV,
-                Balance = 0              
+                Balance = 0
             };
 
             var newAccount = new Accounts
@@ -111,7 +113,7 @@ namespace OnDemandTutor.Services.Service
             }
 
             // Kiểm tra xem giới tính có hợp lệ không
-            
+
             if (model.Gender != "Male" && model.Gender != "Female")
             {
                 throw new Exception("Invalid Gender");
@@ -318,7 +320,7 @@ namespace OnDemandTutor.Services.Service
             // Lưu thay đổi vào database
             await _unitOfWork.SaveAsync();
 
-            return true; 
+            return true;
         }
 
 
@@ -448,17 +450,17 @@ namespace OnDemandTutor.Services.Service
             {
                 if (string.IsNullOrWhiteSpace(email))
                 {
-                  
+
                     return false; // Trả về false nếu email không hợp lệ
                 }
 
-               
+
 
                 // Tìm kiếm người dùng theo email (không phân biệt chữ hoa chữ thường)
                 var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
                 if (user == null)
                 {
-                   
+
                     return false; // Trả về false nếu không tìm thấy người dùng
                 }
 
@@ -481,13 +483,13 @@ namespace OnDemandTutor.Services.Service
 
                 // Gửi email OTP
                 await _emailSender.SendOtpEmailAsync(email, otp);
-              
+
 
                 return true; // Trả về true nếu mọi thứ thành công
             }
             catch (Exception ex)
             {
-              
+
                 return false; // Trả về false nếu có ngoại lệ
             }
         }
@@ -501,10 +503,10 @@ namespace OnDemandTutor.Services.Service
         {
             try
             {
-              
+
                 if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(otp) || string.IsNullOrWhiteSpace(newPassword))
                 {
-                  
+
                     return false; // Trả về false nếu dữ liệu không hợp lệ
                 }
 
@@ -512,14 +514,14 @@ namespace OnDemandTutor.Services.Service
                 var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
                 if (user == null)
                 {
-                   
+
                     return false; // Trả về false nếu không tìm thấy người dùng
                 }
 
                 // Kiểm tra tính hợp lệ của OTP
                 if (!OtpStore.ContainsKey(email) || OtpStore[email].Otp != otp || OtpStore[email].Expiration < DateTime.UtcNow)
                 {
-                 
+
                     return false; // Trả về false nếu OTP không hợp lệ
                 }
 
@@ -529,59 +531,59 @@ namespace OnDemandTutor.Services.Service
 
                 if (!result.Succeeded)
                 {
-                  
+
                     return false; // Trả về false nếu việc đặt lại mật khẩu không thành công
                 }
 
                 // Xóa OTP khỏi hệ thống sau khi sử dụng
                 OtpStore.Remove(email);
-                
+
 
                 return true;
             }
             catch (Exception ex)
             {
-              
+
                 return false; // Trả về false khi có lỗi không mong đợi
             }
 
         }
 
-            public async Task<bool> VerifyOtpAsync(string email, string otp)
+        public async Task<bool> VerifyOtpAsync(string email, string otp)
+        {
+            try
             {
-                try
+                // Kiểm tra email và OTP có được cung cấp hay không
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(otp))
                 {
-                    // Kiểm tra email và OTP có được cung cấp hay không
-                    if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(otp))
-                    {
-                       
-                        return false;
-                    }
 
-                    // Kiểm tra xem OTP có tồn tại trong hệ thống không
-                    if (!OtpStore.ContainsKey(email))
-                    {
-                        return false;
-                    }
-
-                    var storedOtp = OtpStore[email];
-
-                   
-                    // Kiểm tra tính hợp lệ của OTP
-                    if (storedOtp.Otp != otp || storedOtp.Expiration < DateTime.UtcNow)
-                    {
-                        
-                        return false;
-                    }
-
-                    // Nếu OTP hợp lệ, trả về true
-                    return true;
+                    return false;
                 }
-                catch (Exception ex)
+
+                // Kiểm tra xem OTP có tồn tại trong hệ thống không
+                if (!OtpStore.ContainsKey(email))
                 {
                     return false;
                 }
+
+                var storedOtp = OtpStore[email];
+
+
+                // Kiểm tra tính hợp lệ của OTP
+                if (storedOtp.Otp != otp || storedOtp.Expiration < DateTime.UtcNow)
+                {
+
+                    return false;
+                }
+
+                // Nếu OTP hợp lệ, trả về true
+                return true;
             }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         // lấy danh sách account theo roleName
         public async Task<BasePaginatedList<Accounts>> GetAccountsByRoleAsync(string roleName, int pageNumber, int pageSize)
@@ -687,12 +689,126 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception($"Error calculating tutor's salary: {ex.Message}", ex);
             }
         }
+        public async Task<double> CalculateMonthSalaryAsync(Guid tutorId, int month, int year)
+        {
+            try
+            {
+                var startDate = new DateTime(year, month, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1);
 
+                // Lấy tất cả booking của gia sư trong tháng
+                var bookings = await _unitOfWork.GetRepository<Booking>().Entities
+                    .Where(b => b.TutorId == tutorId
+                        && !b.DeletedTime.HasValue
+                        && b.BookingDate.Date >= startDate
+                        && b.BookingDate.Date <= endDate)
+                    .ToListAsync();
 
+                double totalSalary = 0;
+                const double commissionRate = 0.1; // 10% hoa hồng
 
+                foreach (var booking in bookings)
+                {
+                    var slot = await _unitOfWork.GetRepository<Slot>().Entities
+                        .FirstOrDefaultAsync(s => s.Id.ToString() == booking.SlotId);
 
+                    if (slot != null)
+                    {
+                        // Kiểm tra slot đã kết thúc
+                        var slotEndDateTime = booking.BookingDate.Date.Add(slot.EndTime);
+                        if (slotEndDateTime < DateTime.Now)
+                        {
+                            double tutorShare = booking.TotalPrice * (1 - commissionRate);
+                            totalSalary += tutorShare;
+                        }
+                    }
+                }
 
+                return totalSalary;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error calculating salary for tutor {tutorId}");
+                throw new Exception($"Error calculating tutor's salary: {ex.Message}");
+            }
+        }
 
+        public async Task<int> ProcessMonthEndSalaryAsync()
+        {
+            try
+            {
+                // Lấy role Tutor
+                var roleRepository = _unitOfWork.GetRepository<ApplicationRole>();
+                var tutorRole = await roleRepository.Entities
+                    .FirstOrDefaultAsync(r => r.Name == "Tutor");
+
+                if (tutorRole == null)
+                {
+                    throw new Exception("Tutor role not found");
+                }
+
+                // Lấy tất cả UserIds có role Tutor
+                var userRoleRepository = _unitOfWork.GetRepository<ApplicationUserRoles>();
+                var tutorUserIds = await userRoleRepository.Entities
+                    .Where(ur => ur.RoleId == tutorRole.Id && !ur.DeletedTime.HasValue)
+                    .Select(ur => ur.UserId)
+                    .ToListAsync();
+
+                // Lấy tất cả thông tin tài khoản của các Tutors
+                var tutors = await _unitOfWork.GetRepository<Accounts>().Entities
+                    .Include(a => a.UserInfo)
+                    .Where(a => tutorUserIds.Contains(a.Id) && !a.DeletedTime.HasValue)
+                    .ToListAsync();
+
+                int processedCount = 0;
+
+                foreach (var tutor in tutors)
+                {
+                    // Tính lương tháng hiện tại
+                    var salary = await CalculateMonthSalaryAsync(
+                        tutor.Id,
+                        DateTime.Now.Month,
+                        DateTime.Now.Year
+                    );
+
+                    if (salary > 0)
+                    {
+                        // Cộng lương vào balance của gia sư
+                        if (tutor.UserInfo == null)
+                        {
+                            tutor.UserInfo = new UserInfo { Balance = 0 };
+                        }
+                        tutor.UserInfo.Balance += salary;
+
+                        //// Tạo transaction history (nếu cần)
+                        //var transaction = new TransactionHistory
+                        //{
+                        //    UserId = tutor.Id,
+                        //    Amount = salary,
+                        //    Type = "Salary",
+                        //    Description = $"Monthly salary for {DateTime.Now:MMMM yyyy}",
+                        //    CreatedTime = DateTime.Now,
+                        //    CreatedBy = "System",
+                        //    LastUpdatedTime = DateTime.Now,
+                        //    LastUpdatedBy = "System"
+                        //};
+
+                        //var transactionRepository = _unitOfWork.GetRepository<TransactionHistory>();
+                        //await transactionRepository.InsertAsync(transaction);
+
+                        //processedCount++;
+                    }
+                }
+
+                await _unitOfWork.SaveAsync();
+                return processedCount;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error processing month end salaries");
+                throw new Exception($"Error processing month end salaries: {ex.Message}");
+            }
+        }
 
     }
 

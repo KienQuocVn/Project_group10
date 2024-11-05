@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.UserModelViews;
@@ -96,7 +97,7 @@ namespace OnDemandTutor.API.Controllers
         [HttpGet("GetSalaryByUserID")]
         public async Task<IActionResult> GetSalaryByUserID(
             Guid userId,
-            [FromQuery] double commissionRate = 0.1, 
+            [FromQuery] double commissionRate = 0.1,
             [FromQuery] DateTime? startDate = null,
             [FromQuery] DateTime? endDate = null,
             [FromQuery] string? subjectId = null)
@@ -106,6 +107,48 @@ namespace OnDemandTutor.API.Controllers
                 // Gọi service với các tham số tìm kiếm
                 var result = await _userService.CalculateSalaryAsync(userId, commissionRate, startDate, endDate, subjectId);
                 return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+        // GET: api/User/CalculateMonthSalary
+        [HttpGet("CalculateMonthSalary")]
+        public async Task<IActionResult> CalculateMonthSalary(
+            Guid tutorId,
+            [FromQuery] int? month = null,
+            [FromQuery] int? year = null)
+        {
+            try
+            {
+                // Nếu không truyền tháng/năm thì lấy tháng hiện tại
+                month ??= DateTime.Now.Month;
+                year ??= DateTime.Now.Year;
+
+                var salary = await _userService.CalculateMonthSalaryAsync(tutorId, month.Value, year.Value);
+                return Ok(new
+                {
+                    TutorId = tutorId,
+                    Month = month,
+                    Year = year,
+                    Salary = salary
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
+        // POST: api/User/ProcessMonthEndSalary
+        [HttpPost("ProcessMonthEndSalary")]
+        public async Task<IActionResult> ProcessMonthEndSalary()
+        {
+            try
+            {
+                var result = await _userService.ProcessMonthEndSalaryAsync();
+                return Ok(new { Message = "Salary processing completed", ProcessedCount = result });
             }
             catch (Exception ex)
             {
