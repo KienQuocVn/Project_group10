@@ -49,5 +49,7 @@ namespace OnDemandTutor.Contract.Services.Interface
 
         Task<BasePaginatedList<Accounts>> GetAccountsByRoleAsync(string roleName, int pageNumber, int pageSize);
         Task<double> CalculateSalaryAsync(Guid userId, double commissionRate, DateTime? startDate = null, DateTime? endDate = null, string? subjectId = null);
+        Task<double> CalculateMonthSalaryAsync(Guid tutorId, int month, int year);
+        Task<int> ProcessMonthEndSalaryAsync();
     }
 }
