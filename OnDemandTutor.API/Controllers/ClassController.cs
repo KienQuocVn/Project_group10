@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 using OnDemandTutor.Contract.Repositories.Entity;
 using OnDemandTutor.Contract.Services.Interface;
 using OnDemandTutor.Core.Base;
 using OnDemandTutor.ModelViews.ClassModelViews;
-using System;
-using System.Drawing.Printing;
-using System.Threading.Tasks;
+
 
 namespace OnDemandTutor.API.Controllers
 {
