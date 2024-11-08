@@ -1,14 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
 using OnDemandTutor.API;
+using OnDemandTutor.Contract.Repositories.Interface;
+using OnDemandTutor.Repositories.Context;
+using OnDemandTutor.Repositories.UOW;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add all configurations in DependencyInjection class
 builder.Services.AddConfig(builder.Configuration);
 
+// CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
@@ -19,6 +24,14 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Database Configuration
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("OnDemandTutor.API"));
+});
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Load configuration based on environment
 builder.Configuration
@@ -50,8 +63,10 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
-builder.Services.AddControllers();  // Add this line
+// Add MVC controllers and Razor Pages
+builder.Services.AddControllers();
+builder.Services.AddRazorPages();
+builder.Services.AddHttpClient();
 
 // Configure Swagger with JWT Bearer Support
 builder.Services.AddSwaggerGen(c =>
@@ -82,6 +97,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// Configure Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -89,9 +105,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors();
-app.UseAuthentication(); // JWT Authentication Middleware
-app.UseAuthorization();  // Authorization Middleware
-app.MapControllers();    // Map controllers to endpoints
+app.UseCors();               // Apply CORS policy
+app.UseAuthentication();      // JWT Authentication Middleware
+app.UseAuthorization();       // Authorization Middleware
+
+// Map controllers and Razor Pages
+app.MapControllers();         
+app.MapRazorPages(); 
 
 app.Run();
