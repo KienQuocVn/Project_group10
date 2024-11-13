@@ -1,0 +1,20 @@
+﻿@page
+@model OnDemandTutor.API.Pages.TutorPage.DeleteModel
+@{
+    ViewData["Title"] = "Delete Tutor";
+}
+
+<h2>Delete Tutor</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="tutorId">Tutor ID</label>
+        <input type="text" class="form-control" id="tutorId" name="tutorId" value="@Model.TutorId" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a href="/TutorPage/Index" class="btn btn-secondary">Back to Tutor List</a>

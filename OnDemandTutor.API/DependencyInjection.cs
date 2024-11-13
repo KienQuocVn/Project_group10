@@ -51,7 +51,7 @@ namespace OnDemandTutor.API
         public static void AddServices(this IServiceCollection services)
         {
             services
-                 
+        .AddScoped<ITutorService, TutorService>()
         .AddScoped<IUserService, UserService>()
         .AddScoped<IScheduleService, ScheduleService>()
         .AddScoped<IFeedbackService, FeedbackService>()
