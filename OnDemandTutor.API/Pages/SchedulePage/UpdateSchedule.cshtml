@@ -1,0 +1,48 @@
+﻿@page "{id}"
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model OnDemandTutor.API.Pages.SchedulePage.UpdateScheduleModel
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Update Schedule";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="ScheduleId" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Student ID</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="ScheduleData.StudentId" readonly />
+            <span asp-validation-for="ScheduleData.StudentId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Slot ID</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="ScheduleData.SlotId" required />
+            <span asp-validation-for="ScheduleData.SlotId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Status</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="ScheduleData.Status" required />
+            <span asp-validation-for="ScheduleData.Status" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="offset-md-4 col-md-4 d-grid">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+        <div class="col-md-4 d-grid">
+            <a class="btn btn-outline-primary" asp-page="/SchedulePage/Index">Cancel</a>
+        </div>
+    </div>
+</form>

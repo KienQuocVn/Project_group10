@@ -1,0 +1,75 @@
+﻿@page
+@model OnDemandTutor.API.Pages.TutorPage.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Tutor List";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<!-- Search Form -->
+<form method="get" class="mb-4">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="tutorId" class="form-label">Tutor ID:</label>
+            <input type="text" id="tutorId" name="tutorId" class="form-control" value="@Model.TutorId?.ToString()" />
+        </div>
+        <div class="col-md-6">
+            <label for="subjectId" class="form-label">Subject ID:</label>
+            <input type="text" id="subjectId" name="subjectId" class="form-control" value="@Model.SubjectId" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model.PaginatedTutors != null)
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Tutor ID</th>
+                <th>Subject ID</th>
+                <th>Bio</th>
+                <th>Rating</th>
+                <th>Hourly Rate</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tutor in Model.PaginatedTutors.Items)
+            {
+                <tr>
+                    <td>@tutor.UserId</td>
+                    <td>@tutor.SubjectId</td>
+                    <td>@tutor.Bio</td>
+                    <td>@tutor.Rating</td>
+                    <td>@tutor.HourlyRate</td>
+                    <td>
+                        <a asp-page="/TutorPage/UpdateTutor" asp-route-id="@tutor.UserId" class="btn btn-warning btn-sm">Update</a>
+                        <a href="/TutorPage/Delete?tutorId=@tutor.UserId&subjectId=@tutor.SubjectId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this tutor?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Pagination Links -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if (Model.PaginatedTutors.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?pageNumber=@(Model.PageNumber - 1)&pageSize=@Model.PageSize">Previous</a>
+                </li>
+            }
+            @if (Model.PaginatedTutors.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?pageNumber=@(Model.PageNumber + 1)&pageSize=@Model.PageSize">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

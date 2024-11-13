@@ -1,0 +1,46 @@
+﻿@page
+@model OnDemandTutor.API.Pages.SubjectPage.CreateModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Create Subject";
+}
+
+<h2>Create Subject</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Name</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="CreateSubject.Name" required />
+            <span asp-validation-for="CreateSubject.Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Created By</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="CreateSubject.CreatedBy" required />
+            <span asp-validation-for="CreateSubject.CreatedBy" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Created Time</label>
+        <div class="col-md-8">
+            <input type="datetime-local" class="form-control" asp-for="CreateSubject.CreatedTime" required />
+            <span asp-validation-for="CreateSubject.CreatedTime" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="offset-md-4 col-md-4 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <a class="btn btn-outline-primary" asp-page="/SubjectPage/Index">Cancel</a>
+    </div>
+</form>

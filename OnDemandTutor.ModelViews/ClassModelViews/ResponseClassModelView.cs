@@ -8,7 +8,7 @@ namespace OnDemandTutor.ModelViews.ClassModelViews
     public class ResponseClassModelView
     {
         public string Id { get; set; }
-        public string TutorId { get; set; }
+        public Guid AccountId { get; set; }
         public string SubjectId { get; set; }
         public int AmountOfSlot { get; set; }
         public DateTime StartDay { get; set; }

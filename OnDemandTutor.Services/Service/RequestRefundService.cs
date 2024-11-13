@@ -147,6 +147,7 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("Unable to determine the current user account.");
             }
 
+            // Lấy thông tin UserInfo dựa vào account.UserInfo.Id
             UserInfo user = await _unitOfWork.GetRepository<UserInfo>().GetByIdAsync(account.UserInfo.Id);
             if (user == null)
             {
@@ -158,18 +159,32 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("Account balance is insufficient to make a refund request.");
             }
 
-            RequestRefund newRequestRefund = _mapper.Map<RequestRefund>(model);
-            newRequestRefund.Id = Guid.NewGuid().ToString("N");
-            newRequestRefund.Status = "Wait";
-            newRequestRefund.CreatedBy = account.Id.ToString();
-            newRequestRefund.CreatedTime = DateTimeOffset.UtcNow;
-            newRequestRefund.LastUpdatedTime = DateTimeOffset.UtcNow;
+            try
+            {
+                // Trừ số dư của user
+                user.Balance -= model.Amount;
+                await _unitOfWork.GetRepository<UserInfo>().UpdateAsync(user);
+                await _unitOfWork.SaveAsync();
 
-            await _unitOfWork.GetRepository<RequestRefund>().InsertAsync(newRequestRefund);
-            await _unitOfWork.SaveAsync();
+                // Khởi tạo yêu cầu hoàn tiền mới
+                RequestRefund newRequestRefund = _mapper.Map<RequestRefund>(model);
+                newRequestRefund.Id = Guid.NewGuid().ToString("N");
+                newRequestRefund.Status = "Processing";
+                newRequestRefund.CreatedBy = account.Id.ToString();
+                newRequestRefund.CreatedTime = DateTimeOffset.UtcNow;
+                newRequestRefund.LastUpdatedTime = DateTimeOffset.UtcNow;
 
-            return _mapper.Map<ResponseRequestRefundModelViews>(newRequestRefund);
+                await _unitOfWork.GetRepository<RequestRefund>().InsertAsync(newRequestRefund);
+                await _unitOfWork.SaveAsync();
+
+                return _mapper.Map<ResponseRequestRefundModelViews>(newRequestRefund);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while processing the refund request.", ex);
+            }
         }
+
 
 
         public async Task<ResponseRequestRefundModelViews> UpdateRequestRefundAsync(string requestId, UpdateRequestRefundModelViews model)
