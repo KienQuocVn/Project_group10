@@ -6,22 +6,17 @@ using Microsoft.OpenApi.Models;
 using OnDemandTutor.API;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using OnDemandTutor.API;
+
 using OnDemandTutor.Contract.Repositories.Interface;
 using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.UOW;
-using System.Text;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add all configurations in DependencyInjection class
 builder.Services.AddConfig(builder.Configuration);
-
-
-builder.Services.AddCors(options =>
 
 // CORS Configuration
 builder.Services.AddCors(options =>
@@ -36,15 +31,10 @@ builder.Services.AddCors(options =>
 
 // Database Configuration
 builder.Services.AddDbContext<DatabaseContext>(options =>
-
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
 
 
 
