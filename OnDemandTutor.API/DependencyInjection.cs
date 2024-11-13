@@ -51,6 +51,7 @@ namespace OnDemandTutor.API
         public static void AddServices(this IServiceCollection services)
         {
             services
+
         .AddScoped<ITutorService, TutorService>()
         .AddScoped<IUserService, UserService>()
         .AddScoped<IScheduleService, ScheduleService>()
@@ -78,6 +79,7 @@ namespace OnDemandTutor.API
                 options.AddDefaultPolicy(policy =>
                     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
         }
+
 
         public static void AddConfigureServices(this IServiceCollection services)
         {

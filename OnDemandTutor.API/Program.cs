@@ -1,4 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.OpenApi.Models;
+using OnDemandTutor.API;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -8,10 +14,14 @@ using OnDemandTutor.Repositories.Context;
 using OnDemandTutor.Repositories.UOW;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add all configurations in DependencyInjection class
 builder.Services.AddConfig(builder.Configuration);
+
+
+builder.Services.AddCors(options =>
 
 // CORS Configuration
 builder.Services.AddCors(options =>
@@ -26,12 +36,20 @@ builder.Services.AddCors(options =>
 
 // Database Configuration
 builder.Services.AddDbContext<DatabaseContext>(options =>
+
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("OnDemandTutor.API"));
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
 });
 
+
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 // Load configuration based on environment
 builder.Configuration
@@ -63,10 +81,15 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Add Authorization and Controllers explicitly
+builder.Services.AddAuthorization();
+builder.Services.AddControllers();  // Add this line
+
 // Add MVC controllers and Razor Pages
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
+
 
 // Configure Swagger with JWT Bearer Support
 builder.Services.AddSwaggerGen(c =>
@@ -97,7 +120,10 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+
+
 // Configure Middleware
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -105,6 +131,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseCors();               // Apply CORS policy
 app.UseAuthentication();      // JWT Authentication Middleware
 app.UseAuthorization();       // Authorization Middleware
@@ -112,5 +139,6 @@ app.UseAuthorization();       // Authorization Middleware
 // Map controllers and Razor Pages
 app.MapControllers();         
 app.MapRazorPages(); 
+
 
 app.Run();
