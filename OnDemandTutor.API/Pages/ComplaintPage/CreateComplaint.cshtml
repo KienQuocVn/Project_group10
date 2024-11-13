@@ -1,0 +1,39 @@
+﻿@page
+@model OnDemandTutor.Pages.ComplaintPage.CreateComplaintInputModel
+@{
+    ViewData["Title"] = "Create Complaint";
+}
+
+<h2>Create Complaint</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Complaint.StudentId" class="control-label"></label>
+        <input asp-for="Complaint.StudentId" class="form-control" />
+        <span asp-validation-for="Complaint.StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Complaint.TutorId" class="control-label"></label>
+        <input asp-for="Complaint.TutorId" class="form-control" />
+        <span asp-validation-for="Complaint.TutorId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Complaint.Content" class="control-label"></label>
+        <textarea asp-for="Complaint.Content" class="form-control"></textarea>
+        <span asp-validation-for="Complaint.Content" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Complaint.Status" class="control-label"></label>
+        <input asp-for="Complaint.Status" class="form-control" />
+        <span asp-validation-for="Complaint.Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Complaint</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
