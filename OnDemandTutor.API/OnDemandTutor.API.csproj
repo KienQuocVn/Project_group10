@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Middleware\**" />
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Middleware\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Middleware\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Middleware\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 
@@ -47,12 +58,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnDemandTutor.Services\OnDemandTutor.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

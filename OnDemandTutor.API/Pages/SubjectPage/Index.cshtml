@@ -1,0 +1,69 @@
+﻿@page
+@model OnDemandTutor.API.Pages.SubjectPage.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Subject List";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<!-- Search Form -->
+<form method="get" class="mb-4">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="subjectId" class="form-label">Subject ID:</label>
+            <input type="text" id="subjectId" name="subjectId" class="form-control" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model.PaginatedSubjects != null)
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Subject ID</th>
+                <th>Name</th>
+                <th>Created By</th>
+                <th>Created Time</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in Model.PaginatedSubjects.Items)
+            {
+                <tr>
+                    <td>@subject.Id</td>
+                    <td>@subject.Name</td>
+                    <td>@subject.CreatedBy</td>
+                    <td>@subject.CreatedTime.ToString("g")</td>
+                    <td>
+                        <a asp-page="/SubjectPage/Edit" asp-route-id="@subject.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/SubjectPage/Delete?subjectId=@subject.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this subject?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Pagination Links -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if (Model.PaginatedSubjects.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?pageNumber=@(Model.PageNumber - 1)&pageSize=@Model.PageSize">Previous</a>
+                </li>
+            }
+            @if (Model.PaginatedSubjects.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?pageNumber=@(Model.PageNumber + 1)&pageSize=@Model.PageSize">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

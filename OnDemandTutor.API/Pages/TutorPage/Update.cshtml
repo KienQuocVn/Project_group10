@@ -1,0 +1,64 @@
+﻿@page "{id}"
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model OnDemandTutor.API.Pages.TutorPage.UpdateTutorModel
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Update Tutor";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="TutorId" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">User ID</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="TutorData.UserId" readonly />
+            <span asp-validation-for="TutorData.UserId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Subject ID</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="TutorData.SubjectId" required />
+            <span asp-validation-for="TutorData.SubjectId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Bio</label>
+        <div class="col-md-8">
+            <textarea class="form-control" asp-for="TutorData.Bio" required></textarea>
+            <span asp-validation-for="TutorData.Bio" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Rating</label>
+        <div class="col-md-8">
+            <input type="number" class="form-control" asp-for="TutorData.Rating" min="0" max="5" required />
+            <span asp-validation-for="TutorData.Rating" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Hourly Rate</label>
+        <div class="col-md-8">
+            <input type="number" class="form-control" asp-for="TutorData.HourlyRate" required />
+            <span asp-validation-for="TutorData.HourlyRate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="offset-md-4 col-md-4 d-grid">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+        <div class="col-md-4 d-grid">
+            <a class="btn btn-outline-primary" asp-page="/TutorPage/Index">Cancel</a>
+        </div>
+    </div>
+</form>
