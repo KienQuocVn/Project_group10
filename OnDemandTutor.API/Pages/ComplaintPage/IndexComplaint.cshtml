@@ -1,0 +1,49 @@
+﻿@page
+@model OnDemandTutor.API.Pages.ComplaintPage.IndexComplaintModel
+@{
+    ViewData["Title"] = "Complaint List";
+}
+
+<h2>Complaint List</h2>
+
+@if (Model.Complaints != null && Model.Complaints.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Complaint ID</th>
+                <th>Student ID</th>
+                <th>Tutor ID</th>
+                <th>Content</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var complaint in Model.Complaints)
+            {
+                <tr>
+                    <td>@complaint.Id</td>
+                    <td>@complaint.StudentId</td>
+                    <td>@complaint.TutorId</td>
+                    <td>@complaint.Content</td>
+                    <td>@complaint.Status</td>
+                    <td>@complaint.CreatedAt</td>
+                    <td>
+                        <a href="@Url.Page("EditComplaint", new { id = complaint.Id })">Edit</a> |
+                        <a href="@Url.Page("DeleteComplaint", new { id = complaint.Id })">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No complaints found.</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
