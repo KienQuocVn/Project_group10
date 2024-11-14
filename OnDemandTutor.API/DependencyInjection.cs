@@ -62,6 +62,7 @@ namespace OnDemandTutor.API
         .AddScoped<IRequestRefundService, RequestRefundService>()
         .AddScoped<AccountUtils>()
         .AddScoped<IUnitOfWork, UnitOfWork>()// Ensure AccountUtils is registered
+        .AddScoped<IExportStudent, ExportStudent>()
         .AddScoped<TokenService>();
                 
         }

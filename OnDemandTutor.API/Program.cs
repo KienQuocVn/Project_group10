@@ -3,8 +3,19 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using OnDemandTutor.API;
+using Microsoft.EntityFrameworkCore;
+using OnDemandTutor.Repositories.Context;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+// C?u h?nh DbContext v?i SQL Server  
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("OnDemandTutor.API"));
+});
 
 // Add all configurations in DependencyInjection class
 builder.Services.AddConfig(builder.Configuration);
@@ -50,8 +61,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
 builder.Services.AddControllers();  // Add this line
+builder.Services.AddRazorPages();
+builder.Services.AddHttpClient();
 
 // Configure Swagger with JWT Bearer Support
 builder.Services.AddSwaggerGen(c =>
@@ -82,6 +94,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -89,9 +102,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
 app.UseCors();
 app.UseAuthentication(); // JWT Authentication Middleware
 app.UseAuthorization();  // Authorization Middleware
 app.MapControllers();    // Map controllers to endpoints
-
+app.MapRazorPages();
 app.Run();

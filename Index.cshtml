@@ -1,0 +1,29 @@
+﻿@page
+@model OnDemandTutor.Pages.Slots.IndexModel
+@{
+    ViewData["Title"] = "Danh sách Slot";
+}
+
+<h2>Danh sách Slot</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ngày</th>
+            <th>Giờ Bắt Đầu</th>
+            <th>Giờ Kết Thúc</th>
+            <th>Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var slot in Model.Slots)
+        {
+        <tr>
+            <td>@slot.DayOfSlot</td>
+            <td>@slot.StartTime</td>
+            <td>@slot.EndTime</td>
+            <td>@slot.Price.ToString("C")</td>
+        </tr>
+        }
+    </tbody>
+</table>
