@@ -29,11 +29,19 @@ namespace OnDemandTutor.Services.Service
 
 
         // Lấy danh sách Tất cả Schedule (xóa và chưa bị xóa) dựa theo các tham số truyền vào (nếu tham số nào null thì k tìm theo tham số đó)
-        public async Task<BasePaginatedList<Schedule>> GetAllSchedulesAsync(int pageNumber, int pageSize, Guid? studentId, string? slotId, string? status)
+        public async Task<BasePaginatedList<Schedule>> GetAllSchedulesAsync(int pageNumber, int pageSize, string? id, Guid? studentId, string? slotId, string? status)
         {
             // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
             IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities
-                .OrderByDescending(p => p.CreatedTime);
+                                .Where(p => !p.DeletedTime.HasValue || string.IsNullOrEmpty(p.DeletedBy))
+
+                .OrderByDescending(p => p.CreatedTime );
+
+            // Điều kiện tìm kiếm theo id nếu có
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Id == id);
+            }
 
             // Điều kiện tìm kiếm theo studentId nếu có
             if (studentId.HasValue)
@@ -67,12 +75,18 @@ namespace OnDemandTutor.Services.Service
         }
 
         // Lấy danh sách Schedule chưa bị xóa dựa theo các tham số truyền vào (nếu tham số nào null thì k tìm theo tham số đó)
-        public async Task<BasePaginatedList<Schedule>> GetSchedulesByFilterAsync(int pageNumber, int pageSize, Guid? studentId, string? slotId, string? status)
+        public async Task<BasePaginatedList<Schedule>> GetSchedulesByFilterAsync(int pageNumber, int pageSize, string? id, Guid? studentId, string? slotId, string? status)
         {
             // Lấy tất cả các bản ghi trong bảng Schedule với điều kiện tìm kiếm
             IQueryable<Schedule> schedulesQuery = _unitOfWork.GetRepository<Schedule>().Entities
                 .Where(p => !p.DeletedTime.HasValue || string.IsNullOrEmpty(p.DeletedBy))
                 .OrderByDescending(p => p.CreatedTime);
+
+            // Điều kiện tìm kiếm theo id nếu có
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                schedulesQuery = schedulesQuery.Where(p => p.Id == id);
+            }
 
             // Điều kiện tìm kiếm theo studentId nếu có
             if (studentId.HasValue)
@@ -171,14 +185,11 @@ namespace OnDemandTutor.Services.Service
 
 
         // cập nhật lịch tham số truyền vào là studentID, SlotId, Status
-        public async Task<ResponseScheduleModelViews> UpdateScheduleAsync(Guid studentId, string slotId, UpdateScheduleModelViews model)
+        public async Task<ResponseScheduleModelViews> UpdateScheduleAsync(string id, UpdateScheduleModelViews model)
         {
-            if (studentId == Guid.Empty)
-            {
-                throw new Exception("Please enter StudentId.");
-            }
 
-            if (string.IsNullOrWhiteSpace(slotId))
+
+            if (string.IsNullOrWhiteSpace(id))
             {
                 throw new Exception("Please enter SlotId.");
             }
@@ -201,21 +212,12 @@ namespace OnDemandTutor.Services.Service
                 throw new Exception("The Slot cannot be found or has been deleted!");
             }
 
-            // Kiểm tra tính hợp lệ của StudentId và SlotId trước khi truy vấn
-            if (studentId == Guid.Empty)
-            {
-                throw new Exception("StudentId is invalid.");
-            }
 
-            if (string.IsNullOrWhiteSpace(slotId))
-            {
-                throw new Exception("SlotId is invalid.");
-            }
 
 
             // Truy vấn để tìm schedule từ database dựa trên StudentId và SlotId
             Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities
-                .FirstOrDefaultAsync(p => p.StudentId == studentId && p.SlotId == slotId && !p.DeletedTime.HasValue)
+                .FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue)
                 ?? throw new Exception("The Schedule cannot be found or deleted!");
 
             // Kiểm tra sự tồn tại và sự thay đổi của Schedule
@@ -241,22 +243,19 @@ namespace OnDemandTutor.Services.Service
         }
 
         // xóa mềm 1 lịch truyền vào studentID, SlotId
-        public async Task<ResponseScheduleModelViews> DeleteScheduleAsync(Guid studentId, string slotId)
+        public async Task<ResponseScheduleModelViews> DeleteScheduleAsync( string id)
         {
-            // Validate đầu vào: Kiểm tra xem StudentId và SlotId có hợp lệ hay không
-            if (studentId == Guid.Empty)
-            {
-                throw new Exception("Please provide a valid Student ID.");
-            }
+            // Validate đầu vào: Kiểm tra xem Id có hợp lệ hay không
 
-            if (string.IsNullOrWhiteSpace(slotId))
+
+            if (string.IsNullOrWhiteSpace(id))
             {
                 throw new Exception("Please provide a valid Slot ID.");
             }
 
             // Lấy schedule từ database dựa trên StudentId và SlotId
             Schedule existingSchedule = await _unitOfWork.GetRepository<Schedule>().Entities
-                .FirstOrDefaultAsync(p => p.StudentId == studentId && p.SlotId == slotId && !p.DeletedTime.HasValue)
+                .FirstOrDefaultAsync(p => p.Id == id && !p.DeletedTime.HasValue)
                 ?? throw new Exception("The Schedule cannot be found or it has been deleted!");
 
             // Thực hiện xóa mềm

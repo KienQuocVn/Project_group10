@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Middleware\**" />
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Middleware\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Middleware\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Middleware\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 
@@ -15,6 +26,12 @@
     <PackageReference Include="MailKit" Version="4.7.1.1" />
 
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
 
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
@@ -43,11 +60,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnDemandTutor.Services\OnDemandTutor.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

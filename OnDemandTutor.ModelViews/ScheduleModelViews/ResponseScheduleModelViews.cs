@@ -8,7 +8,7 @@ namespace OnDemandTutor.ModelViews.ScheduleModelViews
 {
     public class ResponseScheduleModelViews
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public Guid StudentId { get; set; }
         public string SlotId { get; set; }
         public string Status { get; set; }

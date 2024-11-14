@@ -20,6 +20,7 @@ namespace OnDemandTutor.API
             services.ConfigRoute();
             services.AddDatabase(configuration);
             services.AddAutoMapper();
+            services.AddConfigureServices();
             services.AddIdentityConfig();
             services.AddInfrastructure(configuration);
             services.AddServices();
@@ -50,7 +51,8 @@ namespace OnDemandTutor.API
         public static void AddServices(this IServiceCollection services)
         {
             services
-                 
+
+        .AddScoped<ITutorService, TutorService>()
         .AddScoped<IUserService, UserService>()
         .AddScoped<IScheduleService, ScheduleService>()
         .AddScoped<IFeedbackService, FeedbackService>()
@@ -77,6 +79,12 @@ namespace OnDemandTutor.API
             services.AddCors(options =>
                 options.AddDefaultPolicy(policy =>
                     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+        }
+
+
+        public static void AddConfigureServices(this IServiceCollection services)
+        {
+            services.AddRazorPages();
         }
     }
 }

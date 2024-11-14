@@ -1,0 +1,20 @@
+﻿@page
+@model OnDemandTutor.API.Pages.ClassPage.DeleteModel
+@{
+    ViewData["Title"] = "Delete Class";
+}
+
+<h2>Delete Class</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="classId">Class ID</label>
+        <input type="text" class="form-control" id="classId" name="classId" value="@Model.ClassId" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a href="/ClassPage/Index" class="btn btn-secondary">Back to Class List</a>

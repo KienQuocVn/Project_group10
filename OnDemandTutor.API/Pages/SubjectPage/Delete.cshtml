@@ -1,0 +1,22 @@
+﻿@page
+@model OnDemandTutor.API.Pages.SubjectPage.DeleteModel
+@{
+    ViewData["Title"] = "Delete Subject";
+}
+
+<h2>Delete Subject</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="subjectId">Subject ID</label>
+        <input type="text" class="form-control" id="subjectId" name="subjectId" value="@Model.SubjectId" readonly />
+    </div>
+
+    <p>Are you sure you want to delete this subject?</p>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a href="/SubjectPage/Index" class="btn btn-secondary">Back to Subject List</a>

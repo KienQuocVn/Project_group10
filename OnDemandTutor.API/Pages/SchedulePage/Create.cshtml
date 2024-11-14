@@ -1,0 +1,48 @@
+﻿@page
+@model OnDemandTutor.API.Pages.SchedulePage.CreateModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Create Schedule";
+}
+
+<h2>Create Schedule</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- Hiển thị tóm tắt lỗi -->
+    <!-- Trường nhập cho Student ID -->
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Student ID</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="CreateSchedule.StudentId" required />
+            <span asp-validation-for="CreateSchedule.StudentId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Trường nhập cho Slot ID -->
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Slot ID</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="CreateSchedule.SlotId" required />
+            <span asp-validation-for="CreateSchedule.SlotId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Trường nhập cho Status -->
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">Status</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" asp-for="CreateSchedule.Status" required />
+            <span asp-validation-for="CreateSchedule.Status" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="offset-md-4 col-md-4 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <a class="btn btn-outline-primary" asp-page="/SchedulePage/Index">Cancel</a>
+    </div>
+</form>

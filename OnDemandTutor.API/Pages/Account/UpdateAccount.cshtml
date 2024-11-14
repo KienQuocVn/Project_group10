@@ -1,0 +1,39 @@
+﻿@page "{userId}"
+@model OnDemandTutor.API.Pages.Account.UpdateAccountModel
+@{
+    ViewData["Title"] = "Update Account";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="User.Email"></label>
+        <input asp-for="User.Email" />
+        <span asp-validation-for="User.Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="User.Password"></label>
+        <input asp-for="User.Password" type="password" />
+        <span asp-validation-for="User.Password" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="User.ConfirmPassword"></label>
+        <input asp-for="User.ConfirmPassword" type="password" />
+        <span asp-validation-for="User.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="User.Gender"></label>
+        <select asp-for="User.Gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <span asp-validation-for="User.Gender" class="text-danger"></span>
+    </div>
+    <button type="submit">Update Account</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

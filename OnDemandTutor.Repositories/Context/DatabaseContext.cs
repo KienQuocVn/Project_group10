@@ -68,7 +68,7 @@ namespace OnDemandTutor.Repositories.Context
             // Cấu hình mối quan hệ cho Schedule  
 
             modelBuilder.Entity<Schedule>()
-                .HasKey(s => new { s.StudentId, s.SlotId }); // Khóa chính cho Schedule  
+                .HasKey(s => new { s.Id }); // Khóa chính cho Schedule  
 
             modelBuilder.Entity<Schedule>()
                 .HasOne(s => s.Student) // Mối quan hệ với Accounts  
@@ -80,7 +80,7 @@ namespace OnDemandTutor.Repositories.Context
                 .HasOne(s => s.Slot) // Mối quan hệ với Slot  
                 .WithMany(s => s.Schedules)
                 .HasForeignKey(s => s.SlotId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
 
 

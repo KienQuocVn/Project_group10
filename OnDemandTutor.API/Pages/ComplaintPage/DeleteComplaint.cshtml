@@ -1,0 +1,23 @@
+﻿@page "{id:guid}"
+@model OnDemandTutor.API.Pages.ComplaintPage.DeleteComplaintModel
+@{
+    ViewData["Title"] = "Xóa Khiếu Nại";
+}
+
+<h1>Xóa Khiếu Nại</h1>
+
+<div>
+    <h3>Bạn có chắc chắn muốn xóa khiếu nại này không?</h3>
+    <div>
+        <p><strong>Học viên ID:</strong> @Model.Complaint.StudentId</p>
+        <p><strong>Gia sư ID:</strong> @Model.Complaint.TutorId</p>
+        <p><strong>Nội dung:</strong> @Model.Complaint.Content</p>
+        <p><strong>Trạng thái:</strong> @Model.Complaint.Status</p>
+        <p><strong>Ngày tạo:</strong> @Model.Complaint.CreatedAt</p>
+    </div>
+    <form method="post">
+        <input type="hidden" asp-for="Complaint.Id" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-page="/ComplaintPage/Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
