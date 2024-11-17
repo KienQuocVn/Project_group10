@@ -1,0 +1,55 @@
+﻿@page
+@model OnDemandTutor.API.Pages.Payment.PaymentSuccessModel
+@{
+    ViewData["Title"] = "Payment Status";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center mb-0">
+                        @(Model.IsSuccess ? "Payment Successful" : "Payment Failed")
+                    </h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @Model.ErrorMessage
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Order Information:</th>
+                                        <td>@Model.OrderInfo</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Transaction ID:</th>
+                                        <td>@Model.TransactionId</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Amount:</th>
+                                        <td>@(decimal.Parse(Model.TotalPrice) / 100) VND</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Payment Time:</th>
+                                        <td>@Model.PaymentTime</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    <div class="text-center mt-4">
+                        <a href="/" class="btn btn-primary">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

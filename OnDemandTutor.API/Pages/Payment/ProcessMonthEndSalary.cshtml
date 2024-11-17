@@ -1,0 +1,56 @@
+﻿@page
+@model OnDemandTutor.API.Pages.Salary.ProcessMonthEndSalaryModel
+@{
+    ViewData["Title"] = "Process Month End Salary";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center mb-0">Process Month End Salary</h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @Model.ErrorMessage
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @Model.SuccessMessage
+                        </div>
+                    }
+
+                    @if (!Model.IsProcessed)
+                    {
+                        <div class="text-center mb-4">
+                            <p class="text-muted">
+                                This action will process the salary for all tutors for the current month.
+                                Please make sure all necessary data is updated before proceeding.
+                            </p>
+                        </div>
+
+                        <form method="post">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to process the month-end salary?');">
+                                    Process Month End Salary
+                                </button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="text-center mt-3">
+                            <a href="/" class="btn btn-primary">Return to Home</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
