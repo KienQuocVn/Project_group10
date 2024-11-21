@@ -1,4 +1,76 @@
-﻿@page
-@model OnDemandTutor.API.Pages.Payment.CalculateSalaryModel
+@page
+@model OnDemandTutor.API.Pages.Salary.CalculateMonthSalaryModel
 @{
+    ViewData["Title"] = "Calculate Monthly Salary";
 }
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center mb-0">Calculate Tutor Monthly Salary</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label asp-for="TutorId" class="form-label">Tutor ID</label>
+                                <input asp-for="TutorId" class="form-control" placeholder="Enter Tutor ID" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Month" class="form-label">Month</label>
+                                <select asp-for="Month" class="form-select">
+                                    @for (int i = 1; i <= 12; i++)
+                                    {
+                                        <option value="@i">@System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(i)</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Year" class="form-label">Year</label>
+                                <input asp-for="Year" type="number" class="form-control"
+                                       min="@(DateTime.Now.Year - 5)"
+                                       max="@(DateTime.Now.Year)"
+                                       value="@DateTime.Now.Year" />
+                            </div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @Model.ErrorMessage
+                            </div>
+                        }
+
+                        @if (Model.SalaryResult != null)
+                        {
+                            <div class="card mt-3">
+                                <div class="card-header bg-primary text-white">
+                                    Salary Calculation Result
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <strong>Tutor ID:</strong> @Model.SalaryResult.TutorId<br />
+                                            <strong>Month:</strong> @System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(Model.Month)<br />
+                                            <strong>Year:</strong> @Model.Year
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Total Salary:</strong> @Model.SalaryResult.Salary.ToString("C")<br />
+                                            <strong>Calculation Date:</strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary">Calculate Salary</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
