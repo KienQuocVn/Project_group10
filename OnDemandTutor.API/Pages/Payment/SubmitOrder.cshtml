@@ -1,4 +1,37 @@
-﻿@page
+@page
 @model OnDemandTutor.API.Pages.Payment.SubmitOrderModel
 @{
+    ViewData["Title"] = "Submit Payment";
 }
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center mb-0">Payment Details</h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @Model.ErrorMessage
+                        </div>
+                    }
+                    <form method="post">
+                        <div class="form-group mb-3">
+                            <label asp-for="Amount" class="form-label">Amount (VND)</label>
+                            <input asp-for="Amount" class="form-control" type="number" required />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                Proceed to Payment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
